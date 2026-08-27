@@ -29,11 +29,12 @@ export function NcHMLogo({ size = "default", light = false }: { size?: "small" |
       </div>
 
       <div className="leading-tight">
-        <div className={`font-display font-bold tracking-tight ${light ? "text-white" : "text-[#1B2A4A]"} ${size === "small" ? "text-[14px]" : size === "large" ? "text-[20px]" : size === "hero" ? "text-[22px] sm:text-[26px]" : "text-[17px]"}`}>
-          Nepal College <span className="text-[#D4AF37]">of Hospitality</span>
+        <div className={`font-display font-bold tracking-tight ${size === "small" ? "text-[14px]" : size === "large" ? "text-[20px]" : size === "hero" ? "text-[22px] sm:text-[26px]" : "text-[17px]"}`}>
+          <span className="text-[#D4AF37]">Nepal College</span>{" "}
+          <span className={light ? "text-white" : "text-[#1B2A4A]"}>of Hotel</span>
         </div>
-        <div className={`font-medium tracking-[0.16em] uppercase ${light ? "text-white/70" : "text-[#6B6560]"} ${size === "small" ? "text-[9px]" : "text-[10px]"}`}>
-          Management (NcHM) • Birgunj
+        <div className={`font-bold tracking-[0.14em] uppercase ${light ? "text-white" : "text-[#1B2A4A]"} ${size === "small" ? "text-[9px]" : "text-[10px]"}`}>
+          Management <span className={light ? "text-white/60" : "text-[#6B6560]"}>(NcHM) • Birgunj</span>
         </div>
       </div>
     </div>

@@ -11,6 +11,14 @@ import {
 // Client WhatsApp Number (Replace with client's active phone number with country code, e.g., 97798XXXXXXXX)
 const WHATSAPP_NUMBER = "9779800000000";
 
+const WhatsAppIcon = ({ className = "h-5 w-5" }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.119.553 4.11 1.519 5.84L0 24l6.337-1.492C8.016 23.473 9.96 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.817 0-3.522-.482-5.002-1.325l-.358-.204-3.722.876.897-3.629-.228-.367A9.956 9.956 0 012 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10z"/>
+  </svg>
+);
+
+
 const NAV = ["About", "Programs", "Global Opportunities", "Career", "Team", "Admission", "Contact"];
 
 const STATS = [
@@ -478,19 +486,19 @@ export default function App() {
       <section className="relative overflow-hidden min-h-[90vh] flex items-center">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute left-1/2 top-[-10%] h-[80%] w-[120%] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#FBF6EC] via-[#F3E5AB]/10 to-transparent blur-[50px]" />
-          <div className="absolute inset-0 lg:left-auto lg:right-0 lg:w-[65%] overflow-hidden">
+          <div className="absolute inset-0 lg:left-auto lg:right-0 lg:w-[65%] overflow-hidden opacity-40 sm:opacity-70 lg:opacity-100 transition-opacity">
             <Interactive3DScene mode="hero" />
           </div>
         </div>
 
-        <div className="relative z-10 mx-auto grid max-w-[1280px] grid-cols-1 gap-10 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:py-24">
-          <div className="lg:col-span-7 lg:pr-6 relative z-10">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#1B2A4A] shadow-sm">
+        <div className="relative z-10 mx-auto grid max-w-[1280px] grid-cols-1 gap-10 px-4 py-12 sm:px-6 lg:grid-cols-12 lg:py-24">
+          <div className="lg:col-span-7 lg:pr-6 relative z-10 rounded-3xl bg-[#FFFCF6]/90 p-5 xs:p-6 sm:p-8 border border-[#D4AF37]/30 shadow-[0_15px_40px_rgba(27,42,74,0.06)] backdrop-blur-md lg:bg-transparent lg:p-0 lg:border-none lg:shadow-none lg:backdrop-blur-none">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/50 bg-[#D4AF37]/20 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#1B2A4A] shadow-sm backdrop-blur-md">
               <Star className="h-3.5 w-3.5 fill-[#D4AF37] text-[#D4AF37]" />
-              Nepal College of Hospitality Management • Est. 2018
+              Nepal College of Hotel Management • Est. 2018
             </div>
 
-            <h1 className="mt-6 font-display text-[34px] xs:text-[44px] font-[400] leading-[0.92] tracking-[-0.03em] sm:text-[68px] lg:text-[80px] text-[#1B2A4A]">
+            <h1 className="mt-5 font-display text-[34px] xs:text-[44px] font-[400] leading-[0.94] tracking-[-0.03em] sm:text-[68px] lg:text-[80px] text-[#1B2A4A]">
               Learn. Work.<br />
               <span className="relative inline-block text-[#D4AF37]">
                 Intern.
@@ -500,36 +508,36 @@ export default function App() {
               <span className="font-[400] italic text-[#1B2A4A]">Go Global.</span>
             </h1>
 
-            <p className="mt-6 max-w-[48ch] text-[16px] sm:text-[18px] leading-relaxed text-[#6B6560]">
+            <p className="mt-5 max-w-[48ch] text-[15px] sm:text-[18px] leading-relaxed text-[#1B2A4A] sm:text-[#4A4540] font-medium">
               Industry-focused hospitality education with practical training, international internship opportunities in China, Mauritius, Dubai, Kuwait, career support and global Bachelor pathways.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <button onClick={() => openApplyModal()} className="group relative overflow-hidden rounded-full bg-[#1B2A4A] px-8 py-4 text-[14px] font-semibold text-white shadow-[0_10px_25px_rgba(27,42,74,0.3)]">
+            <div className="mt-7 flex flex-wrap items-center gap-3.5">
+              <button onClick={() => openApplyModal()} className="group relative overflow-hidden rounded-full bg-[#1B2A4A] px-7 py-3.5 sm:px-8 sm:py-4 text-[14px] font-semibold text-white shadow-[0_10px_25px_rgba(27,42,74,0.3)] transition hover:bg-black">
                 <span className="relative z-10 flex items-center gap-2">Start Your Journey <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
                 <span className="absolute inset-0 -translate-x-full bg-[#D4AF37] transition group-hover:translate-x-0" />
               </button>
-              <a href="#programs" className="rounded-full border border-[#1B2A4A]/30 px-8 py-4 text-[14px] font-semibold transition hover:border-[#1B2A4A] hover:bg-[#1B2A4A]/5">Explore Programs</a>
+              <a href="#programs" className="rounded-full border-2 border-[#1B2A4A] bg-[#FFFCF6]/90 px-7 py-3.5 sm:px-8 sm:py-4 text-[14px] font-bold text-[#1B2A4A] transition hover:bg-[#1B2A4A] hover:text-white backdrop-blur-sm shadow-sm">Explore Programs</a>
             </div>
 
-            <div className="mt-12 grid grid-cols-3 gap-4 sm:gap-6 border-t border-[#EDE7DB] pt-6 sm:max-w-[480px]">
+            <div className="mt-10 grid grid-cols-3 gap-2.5 sm:gap-6 border-t border-[#EDE7DB] pt-6 sm:max-w-[480px]">
               {[
                 { k: "9+6 / 15+6", l: "Months Diploma / ADHM" },
                 { k: "6 Countries", l: "Global Internships" },
                 { k: "100%", l: "Job Placement Support" },
               ].map(s => (
-                <div key={s.k}>
-                  <div className="font-display text-[18px] sm:text-[22px] font-bold text-[#1B2A4A]">{s.k}</div>
-                  <div className="mt-1 text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-[#6B6560]">{s.l}</div>
+                <div key={s.k} className="rounded-2xl bg-[#FFFCF6]/80 p-2 sm:p-3 border border-[#EDE7DB]/80 backdrop-blur-sm lg:bg-transparent lg:p-0 lg:border-none lg:backdrop-blur-none">
+                  <div className="font-display text-[15px] xs:text-[18px] sm:text-[22px] font-extrabold text-[#1B2A4A]">{s.k}</div>
+                  <div className="mt-1 text-[10px] sm:text-[11px] uppercase tracking-[0.08em] font-bold text-[#1B2A4A]/80">{s.l}</div>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="relative lg:col-span-5 flex items-center justify-center">
-            <div className="relative w-full max-w-[440px] rounded-[32px] border border-[#D4AF37]/40 bg-white/80 p-6 sm:p-8 shadow-[0_30px_90px_rgba(27,42,74,0.15)] backdrop-blur-xl">
-              <div className="absolute -top-6 -right-6 flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-[#1B2A4A] text-[#D4AF37] shadow-xl border-2 border-[#D4AF37]">
-                <Award className="h-8 w-8 sm:h-10 sm:w-10" />
+            <div className="relative w-full max-w-[440px] rounded-[32px] border border-[#D4AF37]/40 bg-white/95 p-6 sm:p-8 shadow-[0_30px_90px_rgba(27,42,74,0.15)] backdrop-blur-xl">
+              <div className="absolute -top-5 -right-2 sm:-top-6 sm:-right-6 flex h-14 w-14 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-[#1B2A4A] text-[#D4AF37] shadow-xl border-2 border-[#D4AF37] z-20">
+                <Award className="h-7 w-7 sm:h-10 sm:w-10" />
               </div>
               <NcHMLogo size="large" />
               <div className="mt-6 space-y-4 border-t border-[#EDE7DB] pt-6">
@@ -1499,7 +1507,7 @@ export default function App() {
             <div className="lg:col-span-4">
               <NcHMLogo light size="large" />
               <div className="mt-6 text-[13px] leading-relaxed text-white/60">
-                Nepal College of Hospitality Management (NcHM)<br />
+                Nepal College of Hotel Management (NcHM)<br />
                 Established 2018 AD • Birgunj, Nepal<br />
                 Learn. Work. Intern. Earn. Go Global.
               </div>
@@ -1553,31 +1561,28 @@ export default function App() {
           </div>
 
           <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-8 text-[12px] text-white/50">
-            <span>© {new Date().getFullYear()} Nepal College of Hospitality Management (NcHM). All rights reserved.</span>
+            <span>© {new Date().getFullYear()} Nepal College of Hotel Management (NcHM). All rights reserved.</span>
             <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-[#D4AF37]" /> Official NcHM Brand Identity • White + Champagne Gold + Royal Navy Blue</span>
           </div>
         </div>
       </footer>
 
-      {/* FLOATING ACTION BUTTON */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+      {/* FLOATING WHATSAPP CTA BUTTON */}
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2.5">
         <a 
           href={`https://wa.me/${WHATSAPP_NUMBER}`} 
           target="_blank" 
           rel="noreferrer"
-          title="WhatsApp Us Direct"
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-600 text-white shadow-xl transition hover:scale-110 hover:bg-emerald-500"
+          title="Chat on WhatsApp with NcHM Admissions"
+          className="group relative flex items-center gap-2.5 rounded-full bg-[#25D366] px-4 py-3 text-white shadow-[0_10px_25px_rgba(37,211,102,0.45)] border-2 border-white transition-all duration-300 hover:scale-105 hover:bg-[#20ba5a] active:scale-95"
         >
-          <MessageSquare className="h-6 w-6" />
+          <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-white"></span>
+          </span>
+          <WhatsAppIcon className="h-5 w-5 fill-white shrink-0" />
+          <span className="text-[13px] font-bold tracking-wide">WhatsApp Chat</span>
         </a>
-        <button
-          onClick={() => openApplyModal()}
-          title="Apply Now via WhatsApp"
-          className="flex items-center gap-2 rounded-full bg-[#1B2A4A] px-4 py-3 text-[13px] font-bold text-white shadow-2xl border border-[#D4AF37]/50 transition hover:scale-105 hover:bg-black"
-        >
-          <Sparkles className="h-4 w-4 text-[#D4AF37]" />
-          <span>Apply 2026</span>
-        </button>
       </div>
 
       {/* INTERACTIVE ADMISSION MODAL WITH WHATSAPP ROUTING */}
