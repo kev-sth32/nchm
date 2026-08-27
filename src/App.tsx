@@ -476,9 +476,9 @@ export default function App() {
 
       {/* HERO WITH THREE.JS 3D SCENE */}
       <section className="relative overflow-hidden min-h-[90vh] flex items-center">
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute left-1/2 top-[-10%] h-[80%] w-[120%] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#FBF6EC] via-[#F3E5AB]/10 to-transparent blur-[50px]" />
-          <div className="absolute inset-0 lg:left-auto lg:right-0 lg:w-[65%]">
+          <div className="absolute inset-0 lg:left-auto lg:right-0 lg:w-[65%] overflow-hidden">
             <Interactive3DScene mode="hero" />
           </div>
         </div>
@@ -490,7 +490,7 @@ export default function App() {
               Nepal College of Hospitality Management • Est. 2018
             </div>
 
-            <h1 className="mt-6 font-display text-[46px] font-[400] leading-[0.92] tracking-[-0.03em] sm:text-[68px] lg:text-[80px] text-[#1B2A4A]">
+            <h1 className="mt-6 font-display text-[34px] xs:text-[44px] font-[400] leading-[0.92] tracking-[-0.03em] sm:text-[68px] lg:text-[80px] text-[#1B2A4A]">
               Learn. Work.<br />
               <span className="relative inline-block text-[#D4AF37]">
                 Intern.
@@ -500,7 +500,7 @@ export default function App() {
               <span className="font-[400] italic text-[#1B2A4A]">Go Global.</span>
             </h1>
 
-            <p className="mt-6 max-w-[48ch] text-[18px] leading-relaxed text-[#6B6560]">
+            <p className="mt-6 max-w-[48ch] text-[16px] sm:text-[18px] leading-relaxed text-[#6B6560]">
               Industry-focused hospitality education with practical training, international internship opportunities in China, Mauritius, Dubai, Kuwait, career support and global Bachelor pathways.
             </p>
 
@@ -512,24 +512,24 @@ export default function App() {
               <a href="#programs" className="rounded-full border border-[#1B2A4A]/30 px-8 py-4 text-[14px] font-semibold transition hover:border-[#1B2A4A] hover:bg-[#1B2A4A]/5">Explore Programs</a>
             </div>
 
-            <div className="mt-12 grid grid-cols-3 gap-6 border-t border-[#EDE7DB] pt-6 sm:max-w-[480px]">
+            <div className="mt-12 grid grid-cols-3 gap-4 sm:gap-6 border-t border-[#EDE7DB] pt-6 sm:max-w-[480px]">
               {[
                 { k: "9+6 / 15+6", l: "Months Diploma / ADHM" },
                 { k: "6 Countries", l: "Global Internships" },
                 { k: "100%", l: "Job Placement Support" },
               ].map(s => (
                 <div key={s.k}>
-                  <div className="font-display text-[22px] font-bold text-[#1B2A4A]">{s.k}</div>
-                  <div className="mt-1 text-[11px] uppercase tracking-[0.12em] text-[#6B6560]">{s.l}</div>
+                  <div className="font-display text-[18px] sm:text-[22px] font-bold text-[#1B2A4A]">{s.k}</div>
+                  <div className="mt-1 text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-[#6B6560]">{s.l}</div>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="relative lg:col-span-5 flex items-center justify-center">
-            <div className="relative w-full max-w-[440px] rounded-[32px] border border-[#D4AF37]/40 bg-white/80 p-8 shadow-[0_30px_90px_rgba(27,42,74,0.15)] backdrop-blur-xl">
-              <div className="absolute -top-6 -right-6 flex h-20 w-20 items-center justify-center rounded-full bg-[#1B2A4A] text-[#D4AF37] shadow-xl border-2 border-[#D4AF37]">
-                <Award className="h-10 w-10" />
+            <div className="relative w-full max-w-[440px] rounded-[32px] border border-[#D4AF37]/40 bg-white/80 p-6 sm:p-8 shadow-[0_30px_90px_rgba(27,42,74,0.15)] backdrop-blur-xl">
+              <div className="absolute -top-6 -right-6 flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-[#1B2A4A] text-[#D4AF37] shadow-xl border-2 border-[#D4AF37]">
+                <Award className="h-8 w-8 sm:h-10 sm:w-10" />
               </div>
               <NcHMLogo size="large" />
               <div className="mt-6 space-y-4 border-t border-[#EDE7DB] pt-6">
@@ -557,7 +557,7 @@ export default function App() {
               </div>
               <div className="mt-8 rounded-2xl bg-[#1B2A4A] p-4 text-center text-white">
                 <div className="text-[11px] uppercase tracking-[0.2em] text-[#D4AF37]">Official Motto</div>
-                <div className="mt-1 font-display text-[18px]">Learn. Work. Intern. Earn. Go Global.</div>
+                <div className="mt-1 font-display text-[16px] sm:text-[18px]">Learn. Work. Intern. Earn. Go Global.</div>
               </div>
             </div>
           </div>
@@ -566,11 +566,13 @@ export default function App() {
 
       {/* STATS */}
       <section ref={statsInView.ref} className="relative bg-[#1B2A4A] py-16 text-white">
-        <div className="mx-auto grid max-w-[1280px] grid-cols-2 gap-[1px] bg-white/10 px-4 sm:px-6 lg:grid-cols-6">
+        <div className="mx-auto grid max-w-[1280px] grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-[1px] bg-white/10 px-4 sm:px-6">
           {STATS.map(s => (
             <div key={s.k} className="bg-[#1B2A4A] p-6 transition hover:bg-[#142038]">
-              <div className="font-display text-[38px] leading-none text-[#D4AF37]">{s.k === "20%" ? `${c20}%` : s.k}</div>
-              <div className="mt-3 text-[13px] font-bold leading-tight">{s.v}</div>
+              <div className="font-display text-[32px] sm:text-[38px] leading-none text-[#D4AF37]">
+                {s.k === "20%" ? (c20 > 0 ? `${c20}%` : "20%") : s.k}
+              </div>
+              <div className="mt-3 text-[12px] sm:text-[13px] font-bold leading-tight">{s.v}</div>
               <div className="mt-1 text-[11px] text-white/60">{s.sub}</div>
             </div>
           ))}
@@ -648,14 +650,14 @@ export default function App() {
               </div>
             </div>
 
-            <div className="lg:col-span-7 grid gap-4 sm:grid-cols-2">
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {PROGRAMS.map(p => (
                 <button key={p.id} onClick={() => setActiveProg(p.id)} className={`group relative overflow-hidden rounded-[24px] border text-left transition duration-300 ${activeProg === p.id ? "border-[#1B2A4A] shadow-[0_20px_40px_rgba(27,42,74,0.15)] ring-2 ring-[#D4AF37]" : "border-[#EDE7DB] hover:border-[#D4AF37]"}`}>
-                  <img src={p.img} alt={p.title} className="h-[240px] w-full object-cover transition duration-700 group-hover:scale-105" />
+                  <img src={p.img} alt={p.title} className="h-[200px] sm:h-[240px] w-full object-cover transition duration-700 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A4A]/80 via-[#1B2A4A]/20 to-transparent" />
-                  <div className="absolute bottom-0 p-6 text-white">
+                  <div className="absolute bottom-0 p-5 sm:p-6 text-white">
                     <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#D4AF37]">{p.duration.split(" ")[0]} Program</div>
-                    <div className="mt-1 font-display text-[22px] leading-tight">{p.title}</div>
+                    <div className="mt-1 font-display text-[20px] sm:text-[22px] leading-tight">{p.title}</div>
                   </div>
                   {activeProg === p.id && <div className="absolute right-4 top-4 rounded-full bg-[#D4AF37] px-3 py-1 text-[11px] font-bold text-black shadow-md">Active</div>}
                 </button>
@@ -666,29 +668,29 @@ export default function App() {
       </section>
 
       {/* INTERNATIONAL INTERNSHIP & GLOBE */}
-      <section id="global-opportunities" className="relative overflow-hidden bg-[#1B2A4A] py-20 text-white lg:py-28">
+      <section id="global-opportunities" className="relative overflow-hidden bg-[#1B2A4A] py-16 lg:py-28 text-white">
         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `radial-gradient(#D4AF37 1px, transparent 1px)`, backgroundSize: "32px 32px" }} />
         <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6">
           <div className="grid gap-12 lg:grid-cols-12 items-center">
             <div className="lg:col-span-5">
               <div className="inline-flex rounded-full bg-[#D4AF37]/20 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4AF37]">Global Opportunities</div>
-              <h2 className="mt-4 font-display text-[42px] leading-[0.95] sm:text-[58px]">Take Your Classroom to the World</h2>
-              <p className="mt-4 text-[15px] leading-relaxed text-white/70">From Nepal to the world — 6-month paid/stipend internships in luxury 4★ and 5★ partner hotels across China, Mauritius, Dubai, Kuwait, India, and Nepal.</p>
+              <h2 className="mt-4 font-display text-[34px] xs:text-[42px] leading-[0.95] sm:text-[58px]">Take Your Classroom to the World</h2>
+              <p className="mt-4 text-[14px] sm:text-[15px] leading-relaxed text-white/70">From Nepal to the world — 6-month paid/stipend internships in luxury 4★ and 5★ partner hotels across China, Mauritius, Dubai, Kuwait, India, and Nepal.</p>
 
               <div className="mt-8 grid gap-3">
                 {DESTINATIONS.map(d => (
-                  <button key={d.name} onClick={() => setActiveDest(d.name)} className={`flex items-center justify-between rounded-2xl border px-5 py-4 text-left transition ${activeDest === d.name ? "border-[#D4AF37] bg-white/10 shadow-lg ring-1 ring-[#D4AF37]" : "border-white/10 hover:border-white/30"}`}>
-                    <div className="flex items-center gap-4">
-                      <span className="text-[24px]">{d.flag}</span>
+                  <button key={d.name} onClick={() => setActiveDest(d.name)} className={`flex items-center justify-between rounded-2xl border px-4 py-3.5 sm:px-5 sm:py-4 text-left transition ${activeDest === d.name ? "border-[#D4AF37] bg-white/10 shadow-lg ring-1 ring-[#D4AF37]" : "border-white/10 hover:border-white/30"}`}>
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      <span className="text-[20px] sm:text-[24px]">{d.flag}</span>
                       <div>
-                        <div className="text-[15px] font-bold flex flex-wrap items-center gap-2">
+                        <div className="text-[14px] sm:text-[15px] font-bold flex flex-wrap items-center gap-1.5 sm:gap-2">
                           <span>{d.name}</span>
-                          <span className="text-[12px] font-normal text-[#D4AF37]">({d.cities})</span>
+                          <span className="text-[11px] sm:text-[12px] font-normal text-[#D4AF37]">({d.cities})</span>
                         </div>
-                        <div className="text-[12px] text-white/60 mt-0.5">{d.hotels}</div>
+                        <div className="text-[11px] sm:text-[12px] text-white/60 mt-0.5">{d.hotels}</div>
                       </div>
                     </div>
-                    <span className={`h-3 w-3 rounded-full ${activeDest === d.name ? "bg-[#D4AF37] shadow-[0_0_12px_#D4AF37]" : "bg-white/20"}`} />
+                    <span className={`h-3 w-3 rounded-full shrink-0 ${activeDest === d.name ? "bg-[#D4AF37] shadow-[0_0_12px_#D4AF37]" : "bg-white/20"}`} />
                   </button>
                 ))}
               </div>
@@ -696,21 +698,21 @@ export default function App() {
 
             <div className="lg:col-span-7">
               <div className="relative overflow-hidden rounded-[32px] border border-[#D4AF37]/30 bg-[#121A2D] shadow-2xl">
-                <div className="relative aspect-[4/3] w-full">
+                <div className="relative aspect-[4/3] min-h-[260px] sm:min-h-[380px] w-full">
                   <Interactive3DScene activeDestName={activeDest} />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/75 to-transparent p-6 sm:p-8">
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/75 to-transparent p-5 sm:p-8">
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4AF37]">
                         <span>Destination Pathway</span> • <span>{activeDestinationObj.country}</span>
                       </div>
-                      <div className="mt-1 font-display text-[26px] sm:text-[32px] leading-tight text-white flex flex-wrap items-center gap-3">
+                      <div className="mt-1 font-display text-[22px] sm:text-[32px] leading-tight text-white flex flex-wrap items-center gap-2 sm:gap-3">
                         <span>{activeDestinationObj.flag}</span>
                         <span>{activeDestinationObj.name}</span>
-                        <span className="text-[15px] font-sans font-normal text-[#F3E5AB]">({activeDestinationObj.cities})</span>
+                        <span className="text-[13px] sm:text-[15px] font-sans font-normal text-[#F3E5AB]">({activeDestinationObj.cities})</span>
                       </div>
-                      <p className="mt-2 text-[13px] text-white/80 max-w-[50ch] leading-relaxed">
+                      <p className="mt-2 text-[12px] sm:text-[13px] text-white/80 max-w-[50ch] leading-relaxed">
                         {activeDestinationObj.details}
                       </p>
                       <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1 text-[11px] text-[#D4AF37]">
@@ -734,8 +736,8 @@ export default function App() {
           <div className="lg:col-span-5">
             <div className="sticky top-28">
               <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4AF37]">Global Pathways</div>
-              <h2 className="mt-3 font-display text-[40px] leading-[0.95] sm:text-[52px] text-[#1B2A4A]">Your Diploma Can Be the Beginning</h2>
-              <p className="mt-4 text-[15px] leading-relaxed text-[#6B6560]">Continue your hospitality education globally. ADHM at NcHM → Credit Assessment → Bachelor → International Study → Global Hospitality Career.</p>
+              <h2 className="mt-3 font-display text-[34px] xs:text-[40px] leading-[0.95] sm:text-[52px] text-[#1B2A4A]">Your Diploma Can Be the Beginning</h2>
+              <p className="mt-4 text-[14px] sm:text-[15px] leading-relaxed text-[#6B6560]">Continue your hospitality education globally. ADHM at NcHM → Credit Assessment → Bachelor → International Study → Global Hospitality Career.</p>
               <div className="mt-6 rounded-2xl border border-amber-200 bg-[#FBF6EC] p-5 text-[12px] leading-relaxed text-[#7A5A2A]">
                 ⚠️ <strong>Important Notice:</strong> Credit transfer / advanced entry is subject to receiving university policies, eligibility, academic assessment and institutional requirements.
               </div>
@@ -755,23 +757,23 @@ export default function App() {
                   { t: "International Study", d: "Study in Canada, USA, Switzerland, Dubai/UAE, Scotland, Australia, UK." },
                   { t: "Global Hospitality Career", d: "Management roles in luxury hotels, resorts, cruise, aviation hospitality." },
                 ].map((s, i) => (
-                  <div key={s.t} className="relative flex gap-6 items-start">
-                    <div className={`relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 font-display text-[16px] font-bold ${i === 0 ? "border-[#1B2A4A] bg-[#1B2A4A] text-white shadow-md" : "border-[#EDE7DB] bg-white text-[#1B2A4A]"}`}>{i + 1}</div>
-                    <div className="flex-1 rounded-[24px] border border-[#EDE7DB] bg-white p-6 shadow-[0_10px_30px_rgba(27,42,74,0.04)]">
-                      <div className="font-display text-[22px] text-[#1B2A4A]">{s.t}</div>
-                      <div className="mt-2 text-[14px] text-[#6B6560] leading-relaxed">{s.d}</div>
+                  <div key={s.t} className="relative flex gap-4 sm:gap-6 items-start">
+                    <div className={`relative z-10 flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full border-2 font-display text-[14px] sm:text-[16px] font-bold ${i === 0 ? "border-[#1B2A4A] bg-[#1B2A4A] text-white shadow-md" : "border-[#EDE7DB] bg-white text-[#1B2A4A]"}`}>{i + 1}</div>
+                    <div className="flex-1 rounded-[24px] border border-[#EDE7DB] bg-white p-5 sm:p-6 shadow-[0_10px_30px_rgba(27,42,74,0.04)]">
+                      <div className="font-display text-[18px] sm:text-[22px] text-[#1B2A4A]">{s.t}</div>
+                      <div className="mt-2 text-[13px] sm:text-[14px] text-[#6B6560] leading-relaxed">{s.d}</div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3">
+            <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3">
               {BACHELOR.map(b => (
-                <div key={b.country} className="rounded-2xl border border-[#EDE7DB] bg-[#FBF6EC]/50 p-5 transition hover:border-[#D4AF37]">
-                  <div className="text-[24px]">{b.flag}</div>
-                  <div className="mt-2 font-bold text-[15px] text-[#1B2A4A]">{b.country}</div>
-                  <div className="text-[12px] text-[#6B6560]">{b.city}</div>
+                <div key={b.country} className="rounded-2xl border border-[#EDE7DB] bg-[#FBF6EC]/50 p-4 sm:p-5 transition hover:border-[#D4AF37]">
+                  <div className="text-[20px] sm:text-[24px]">{b.flag}</div>
+                  <div className="mt-2 font-bold text-[14px] sm:text-[15px] text-[#1B2A4A]">{b.country}</div>
+                  <div className="text-[11px] sm:text-[12px] text-[#6B6560]">{b.city}</div>
                 </div>
               ))}
             </div>
@@ -785,21 +787,21 @@ export default function App() {
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4AF37]">Industry Partnerships</div>
-              <h2 className="mt-3 font-display text-[40px] leading-[0.95] sm:text-[48px] text-[#1B2A4A]">Connected With the Hospitality Industry</h2>
-              <p className="mt-3 text-[15px] text-[#6B6560]">Industry exposure starts before graduation. MOUs and relationships with multiple 3–4 star hotels.</p>
+              <h2 className="mt-3 font-display text-[34px] xs:text-[40px] leading-[0.95] sm:text-[48px] text-[#1B2A4A]">Connected With the Hospitality Industry</h2>
+              <p className="mt-3 text-[14px] sm:text-[15px] text-[#6B6560]">Industry exposure starts before graduation. MOUs and relationships with multiple 3–4 star hotels.</p>
             </div>
             <div className="rounded-full border border-[#D4AF37]/40 bg-[#FBF6EC] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.15em] text-[#1B2A4A]">NcHM ↔ Partner Hotels</div>
           </div>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {HOTELS.map(h => (
               <div key={h.name} className="group overflow-hidden rounded-[28px] border border-[#EDE7DB] bg-[#FFFCF6] shadow-sm transition hover:shadow-xl">
-                <div className="relative h-[240px] overflow-hidden">
+                <div className="relative h-[200px] sm:h-[240px] overflow-hidden">
                   <img src={h.img} alt={h.name} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
                   <div className="absolute left-4 top-4 rounded-full bg-white px-3.5 py-1 text-[12px] font-bold shadow-md text-[#1B2A4A]">{h.stars}</div>
                 </div>
                 <div className="p-6">
-                  <div className="font-display text-[24px] text-[#1B2A4A]">{h.name}</div>
+                  <div className="font-display text-[22px] sm:text-[24px] text-[#1B2A4A]">{h.name}</div>
                   <div className="mt-1 text-[13px] font-medium text-[#6B6560]">{h.loc} • MOU Partner Hotel</div>
                   <div className="mt-6 h-[2px] w-full bg-[#EDE7DB] relative overflow-hidden">
                     <div className="absolute inset-y-0 left-0 w-1/2 bg-[#D4AF37] animate-[shimmer_2s_ease-in-out_infinite]" />
@@ -817,8 +819,8 @@ export default function App() {
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-6">
               <div className="inline-flex rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4AF37]">Career Guarantee</div>
-              <h2 className="mt-4 font-display text-[56px] leading-[0.85] sm:text-[84px]">100%<br /><span className="text-[#D4AF37]">Job Placement</span></h2>
-              <p className="mt-4 text-[16px] text-white/70">Prepare. Connect. Interview. Place. Grow.</p>
+              <h2 className="mt-4 font-display text-[48px] leading-[0.85] sm:text-[84px]">100%<br /><span className="text-[#D4AF37]">Job Placement</span></h2>
+              <p className="mt-4 text-[15px] sm:text-[16px] text-white/70">Prepare. Connect. Interview. Place. Grow.</p>
 
               <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {[
@@ -826,22 +828,17 @@ export default function App() {
                   { s: "Training", d: "Practical labs" },
                   { s: "Internship", d: "6 months industry" },
                   { s: "Interview", d: "Placement cell" },
-                  { s: "Placement", d: "Hotel / resort / cafe" },
-                  { s: "Career Growth", d: "Supervisor → Manager" },
-                ].map((step, i) => (
-                  <div key={step.s} className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#D4AF37] text-[13px] font-bold text-black">{i + 1}</div>
-                      <div className="font-bold text-[15px]">{step.s}</div>
-                    </div>
-                    <div className="mt-2 text-[12px] text-white/60">{step.d}</div>
+                ].map(p => (
+                  <div key={p.s} className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                    <div className="font-display text-[20px] font-bold text-[#D4AF37]">{p.s}</div>
+                    <div className="mt-1 text-[13px] text-white/60">{p.d}</div>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="lg:col-span-6">
-              <div className="rounded-[32px] border border-white/10 bg-[#121A2D] p-8 shadow-2xl">
+              <div className="rounded-[32px] border border-white/10 bg-[#121A2D] p-6 sm:p-8 shadow-2xl">
                 <div className="flex items-center justify-between">
                   <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4AF37]">Active Placements</div>
                   <span className="rounded-full bg-[#D4AF37] px-3 py-1 text-[11px] font-bold text-black">Live Cell</span>
@@ -854,15 +851,15 @@ export default function App() {
                     { role: "Commis Chef", hotel: "Clark Resort, Birgunj", status: "Placed" },
                     { role: "F&B Service", hotel: "Mauritius Resort", status: "Intern → Job" },
                   ].map(r => (
-                    <div key={r.role} className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4">
-                      <div className="flex items-center gap-4">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[18px]">🎖️</div>
+                    <div key={r.role} className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3.5 sm:px-5 sm:py-4">
+                      <div className="flex items-center gap-3 sm:gap-4">
+                        <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-white/10 text-[16px] sm:text-[18px]">🎖️</div>
                         <div>
-                          <div className="text-[14px] font-bold">{r.role}</div>
-                          <div className="text-[12px] text-white/60">{r.hotel}</div>
+                          <div className="text-[13px] sm:text-[14px] font-bold">{r.role}</div>
+                          <div className="text-[11px] sm:text-[12px] text-white/60">{r.hotel}</div>
                         </div>
                       </div>
-                      <span className="rounded-full bg-emerald-500/20 px-3 py-1 text-[11px] font-bold text-emerald-300">{r.status}</span>
+                      <span className="rounded-full bg-emerald-500/20 px-2.5 py-1 text-[10px] sm:text-[11px] font-bold text-emerald-300">{r.status}</span>
                     </div>
                   ))}
                 </div>
@@ -881,11 +878,11 @@ export default function App() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4AF37]">Global Locations</div>
-            <h2 className="mt-3 font-display text-[40px] leading-[0.95] sm:text-[48px] text-[#1B2A4A]">Your Career Can Go Global</h2>
+            <h2 className="mt-3 font-display text-[34px] xs:text-[40px] leading-[0.95] sm:text-[48px] text-[#1B2A4A]">Your Career Can Go Global</h2>
             <p className="mt-3 text-[15px] text-[#6B6560]">Graduates placed across Dubai, Romania, USA, Canada, Bangkok, Birgunj, Pokhara and Kathmandu.</p>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
               {PLACEMENTS.map(p => (
-                <div key={p} className="rounded-full border border-[#EDE7DB] bg-white px-4 py-3 text-center text-[13px] font-bold text-[#1B2A4A] shadow-sm">{p}</div>
+                <div key={p} className="rounded-full border border-[#EDE7DB] bg-white px-4 py-3 text-center text-[12px] sm:text-[13px] font-bold text-[#1B2A4A] shadow-sm">{p}</div>
               ))}
             </div>
             <div className="relative mt-8 aspect-[16/10] overflow-hidden rounded-[28px] border border-[#EDE7DB] bg-[#121A2D]">
@@ -894,9 +891,9 @@ export default function App() {
           </div>
 
           <div className="lg:col-span-6">
-            <div className="rounded-[32px] border border-[#EDE7DB] bg-[#1B2A4A] p-8 text-white sm:p-10 shadow-xl">
+            <div className="rounded-[32px] border border-[#EDE7DB] bg-[#1B2A4A] p-6 sm:p-10 text-white shadow-xl">
               <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4AF37]">Financial Independence</div>
-              <h3 className="mt-3 font-display text-[36px] leading-[0.95] sm:text-[44px]">Earn While You Learn</h3>
+              <h3 className="mt-3 font-display text-[32px] xs:text-[36px] leading-[0.95] sm:text-[44px]">Earn While You Learn</h3>
               <p className="mt-3 text-[14px] text-white/70">Study + Practice + Experience + Earn</p>
 
               <div className="mt-8 space-y-3">
@@ -907,22 +904,22 @@ export default function App() {
                   "Communication and leadership fluency",
                   "Income-generating opportunities where eligible during internships",
                 ].map(b => (
-                  <div key={b} className="flex items-start gap-3 text-[14px]">
+                  <div key={b} className="flex items-start gap-3 text-[13px] sm:text-[14px]">
                     <CheckCircle2 className="h-5 w-5 text-[#D4AF37] shrink-0 mt-0.5" />
                     <span>{b}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-10 grid grid-cols-3 gap-3">
+              <div className="mt-10 grid grid-cols-3 gap-2 sm:gap-3">
                 {[
                   { k: "Classroom", v: "Learn" },
                   { k: "Hotel Lab", v: "Practice" },
                   { k: "Internship", v: "Earn" },
                 ].map(s => (
-                  <div key={s.k} className="rounded-2xl bg-white/5 p-4 text-center border border-white/10">
-                    <div className="text-[11px] uppercase tracking-[0.15em] text-white/50">{s.k}</div>
-                    <div className="mt-1 font-display text-[18px] text-[#D4AF37]">{s.v}</div>
+                  <div key={s.k} className="rounded-2xl bg-white/5 p-3 sm:p-4 text-center border border-white/10">
+                    <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.15em] text-white/50">{s.k}</div>
+                    <div className="mt-1 font-display text-[16px] sm:text-[18px] text-[#D4AF37]">{s.v}</div>
                   </div>
                 ))}
               </div>
@@ -936,12 +933,12 @@ export default function App() {
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
           <div className="grid gap-8 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <div className="rounded-[32px] bg-[#1B2A4A] p-10 text-white shadow-2xl relative overflow-hidden border border-[#D4AF37]/40 h-full flex flex-col justify-between">
+              <div className="rounded-[32px] bg-[#1B2A4A] p-6 sm:p-10 text-white shadow-2xl relative overflow-hidden border border-[#D4AF37]/40 h-full flex flex-col justify-between">
                 <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-[#D4AF37]/10 blur-3xl" />
                 <div>
                   <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4AF37]">Empowering Women</div>
-                  <div className="mt-4 font-display text-[84px] leading-[0.8] text-[#D4AF37]">20%</div>
-                  <div className="mt-3 font-display text-[32px] leading-tight">Scholarship for Girls</div>
+                  <div className="mt-4 font-display text-[60px] sm:text-[84px] leading-[0.85] text-[#D4AF37]">20%</div>
+                  <div className="mt-3 font-display text-[26px] sm:text-[32px] leading-tight">Scholarship for Girls</div>
                   <p className="mt-4 text-[14px] leading-relaxed text-white/80">Special tuition discount for eligible female students. Championing diversity and leadership in international hospitality.</p>
                 </div>
                 <div className="mt-8 inline-flex rounded-full bg-[#D4AF37] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.15em] text-black self-start">Terms & eligibility apply</div>
@@ -949,18 +946,18 @@ export default function App() {
             </div>
 
             <div className="lg:col-span-7">
-              <div className="rounded-[32px] border border-[#EDE7DB] bg-white p-8 sm:p-10 shadow-xl">
+              <div className="rounded-[32px] border border-[#EDE7DB] bg-white p-6 sm:p-10 shadow-xl">
                 <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4AF37]">Admissions 2026</div>
-                <h3 className="mt-3 font-display text-[40px] leading-[0.95] text-[#1B2A4A]">Start Your Hospitality Journey</h3>
+                <h3 className="mt-3 font-display text-[32px] xs:text-[40px] leading-[0.95] text-[#1B2A4A]">Start Your Hospitality Journey</h3>
 
-                <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-2xl bg-[#FBF6EC] p-6 border border-[#EDE7DB]">
+                <div className="mt-8 grid gap-4 grid-cols-1 sm:grid-cols-2">
+                  <div className="rounded-2xl bg-[#FBF6EC] p-5 sm:p-6 border border-[#EDE7DB]">
                     <div className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#6B6560]">Minimum Qualification</div>
-                    <div className="mt-2 font-display text-[22px] text-[#1B2A4A]">SLC / SEE or Equivalent</div>
+                    <div className="mt-2 font-display text-[20px] sm:text-[22px] text-[#1B2A4A]">SLC / SEE or Equivalent</div>
                   </div>
-                  <div className="rounded-2xl bg-[#1B2A4A] p-6 text-white">
+                  <div className="rounded-2xl bg-[#1B2A4A] p-5 sm:p-6 text-white">
                     <div className="text-[11px] font-bold uppercase tracking-[0.15em] text-white/60">Academic Requirement</div>
-                    <div className="mt-2 font-display text-[22px] text-[#D4AF37]">Minimum 1.6 GPA</div>
+                    <div className="mt-2 font-display text-[20px] sm:text-[22px] text-[#D4AF37]">Minimum 1.6 GPA</div>
                   </div>
                 </div>
 
@@ -968,9 +965,9 @@ export default function App() {
                   <div className="text-[13px] font-bold uppercase tracking-[0.15em] text-[#1B2A4A]">Admission Workflow</div>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {["Enquiry", "Counseling", "Eligibility Check", "Application", "Admission", "Orientation", "Begin Journey"].map((step, i) => (
-                      <div key={step} className="flex items-center gap-2">
-                        <div className="rounded-full border border-[#EDE7DB] bg-white px-3.5 py-2 text-[12px] font-semibold text-[#1B2A4A] shadow-sm">{step}</div>
-                        {i < 6 && <ChevronRight className="h-4 w-4 text-[#D4AF37]" />}
+                      <div key={step} className="flex items-center gap-1.5 sm:gap-2">
+                        <div className="rounded-full border border-[#EDE7DB] bg-white px-3 py-1.5 sm:px-3.5 sm:py-2 text-[11px] sm:text-[12px] font-semibold text-[#1B2A4A] shadow-sm">{step}</div>
+                        {i < 6 && <ChevronRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#D4AF37] shrink-0" />}
                       </div>
                     ))}
                   </div>
@@ -1007,7 +1004,7 @@ export default function App() {
               <div className="inline-flex rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4AF37]">
                 Step-by-Step Story
               </div>
-              <h2 className="mt-4 font-display text-[40px] leading-[0.95] sm:text-[56px]">
+              <h2 className="mt-4 font-display text-[34px] xs:text-[40px] leading-[0.95] sm:text-[56px]">
                 Your Journey With NcHM
               </h2>
             </div>
@@ -1073,27 +1070,27 @@ export default function App() {
           <div className="mt-8 grid gap-8 lg:grid-cols-12 items-stretch">
             {/* Featured Highlight Card */}
             <div className="lg:col-span-5 flex">
-              <div className="w-full rounded-[32px] border border-[#D4AF37]/40 bg-gradient-to-br from-[#121A2D] to-[#0D1322] p-8 shadow-2xl flex flex-col justify-between relative overflow-hidden">
+              <div className="w-full rounded-[32px] border border-[#D4AF37]/40 bg-gradient-to-br from-[#121A2D] to-[#0D1322] p-6 sm:p-8 shadow-2xl flex flex-col justify-between relative overflow-hidden">
                 <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#D4AF37]/10 blur-2xl" />
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#D4AF37] text-[18px] font-bold text-black shadow-lg">
+                    <span className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-[#D4AF37] text-[16px] sm:text-[18px] font-bold text-black shadow-lg">
                       {JOURNEY_STEPS[activeJourneyStep].n}
                     </span>
                     <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-[#D4AF37]">
                       Stage {activeJourneyStep + 1} of 7
                     </span>
                   </div>
-                  <h3 className="mt-6 font-display text-[36px] leading-[0.95]">
+                  <h3 className="mt-6 font-display text-[28px] sm:text-[36px] leading-[0.95]">
                     {JOURNEY_STEPS[activeJourneyStep].t}
                   </h3>
-                  <p className="mt-4 text-[15px] leading-relaxed text-white/80">
+                  <p className="mt-4 text-[14px] sm:text-[15px] leading-relaxed text-white/80">
                     {JOURNEY_STEPS[activeJourneyStep].d}
                   </p>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-                  <span className="text-[12px] font-medium text-white/60">
+                  <span className="text-[11px] sm:text-[12px] font-medium text-white/60">
                     {JOURNEY_STEPS[activeJourneyStep].sub}
                   </span>
                   <button 
@@ -1131,7 +1128,7 @@ export default function App() {
                         </div>
                         {isActive && <span className="h-2 w-2 rounded-full bg-[#D4AF37] shadow-[0_0_8px_#D4AF37]" />}
                       </div>
-                      <div className="mt-4 font-display text-[20px] leading-tight">{step.t}</div>
+                      <div className="mt-4 font-display text-[18px] sm:text-[20px] leading-tight">{step.t}</div>
                       <div className="mt-1 line-clamp-2 text-[12px] text-white/60">{step.d}</div>
                     </button>
                   );
@@ -1147,9 +1144,9 @@ export default function App() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4AF37]">Career Pathways</div>
-            <h2 className="mt-3 font-display text-[36px] leading-[0.95] sm:text-[48px] text-[#1B2A4A]">Three Ways to Grow. One Global Future.</h2>
+            <h2 className="mt-3 font-display text-[32px] xs:text-[36px] leading-[0.95] sm:text-[48px] text-[#1B2A4A]">Three Ways to Grow. One Global Future.</h2>
 
-            <div className="mt-10 grid gap-6 sm:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
               {[
                 { title: "Diploma Track", steps: ["Diploma", "Internship", "Entry-Level Job", "Experience", "Career Growth"] },
                 { title: "Advance Diploma Track", steps: ["ADHM", "Internship", "Job / Career", "Bachelor Pathway", "International Career"] },
@@ -1171,11 +1168,11 @@ export default function App() {
           </div>
 
           <div className="lg:col-span-4">
-            <div className="rounded-[28px] border border-[#EDE7DB] bg-[#FBF6EC] p-8">
-              <div className="font-display text-[26px] text-[#1B2A4A]">Campus & Facilities</div>
+            <div className="rounded-[28px] border border-[#EDE7DB] bg-[#FBF6EC] p-6 sm:p-8">
+              <div className="font-display text-[24px] sm:text-[26px] text-[#1B2A4A]">Campus & Facilities</div>
               <div className="mt-6 grid grid-cols-2 gap-2 text-[12px] font-medium">
                 {["Training Rooms", "Practical Areas", "Kitchen Labs", "Barista Area", "Classrooms", "Demo Areas", "Counseling", "Industry Interaction"].map(f => (
-                  <div key={f} className="rounded-xl bg-white px-4 py-3 text-center border border-[#EDE7DB] text-[#1B2A4A] shadow-sm">{f}</div>
+                  <div key={f} className="rounded-xl bg-white px-3 py-2.5 sm:px-4 sm:py-3 text-center border border-[#EDE7DB] text-[#1B2A4A] shadow-sm">{f}</div>
                 ))}
               </div>
               <div className="mt-6 aspect-[16/10] overflow-hidden rounded-2xl shadow-md">
@@ -1195,17 +1192,17 @@ export default function App() {
               <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B2A4A]">
                 Leadership & Faculty
               </div>
-              <h2 className="mt-3 font-display text-[40px] leading-[0.95] sm:text-[56px] text-[#1B2A4A]">
+              <h2 className="mt-3 font-display text-[34px] xs:text-[40px] leading-[0.95] sm:text-[56px] text-[#1B2A4A]">
                 Meet Our Expert Team
               </h2>
-              <p className="mt-3 max-w-[54ch] text-[15px] leading-relaxed text-[#6B6560]">
+              <p className="mt-3 max-w-[54ch] text-[14px] sm:text-[15px] leading-relaxed text-[#6B6560]">
                 Guided by 5-star hotel GMs, international executive chefs, certified barista masters, and dedicated global placement directors.
               </p>
             </div>
           </div>
 
           {/* TEAM MEMBERS GRID */}
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {TEAM_MEMBERS.map((member) => (
               <div
                 key={member.name}
@@ -1235,7 +1232,7 @@ export default function App() {
                     <div className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#D4AF37]">
                       {member.role}
                     </div>
-                    <h3 className="mt-1 font-display text-[24px] text-[#1B2A4A]">
+                    <h3 className="mt-1 font-display text-[22px] sm:text-[24px] text-[#1B2A4A]">
                       {member.name}
                     </h3>
                     <p className="mt-2.5 text-[14px] leading-relaxed text-[#6B6560]">
@@ -1258,30 +1255,27 @@ export default function App() {
             ))}
           </div>
 
-          {/* FACULTY COMMITMENT CALLOUT BANNER */}
-          <div className="mt-16 rounded-[32px] border border-[#D4AF37]/30 bg-[#1B2A4A] p-8 sm:p-10 text-white shadow-2xl relative overflow-hidden">
-            <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-[#D4AF37]/10 blur-3xl" />
-            <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+          {/* Bottom Mentorship Banner */}
+          <div className="mt-16 rounded-[32px] bg-[#1B2A4A] p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden border border-[#D4AF37]/40">
+            <div className="absolute -right-20 -bottom-20 h-64 w-64 rounded-full bg-[#D4AF37]/10 blur-3xl" />
+            <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
               <div className="max-w-[65ch]">
-                <div className="inline-flex rounded-full bg-[#D4AF37]/20 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[#D4AF37]">
+                <div className="inline-flex rounded-full bg-[#D4AF37]/20 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4AF37]">
                   70% Practical Mentorship
                 </div>
-                <h3 className="mt-3 font-display text-[28px] sm:text-[34px] leading-tight">
+                <h3 className="mt-3 font-display text-[28px] sm:text-[36px] leading-[1.05] text-white">
                   Learn Directly From Active Hotel General Managers & Executive Chefs
                 </h3>
-                <p className="mt-2 text-[14px] text-white/75 leading-relaxed">
+                <p className="mt-3 text-[14px] sm:text-[15px] text-white/80 leading-relaxed">
                   Our faculty members hold active MOUs and career connections across premier 4★ and 5★ hotels in Nepal and abroad, ensuring every student gets direct mentorship and interview opportunities.
                 </p>
               </div>
-
-              <div className="flex shrink-0 flex-wrap gap-4">
-                <button
-                  onClick={() => openApplyModal("Campus Tour & Faculty Interaction")}
-                  className="rounded-full bg-[#D4AF37] px-7 py-3.5 text-[13px] font-bold text-black transition hover:brightness-110 shadow-lg"
-                >
-                  Schedule Campus Visit →
-                </button>
-              </div>
+              <button
+                onClick={() => openApplyModal("Campus Tour & Faculty Interaction")}
+                className="rounded-full bg-[#D4AF37] px-7 py-3.5 text-[13px] font-bold text-black transition hover:brightness-110 shadow-lg shrink-0"
+              >
+                Schedule Campus Visit →
+              </button>
             </div>
           </div>
         </div>
@@ -1295,10 +1289,10 @@ export default function App() {
               <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B2A4A]">
                 Visual Gallery
               </div>
-              <h2 className="mt-3 font-display text-[40px] leading-[0.95] sm:text-[56px] text-[#1B2A4A]">
+              <h2 className="mt-3 font-display text-[34px] xs:text-[40px] leading-[0.95] sm:text-[56px] text-[#1B2A4A]">
                 Life at NcHM
               </h2>
-              <p className="mt-3 max-w-[52ch] text-[15px] leading-relaxed text-[#6B6560]">
+              <p className="mt-3 max-w-[52ch] text-[14px] sm:text-[15px] leading-relaxed text-[#6B6560]">
                 Explore hands-on practical sessions, commercial kitchen labs, barista calibration, 5-star resort internships, and vibrant campus life.
               </p>
             </div>
@@ -1322,22 +1316,22 @@ export default function App() {
           </div>
 
           {/* BENTO GALLERY SHOWCASE GRID */}
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-12">
+          <div className="mt-12 grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-12">
             {GALLERY.map((g, i) => {
               // Asymmetric Bento Grid Layout
               let colSpan = "lg:col-span-4";
-              let rowSpan = "h-[320px]";
+              let rowSpan = "h-[240px] xs:h-[280px] sm:h-[350px]";
               
               if (i === 0) {
                 // Featured Large Hero Card
                 colSpan = "lg:col-span-8";
-                rowSpan = "h-[400px] sm:h-[460px]";
+                rowSpan = "h-[260px] xs:h-[300px] sm:h-[400px] lg:h-[460px]";
               } else if (i === 1) {
                 colSpan = "lg:col-span-4";
-                rowSpan = "h-[400px] sm:h-[460px]";
+                rowSpan = "h-[260px] xs:h-[300px] sm:h-[400px] lg:h-[460px]";
               } else if (i === 2 || i === 5) {
                 colSpan = "lg:col-span-6";
-                rowSpan = "h-[350px]";
+                rowSpan = "h-[240px] xs:h-[280px] sm:h-[350px]";
               } else if (i === 3 || i === 4) {
                 colSpan = "lg:col-span-3";
                 rowSpan = "h-[350px]";
