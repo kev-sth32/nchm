@@ -7,24 +7,12 @@ interface ProgramsSectionProps {
 
 export const PROGRAMS = [
   {
-    id: "dgca",
-    tabLabel: "Global Culinary (DGCA)",
-    title: "Diploma in Global Culinary Arts (DGCA)",
-    duration: "12 Months Intensive Culinary Training + Internship",
-    places: "China • Mauritius • Dubai • Kuwait • Nepal • India",
-    points: ["Knife skills, butchery & food prep", "HACCP food safety & hygiene mastery", "International gastronomy & plating", "Paid 6-month culinary placement"],
-    img: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=1200&auto=format&fit=crop",
-    color: "from-[#1B2A4A] to-[#0F172A]",
-    accent: "bg-[#D4AF37]",
-    dark: true,
-  },
-  {
     id: "dhm",
     tabLabel: "Hospitality Mgmt (DHM)",
     title: "Diploma in Hospitality Management (DHM)",
     duration: "9 Months Theory + Practical + 6 Months Internship",
     places: "China • Mauritius • Dubai • Kuwait • Nepal • India",
-    points: ["Hotel operations & guest relations", "F&B service & banquet management", "Front office & housekeeping mastery", "Internship stipend (eligible)"],
+    points: ["Hotel operations & guest relations", "F&B service & banquet management", "Front office & housekeeping mastery", "Paid 6-month international internship"],
     img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop",
     color: "from-[#FBF6EC] to-white",
     accent: "bg-[#D4AF37]",
@@ -35,41 +23,19 @@ export const PROGRAMS = [
     title: "Advance Diploma in Hospitality Management (ADHM)",
     duration: "15 Months Theory + Practical + 6 Months Internship",
     places: "China • Mauritius • Dubai • Kuwait • Nepal • India",
-    points: ["Leadership & hospitality supervision", "Strategic revenue & resort management", "Bachelor credit transfer pathway", "100% career placement guarantee"],
+    points: ["Leadership & hospitality supervision", "Strategic revenue & resort management", "2nd Year Bachelor credit transfer pathway", "100% career placement guarantee"],
     img: "https://images.unsplash.com/photo-1551882547-b79c5d7dca89?q=80&w=1200&auto=format&fit=crop",
     color: "from-[#1B2A4A] to-[#111827]",
     accent: "bg-[#D4AF37]",
     dark: true,
   },
   {
-    id: "barista",
-    tabLabel: "Professional Barista",
-    title: "Professional Barista & Bartending Masterclass",
-    duration: "3-Month Basic + Latte Art / 1-Month Fast-Track",
-    places: "NcHM Birgunj Training Lab + Cafe Exposure",
-    points: ["Espresso extraction science", "Milk texturing & latte art calibration", "Bartending, mocktails & mixology", "Barista job placement support"],
-    img: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=1200&auto=format&fit=crop",
-    color: "from-[#FBF6EC] to-[#F3E5AB]/30",
-    accent: "bg-[#D4AF37]",
-  },
-  {
-    id: "bakery",
-    tabLabel: "Bakery & Patisserie",
-    title: "Certificate in Bakery, Pastry & Patisserie",
-    duration: "Professional Bakery & Pastry Module",
-    places: "NcHM Pastry & Bakery Labs",
-    points: ["European artisanal breads & yeast doughs", "Cakes, tortes & French patisserie", "Dessert decoration & chocolate work", "Commercial bakery operation skills"],
-    img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200&auto=format&fit=crop",
-    color: "from-white to-[#FBF6EC]",
-    accent: "bg-[#1B2A4A]",
-  },
-  {
-    id: "chef",
-    tabLabel: "Advanced Chef Course",
-    title: "Professional Chef Course – Advanced",
-    duration: "Advanced Culinary & Station Management",
-    places: "Commercial Kitchen Labs",
-    points: ["Advanced kitchen station management", "Menu engineering & cost control", "HACCP & food safety compliance", "Culinary leadership & banquet ops"],
+    id: "kitchen-short",
+    tabLabel: "Kitchen Short-Term Course",
+    title: "Kitchen Short-Term Course (Fast-Food Processor / Basic Kitchen Training)",
+    duration: "Short-Term Intensive Skill Module",
+    places: "NcHM Commercial Kitchen Labs",
+    points: ["Fast-food processing & prep techniques", "Basic kitchen safety & knife handling", "Short-order cooking & food hygiene", "Commercial kitchen operations"],
     img: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200&auto=format&fit=crop",
     color: "from-[#FBF6EC] to-[#EDE7DB]",
     accent: "bg-[#1B2A4A]",
@@ -94,8 +60,13 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenApplyMod
             World-Class <span className="italic text-gradient-gold inline-block">Programs &amp; Certifications</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#6B6560] leading-relaxed">
-            From 1-year diplomas with guaranteed international placements to specialized barista and culinary masterclasses.
+            From 9-month &amp; 15-month diplomas with guaranteed paid international placements to 1-month Barista and Kitchen short-term training.
           </p>
+
+          {/* Minimum Qualification Badge */}
+          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/40 bg-[#1B2A4A] px-4 py-1.5 text-xs font-bold text-[#D4AF37] shadow-md">
+            <span>🎓 Minimum Qualification: 1.6 GPA in SLC/SEE</span>
+          </div>
         </div>
 
         {/* Program Tabs Bar */}

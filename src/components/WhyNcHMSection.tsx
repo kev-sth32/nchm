@@ -46,10 +46,10 @@ const PILLARS_GRID = [
   { 
     n: "04", 
     t: "70% Practical Training Labs", 
-    d: "Hands-on mastery from day one in modern commercial kitchens, espresso barista bars, front desk simulations, and housekeeping suites.", 
+    d: "Hands-on mastery from day one in modern commercial kitchens, front desk simulations, and housekeeping suites.", 
     icon: ChefHat,
     tag: "70% Practical Mastery",
-    highlight: "Commercial Kitchens & Barista Bars"
+    highlight: "Commercial Kitchens & Practical Labs"
   },
   { 
     n: "05", 

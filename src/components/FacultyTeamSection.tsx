@@ -23,14 +23,14 @@ export const TEAM_MEMBERS = [
     highlights: ["Kitchen Lab Ops", "HACCP & Safety", "Gourmet Culinary"]
   },
   {
-    name: "Master Barista Trainer",
-    role: "Head Barista & Mixology Specialist",
+    name: "Kitchen Training Head",
+    role: "Short-Term Culinary & Fast-Food Specialist",
     category: "Faculty",
     img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
-    experience: "SCA Certified",
-    badge: "Barista Master",
-    desc: "Leads latte art calibration, espresso extraction science, and beverage management in our professional barista lab.",
-    highlights: ["Latte Art Mastery", "Cafe Management", "Espresso Science"]
+    experience: "10+ Yrs Culinary Exp",
+    badge: "Kitchen Specialist",
+    desc: "Directs fast-food processing, short-order cooking practicals, and commercial food preparation labs.",
+    highlights: ["Kitchen Ops", "Food Processing", "Short-Order Prep"]
   },
   {
     name: "Front Office Lead",

@@ -35,8 +35,8 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, onOpenApplyModal }) =>
           </div>
           <div className="hidden items-center gap-3 md:flex shrink-0">
             <span className="text-white/70 text-[11px] tracking-widest">Admissions Open 2026</span>
-            <button 
-              onClick={() => onOpenApplyModal()} 
+            <button
+              onClick={() => onOpenApplyModal()}
               className="inline-flex items-center gap-1.5 rounded-full bg-[#D4AF37] px-3.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#0B132B] transition-all hover:bg-[#E8C99A] gold-glow-hover cursor-pointer whitespace-nowrap"
             >
               <span>Apply Now</span>
@@ -47,20 +47,19 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, onOpenApplyModal }) =>
       </div>
 
       {/* Main Sticky Header */}
-      <header className={`sticky top-0 z-40 transition-all duration-300 ${
-        scrolled 
-          ? "border-b border-[#D4AF37]/25 bg-[#FFFCF6]/95 backdrop-blur-xl py-2.5 shadow-[0_10px_30px_rgba(27,42,74,0.08)]" 
+      <header className={`sticky top-0 z-40 transition-all duration-300 ${scrolled
+          ? "border-b border-[#D4AF37]/25 bg-[#FFFCF6]/95 backdrop-blur-xl py-2.5 shadow-[0_10px_30px_rgba(27,42,74,0.08)]"
           : "border-b border-[#EDE7DB]/80 bg-[#FFFCF6] py-4"
-      }`}>
+        }`}>
         <div className="mx-auto flex max-w-[1280px] items-center justify-between px-4 sm:px-6">
           <NcHMLogo />
 
           {/* Desktop Navigation */}
           <nav className="hidden items-center gap-3 xl:gap-6 lg:flex" aria-label="Main Navigation">
             {NAV.map(n => (
-              <a 
-                key={n.name} 
-                href={n.href} 
+              <a
+                key={n.name}
+                href={n.href}
                 className="group relative text-[12px] xl:text-[13px] font-semibold uppercase tracking-[0.08em] xl:tracking-[0.12em] text-[#1B2A4A]/80 transition-colors hover:text-[#1B2A4A] whitespace-nowrap py-1 cursor-pointer"
               >
                 {n.name}
@@ -71,15 +70,15 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, onOpenApplyModal }) =>
 
           {/* Action Buttons */}
           <div className="hidden items-center gap-2.5 xl:gap-3 lg:flex shrink-0">
-            <button 
-              onClick={() => onOpenApplyModal()} 
+            <button
+              onClick={() => onOpenApplyModal()}
               className="inline-flex items-center gap-2 rounded-full border border-[#1B2A4A]/25 bg-white/80 px-4 py-2 text-[12px] xl:text-[13px] font-semibold text-[#1B2A4A] transition-all hover:border-[#D4AF37] hover:bg-[#FBF6EC] hover:shadow-sm cursor-pointer whitespace-nowrap shrink-0"
             >
               <PhoneCall className="h-3.5 w-3.5 text-[#D4AF37]" />
               <span>Talk to Counselor</span>
             </button>
-            <button 
-              onClick={() => onOpenApplyModal()} 
+            <button
+              onClick={() => onOpenApplyModal()}
               className="inline-flex items-center gap-1.5 rounded-full bg-[#1B2A4A] px-5 py-2 text-[12px] xl:text-[13px] font-semibold text-white shadow-[0_4px_15px_rgba(27,42,74,0.2)] transition-all hover:bg-[#0B132B] hover:shadow-[0_8px_25px_rgba(212,175,55,0.3)] gold-glow-hover cursor-pointer whitespace-nowrap shrink-0"
             >
               <Sparkles className="h-3.5 w-3.5 text-[#D4AF37]" />
@@ -88,8 +87,8 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, onOpenApplyModal }) =>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button 
-            onClick={() => setMobileOpen(v => !v)} 
+          <button
+            onClick={() => setMobileOpen(v => !v)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             className="flex h-10 w-10 items-center justify-center rounded-full border border-[#1B2A4A]/20 lg:hidden cursor-pointer hover:bg-[#FBF6EC] transition-colors"
           >
@@ -102,10 +101,10 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, onOpenApplyModal }) =>
           <div className="border-t border-[#EDE7DB] bg-[#FFFCF6] px-4 py-6 lg:hidden shadow-2xl animate-in slide-in-from-top-4 duration-200">
             <div className="grid gap-2">
               {NAV.map(n => (
-                <a 
-                  key={n.name} 
-                  onClick={() => setMobileOpen(false)} 
-                  href={n.href} 
+                <a
+                  key={n.name}
+                  onClick={() => setMobileOpen(false)}
+                  href={n.href}
                   className="rounded-xl bg-[#FBF6EC] px-4 py-3 text-xs font-bold uppercase tracking-wider text-[#1B2A4A] hover:bg-[#D4AF37]/20 transition flex items-center justify-between"
                 >
                   <span>{n.name}</span>
@@ -113,15 +112,15 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, onOpenApplyModal }) =>
                 </a>
               ))}
               <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                <button 
-                  onClick={() => { setMobileOpen(false); onOpenApplyModal(); }} 
+                <button
+                  onClick={() => { setMobileOpen(false); onOpenApplyModal(); }}
                   className="flex items-center justify-center gap-2 rounded-full border border-[#1B2A4A]/20 bg-white py-3 text-center text-xs font-bold uppercase tracking-wider text-[#1B2A4A] hover:border-[#D4AF37] cursor-pointer"
                 >
                   <PhoneCall className="h-4 w-4 text-[#D4AF37]" />
                   Talk to Counselor
                 </button>
-                <button 
-                  onClick={() => { setMobileOpen(false); onOpenApplyModal(); }} 
+                <button
+                  onClick={() => { setMobileOpen(false); onOpenApplyModal(); }}
                   className="flex items-center justify-center gap-2 rounded-full bg-[#1B2A4A] py-3 text-center text-xs font-bold uppercase tracking-wider text-white shadow-md hover:bg-[#0B132B] cursor-pointer"
                 >
                   <Sparkles className="h-4 w-4 text-[#D4AF37]" />

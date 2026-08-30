@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { BookOpen, GraduationCap, Compass, Globe, Sparkles, Briefcase, Building2, Award } from "lucide-react";
 
 export const JOURNEY_STEPS = [
-  { n: "01", t: "Choose Your Program", d: "Select from Diploma (9+6), ADHM (15+6), Professional Barista, or Kitchen Training based on your career goals.", sub: "Personalized Counseling • Enrollment", icon: BookOpen },
+  { n: "01", t: "Choose Your Program", d: "Select from Diploma (9+6), ADHM (15+6), or Kitchen Short-Term Training based on your career goals.", sub: "Personalized Counseling • Enrollment", icon: BookOpen },
   { n: "02", t: "Learn", d: "Master hospitality principles under expert faculty and industry-veteran GMs in our Birgunj campus.", sub: "70% Practical • Theory Foundations", icon: GraduationCap },
-  { n: "03", t: "Practice", d: "Hands-on daily training in mock hotel rooms, front desk lobbies, commercial kitchens & barista labs.", sub: "Real Equipment • Skill Calibration", icon: Compass },
+  { n: "03", t: "Practice", d: "Hands-on daily training in mock hotel rooms, front desk lobbies & commercial kitchens.", sub: "Real Equipment • Skill Calibration", icon: Compass },
   { n: "04", t: "Intern", d: "6-month paid/stipend international internship in luxury 4★ and 5★ partner hotels across China, Mauritius, Dubai, Kuwait & Nepal.", sub: "Global Hospitality Exposure", icon: Globe },
   { n: "05", t: "Earn", d: "Gain financial independence and earn stipends while getting invaluable professional work experience.", sub: "Professional Demeanor • Stipends", icon: Sparkles },
   { n: "06", t: "Get Placed", d: "Direct interview pipelines and 100% job placement support in Nepal, Middle East, Europe & Asia.", sub: "Placement Cell • 100% Guarantee", icon: Briefcase },
@@ -33,6 +33,11 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ onOpenApplyM
           <p className="mt-4 text-base sm:text-lg text-[#6B6560]">
             From enrollment in Birgunj to 6-month paid international internships and global Bachelor credit transfers.
           </p>
+
+          {/* Minimum Qualification Badge */}
+          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/40 bg-[#1B2A4A] px-4 py-1.5 text-xs font-bold text-[#D4AF37] shadow-md">
+            <span>🎓 Minimum Qualification: 1.6 GPA in SLC/SEE</span>
+          </div>
         </div>
 
         {/* Interactive Steps Grid */}
@@ -95,11 +100,14 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ onOpenApplyM
                 <span>20% Tuition Support</span>
               </div>
               <h3 className="mt-3 text-2xl sm:text-3xl font-display font-bold text-white">
-                Girls Scholarship Scheme
+                Girls Scholarship Scheme (20% Discount)
               </h3>
               <p className="mt-2 text-sm text-white/80 max-w-xl">
                 NcHM is committed to empowering women in hospitality leadership. Female applicants qualify for a 20% tuition fee scholarship upon eligibility verification.
               </p>
+              <div className="mt-3 text-xs font-semibold text-[#D4AF37]">
+                *(Note: Hostel facility not available)
+              </div>
             </div>
 
             <button

@@ -62,7 +62,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenApplyModal }) => {
           <div>
             <h4 className="text-sm font-bold uppercase tracking-wider text-[#D4AF37]">Admissions 2026</h4>
             <p className="mt-4 text-xs text-white/70">
-              Applications open for Diploma in Global Culinary Arts (DGCA), DHM, ADHM, and Professional Barista courses.
+              Applications open for DHM (9+6), ADHM (15+6), and Kitchen Short-Term courses.
             </p>
             <button
               onClick={() => onOpenApplyModal()}

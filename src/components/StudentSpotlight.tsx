@@ -4,7 +4,7 @@ import { Award, Star, ShieldCheck } from "lucide-react";
 export const STUDENT_SPOTLIGHTS = [
   {
     name: "Rohan Shrestha",
-    course: "Diploma in Global Culinary Arts (DGCA)",
+    course: "Diploma in Hospitality Management (DHM)",
     placement: "Culinary Commis • 5★ Hotel, Dubai",
     flag: "🇦🇪",
     year: "Batch of 2023",
@@ -22,11 +22,11 @@ export const STUDENT_SPOTLIGHTS = [
   },
   {
     name: "Anish Gupta",
-    course: "Professional Barista & Bartending",
-    placement: "Head Barista • Birgunj Cafe Network",
+    course: "Kitchen Short-Term Course",
+    placement: "Kitchen Commis • Birgunj Hotel Network",
     flag: "🇳🇵",
     year: "Batch of 2024",
-    quote: "Latte art calibration and espresso extraction science training at NcHM prepared me to manage commercial barista bars.",
+    quote: "Fast-food processing and commercial kitchen training at NcHM prepared me to manage fast-paced food production labs.",
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
   },
   {

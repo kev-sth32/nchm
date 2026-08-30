@@ -55,7 +55,7 @@ export const DESTINATIONS = [
     flag: "🇳🇵", 
     hotels: "Home Base Networks",
     details: "Practical Hospitality Training & Local Hotel Exposure with Siddhartha Diyalo, Clark Resort & Sarovar Portico.",
-    roles: "Lobby Ops • Professional Barista • F&B Operations"
+    roles: "Lobby Ops • Kitchen Operations • F&B Services"
   },
 ];
 

@@ -2,13 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import { ArrowRight, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 
 export const BACHELOR = [
-  { country: "Canada", flag: "🇨🇦", city: "Toronto, Vancouver", desc: "Lateral entry into Hospitality & Tourism Bachelor programs." },
-  { country: "USA", flag: "🇺🇸", city: "Multiple States", desc: "Credit recognition for ADHM course modules." },
-  { country: "Switzerland", flag: "🇨🇭", city: "Hospitality Capital", desc: "Top European hospitality academy credit transfer eligibility." },
-  { country: "Dubai / UAE", flag: "🇦🇪", city: "Dubai", desc: "Direct pathway to international degree completion in Dubai campuses." },
-  { country: "Scotland", flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", city: "Edinburgh, Glasgow", desc: "SQA benchmarked SCQF credit transfer mapping." },
-  { country: "Australia", flag: "🇦🇺", city: "Sydney, Melbourne", desc: "Higher education advanced standing entry options." },
-  { country: "United Kingdom", flag: "🇬🇧", city: "London & Beyond", desc: "UK University final year top-up Bachelor degree entry." },
+  { country: "Canada", flag: "🇨🇦", city: "Toronto, Vancouver", transferLabel: "2nd Year Bachelor Credit Transfer", desc: "Lateral entry into 2nd year Hospitality & Tourism Bachelor degree programs." },
+  { country: "USA", flag: "🇺🇸", city: "Multiple States", transferLabel: "2nd Year Bachelor Credit Transfer", desc: "Full credit recognition for ADHM modules for 2nd year Bachelor entry." },
+  { country: "Switzerland", flag: "🇨🇭", city: "Hospitality Capital", transferLabel: "2nd Year Bachelor Credit Transfer", desc: "Top European hospitality academy 2nd year Bachelor credit transfer." },
+  { country: "Dubai / UAE", flag: "🇦🇪", city: "Dubai", transferLabel: "2nd Year Bachelor Credit Transfer", desc: "Direct pathway to 2nd year Bachelor degree completion in Dubai campuses." },
+  { country: "Scotland", flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", city: "Edinburgh, Glasgow", transferLabel: "2nd Year Bachelor Credit Transfer", desc: "SQA benchmarked SCQF 2nd year Bachelor credit transfer mapping." },
+  { country: "Australia", flag: "🇦🇺", city: "Sydney, Melbourne", transferLabel: "2nd Year Bachelor Credit Transfer", desc: "2nd year Bachelor higher education advanced standing entry options." },
+  { country: "United Kingdom", flag: "🇬🇧", city: "London & Beyond", transferLabel: "2nd Year Bachelor Credit Transfer", desc: "UK University 2nd year / top-up Bachelor degree entry." },
 ];
 
 interface CreditTransfersProps {
@@ -64,7 +64,7 @@ export const CreditTransfers: React.FC<CreditTransfersProps> = ({ onOpenApplyMod
             Global <span className="italic text-gradient-gold">Bachelor Credit Transfers</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#6B6560]">
-            ADHM (15+6) graduates qualify for credit transfer evaluation and lateral entry into foreign Bachelor degree programs.
+            ADHM (15+6) graduates qualify for 2nd Year Bachelor Credit Transfer and lateral entry into foreign university degree programs.
           </p>
         </div>
 
@@ -92,6 +92,9 @@ export const CreditTransfers: React.FC<CreditTransfersProps> = ({ onOpenApplyMod
                   <h3 className="mt-5 text-xl font-display font-bold text-[#1B2A4A] group-hover:text-[#D4AF37] transition">
                     {b.country}
                   </h3>
+                  <div className="mt-2 inline-block rounded-lg bg-[#1B2A4A] px-2.5 py-1 text-[10px] font-bold text-[#D4AF37]">
+                    🎓 {b.transferLabel}
+                  </div>
                   <p className="mt-2 text-xs text-[#6B6560] leading-relaxed">
                     {b.desc}
                   </p>
