@@ -570,7 +570,7 @@ export function Interactive3DScene({
     dustPoints.rotation.x = Math.PI / 4;
     group.add(dustPoints);
 
-    // Mouse Dragging Interaction State
+    // Mouse & Touch Dragging Interaction State
     let isDragging = false;
     let previousMousePosition = { x: 0, y: 0 };
     let dragVelocity = { x: 0, y: 0 };
@@ -596,11 +596,58 @@ export function Interactive3DScene({
       isDragging = false;
     };
 
+    // Touch event handlers for mobile screen interaction
+    const onTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (!isDragging || e.touches.length !== 1) return;
+      const touch = e.touches[0];
+      const deltaX = touch.clientX - previousMousePosition.x;
+      const deltaY = touch.clientY - previousMousePosition.y;
+
+      dragVelocity = { x: deltaX * 0.005, y: deltaY * 0.005 };
+      group.rotation.y += dragVelocity.x;
+      group.rotation.x += dragVelocity.y;
+
+      previousMousePosition = { x: touch.clientX, y: touch.clientY };
+    };
+
+    const onTouchEnd = () => {
+      isDragging = false;
+    };
+
     const domElem = renderer.domElement;
     domElem.style.cursor = "grab";
+    domElem.style.touchAction = "pan-y"; // Allows normal vertical page scrolling on mobile while dragging globe horizontally
     domElem.addEventListener("mousedown", onMouseDown);
     window.addEventListener("mousemove", onMouseMove);
     window.addEventListener("mouseup", onMouseUp);
+
+    domElem.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("touchend", onTouchEnd);
+
+    // Dynamic Camera Distance Function based on aspect ratio (prevents globe horizontal clipping on portrait mobile screens)
+    const updateCameraDistance = (w: number, h: number) => {
+      const aspect = w / h;
+      if (aspect < 1) {
+        // Mobile portrait aspect ratio: pull camera back so globe & orbital rings fit completely without horizontal clipping
+        camera.position.z = 7 / Math.max(aspect * 0.95, 0.55);
+      } else {
+        camera.position.z = 7;
+      }
+      camera.aspect = aspect;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    };
+
+    // Initial camera placement for container aspect ratio
+    updateCameraDistance(container.clientWidth, container.clientHeight);
 
     // Resize observer
     const resizeObserver = new ResizeObserver(() => {
@@ -609,9 +656,7 @@ export function Interactive3DScene({
       const h = container.clientHeight;
       if (w === 0 || h === 0) return;
 
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-      renderer.setSize(w, h);
+      updateCameraDistance(w, h);
 
       if (mode === "hero") {
         group.position.x = w > 768 ? 1.2 : 0;
@@ -719,6 +764,10 @@ export function Interactive3DScene({
       domElem.removeEventListener("mousedown", onMouseDown);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseup", onMouseUp);
+
+      domElem.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
 
       resizeObserver.disconnect();
       cancelAnimationFrame(animId);
