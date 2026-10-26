@@ -34,7 +34,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenApplyModal }) => {
               <li><a href="#programs" className="hover:text-[#D4AF37] transition">Diplomas & Masterclasses</a></li>
               <li><a href="#global-opportunities" className="hover:text-[#D4AF37] transition">Paid International Placements</a></li>
               <li><a href="#career" className="hover:text-[#D4AF37] transition">Partner Hotels & Careers</a></li>
+              <li><a href="#blogs" className="hover:text-[#D4AF37] transition font-semibold text-[#D4AF37]">Career Blogs &amp; Guides</a></li>
               <li><a href="#team" className="hover:text-[#D4AF37] transition">Faculty & Mentors</a></li>
+              <li><a href="#gallery" className="hover:text-[#D4AF37] transition">Life at NcHM Campus Tour</a></li>
               <li><a href="#admission" className="hover:text-[#D4AF37] transition">Admission Process & Scholarships</a></li>
             </ul>
           </div>

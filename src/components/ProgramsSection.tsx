@@ -49,7 +49,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenApplyMod
   return (
     <section id="programs" className="py-20 bg-[#FBF6EC]/50 border-b border-[#EDE7DB]">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/30 bg-white px-4 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B2A4A]">
@@ -77,11 +77,10 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenApplyMod
               <button
                 key={p.id}
                 onClick={() => setActiveProgId(p.id)}
-                className={`rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
-                  isActive
+                className={`rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${isActive
                     ? "bg-[#1B2A4A] text-white shadow-lg gold-glow scale-105"
                     : "bg-white text-[#1B2A4A] border border-[#EDE7DB] hover:border-[#D4AF37] hover:bg-[#FBF6EC]"
-                }`}
+                  }`}
               >
                 {p.tabLabel}
               </button>
@@ -92,7 +91,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenApplyMod
         {/* Active Program Showcase Card */}
         <div className="mt-10 overflow-hidden rounded-3xl border border-[#D4AF37]/30 bg-white shadow-2xl">
           <div className="grid lg:grid-cols-12 items-stretch">
-            
+
             {/* Program Details Column */}
             <div className="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-between">
               <div>

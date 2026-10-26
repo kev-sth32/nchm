@@ -12,6 +12,7 @@ const NAV = [
   { name: "Programs", href: "#programs" },
   { name: "Global Opportunities", href: "#global-opportunities" },
   { name: "Career", href: "#career" },
+  { name: "Blogs & Guides", href: "#blogs" },
   { name: "Team", href: "#team" },
   { name: "Admission", href: "#admission" },
   { name: "Contact", href: "#contact" }

@@ -48,7 +48,7 @@ export const StudentSpotlight: React.FC<StudentSpotlightProps> = ({ onOpenApplyM
   return (
     <section className="py-20 bg-[#FBF6EC]/60 border-b border-[#EDE7DB]">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/30 bg-white px-4 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B2A4A]">
@@ -94,7 +94,7 @@ export const StudentSpotlight: React.FC<StudentSpotlightProps> = ({ onOpenApplyM
                     <ShieldCheck className="h-4 w-4 text-emerald-600 shrink-0" />
                   </div>
                   <div className="text-xs font-semibold text-[#D4AF37] mt-0.5">{s.course}</div>
-                  
+
                   <div className="mt-3 rounded-xl bg-[#FBF6EC] p-3 text-xs text-[#6B6560] italic leading-relaxed border border-[#D4AF37]/20">
                     "{s.quote}"
                   </div>

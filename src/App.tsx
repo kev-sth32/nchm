@@ -78,7 +78,7 @@ export default function App() {
         <PlacementPartners />
         <FacultyTeamSection />
         <AdmissionSection onOpenApplyModal={handleOpenApplyModal} />
-        <CareerGuidesSection />
+        <CareerGuidesSection onOpenApplyModal={handleOpenApplyModal} />
         <GallerySection />
         <TestimonialsSection />
       </main>

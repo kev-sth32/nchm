@@ -3,64 +3,64 @@ import { User } from "lucide-react";
 
 export const TEAM_MEMBERS = [
   {
-    name: "Er. Executive Director",
-    role: "Executive Director",
+    name: "Brij Sarraf",
+    role: "Managing Director",
     category: "Leadership",
-    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop",
-    experience: "18+ Yrs Exp",
+    img: "/images/team/brij-sarraf.png",
+    experience: "13+ Yrs Exp",
     badge: "Director",
-    desc: "Oversees institutional vision, international MOUs, and strategic hotel partnerships across Asia and the Middle East.",
-    highlights: ["Global Hotel MOUs", "Academic Governance", "Placement Supervision"]
+    desc: "An IHM Pusa alumni driving our institutional vision, backed by extensive experience in both the premium hotel industry and academic governance.",
+    highlights: ["IHM Pusa Alumni", "Academic Leadership", "Industry Expert"]
   },
   {
-    name: "Chef Culinary Director",
-    role: "Executive Chef & Culinary Head",
+    name: "Tej Prasad Pandey",
+    role: "Food Production Instructor",
     category: "Faculty",
-    img: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=800&auto=format&fit=crop",
-    experience: "15+ Yrs 5★ Exp",
+    img: "/images/team/Tej prasad Pandey final.png",
+    experience: "22+ Yrs Exp",
     badge: "Executive Chef",
-    desc: "Former 5-Star Executive Chef directing commercial kitchen labs, hygiene standards, and international cuisine practicals.",
-    highlights: ["Kitchen Lab Ops", "HACCP & Safety", "Gourmet Culinary"]
+    desc: "Executive Chef at Hotel Siddhartha Diyalo with a global culinary footprint spanning Italy, Dubai, and Kuwait, bringing world-class kitchen expertise.",
+    highlights: ["Global Experience", "Executive Chef", "Culinary Arts"]
   },
   {
-    name: "Kitchen Training Head",
-    role: "Short-Term Culinary & Fast-Food Specialist",
+    name: "Hariom Chaurasia",
+    role: "Front Office Instructor",
     category: "Faculty",
-    img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
-    experience: "10+ Yrs Culinary Exp",
-    badge: "Kitchen Specialist",
-    desc: "Directs fast-food processing, short-order cooking practicals, and commercial food preparation labs.",
-    highlights: ["Kitchen Ops", "Food Processing", "Short-Order Prep"]
+    img: "/images/team/hariom-chaurasia.jpg",
+    experience: "5+ Yrs Exp",
+    badge: "Front Office Manager",
+    desc: "Front Office Manager at Hotel Siddhartha Diyalo with a BHM from Bangalore, specializing in guest relations and modern hotel operations.",
+    highlights: ["BHM Graduate", "Guest Relations", "Hotel Operations"]
   },
   {
-    name: "Front Office Lead",
-    role: "Front Desk & Guest Relations Head",
+    name: "Urusha Shrestha",
+    role: "F&B Service Instructor",
     category: "Faculty",
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
-    experience: "12+ Yrs Resort Exp",
-    badge: "Operations Lead",
-    desc: "Trains students in mock lobby guest handling, property management software (PMS), and luxury service etiquette.",
-    highlights: ["PMS Systems", "Concierge Ops", "Guest Etiquette"]
+    img: "/images/team/Urusha shrestha.png",
+    experience: "5+ Yrs Exp",
+    badge: "F&B Supervisor",
+    desc: "F&B Supervisor at Sarovar Portico with international hospitality training, dedicated to instilling premium service standards and dining etiquette.",
+    highlights: ["F&B Operations", "Service Etiquette", "Industry Active"]
   },
   {
-    name: "Global Placement Director",
-    role: "Head of International Placement",
-    category: "Placement",
-    img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop",
-    experience: "100% Placement",
-    badge: "Placement Head",
-    desc: "Connects Diploma and ADHM students with 6-month paid internships in China, Dubai, Mauritius, Kuwait, and Nepal.",
-    highlights: ["Dubai & China Pipeline", "Stipend Coordination", "Visa Support"]
+    name: "Asmita Shrestha",
+    role: "Academic Instructor",
+    category: "Faculty",
+    img: "/images/team/Asmita Shrestha FINAL.png",
+    experience: "4+ Yrs Exp",
+    badge: "Academic Lead",
+    desc: "A dedicated academic professional with a strong educational foundation in Nepal, focusing on comprehensive student development and curriculum delivery.",
+    highlights: ["Student Development", "Curriculum Expert", "Academic Focus"]
   },
   {
-    name: "Senior Academic Counselor",
-    role: "Admissions & Student Advisory Lead",
-    category: "Advisory",
-    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=800&auto=format&fit=crop",
-    experience: "Student Mentor",
-    badge: "Admissions Lead",
-    desc: "Provides career counseling, female scholarship guidance (20% discount), and Bachelor degree credit transfer options.",
-    highlights: ["Girls Scholarship", "Career Counseling", "Degree Pathways"]
+    name: "Umesh Kumar Kushwaha",
+    role: "English & Communication Faculty",
+    category: "Faculty",
+    img: "/images/team/Umesh Kumar kushwaha final.png",
+    experience: "6+ Yrs Exp",
+    badge: "Language Expert",
+    desc: "An experienced Government English Teacher bringing years of expertise in enhancing students' professional communication and language proficiency.",
+    highlights: ["Business English", "Communication", "Language Training"]
   }
 ];
 
@@ -68,7 +68,7 @@ export const FacultyTeamSection: React.FC = () => {
   return (
     <section id="team" className="py-20 bg-[#FBF6EC]/50 border-b border-[#EDE7DB]">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/30 bg-white px-4 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B2A4A]">
@@ -91,11 +91,11 @@ export const FacultyTeamSection: React.FC = () => {
               className="group overflow-hidden rounded-3xl border border-[#EDE7DB] bg-white p-6 transition-all duration-300 hover:border-[#D4AF37] hover:shadow-xl gold-glow-hover flex flex-col justify-between"
             >
               <div>
-                <div className="relative h-56 w-full overflow-hidden rounded-2xl">
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
                   <img
                     src={m.img}
                     alt={m.name}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute top-3 right-3 rounded-full bg-[#1B2A4A]/80 backdrop-blur-md px-3 py-1 text-[10px] font-bold text-[#D4AF37]">
                     {m.experience}

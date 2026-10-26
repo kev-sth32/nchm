@@ -18,7 +18,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenApplyModal }) =>
     <section className="relative overflow-hidden bg-gradient-to-b from-[#FFFCF6] via-[#FBF6EC]/50 to-[#FFFCF6] py-12 lg:py-20 grain border-b border-[#EDE7DB]">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-          
+
           {/* Left Column: Headline & Value Proposition */}
           <div className="lg:col-span-7">
             {/* Accreditation Badge */}
@@ -119,7 +119,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenApplyModal }) =>
           {/* Right Column: 3D Globe + Floating Student Photo Showcase Cards */}
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
-              
+
               {/* Floating Top-Left Student Photo Badge */}
               <div className="absolute -top-6 -left-6 z-20 hidden sm:flex items-center gap-3 rounded-2xl bg-white/95 backdrop-blur-md p-2.5 pr-4 border border-[#D4AF37]/40 shadow-xl gold-glow animate-bounce-slow">
                 <img
@@ -154,13 +154,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenApplyModal }) =>
 
               {/* Glass Backdrop Ambient Glow */}
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#D4AF37]/20 to-[#1B2A4A]/10 blur-2xl opacity-70" />
-              
+
               {/* Interactive 3D Canvas Box */}
               <div className="relative rounded-3xl border border-[#D4AF37]/30 bg-white/80 backdrop-blur-md p-3 shadow-2xl overflow-hidden">
                 <div className="h-[380px] sm:h-[420px] w-full rounded-2xl overflow-hidden bg-gradient-to-b from-[#1B2A4A] to-[#0B132B]">
                   <Interactive3DScene />
                 </div>
-                
+
                 {/* Overlay Badge */}
                 <div className="absolute bottom-6 left-6 right-6 rounded-2xl bg-[#0B132B]/90 backdrop-blur-md border border-[#D4AF37]/40 p-4 text-white shadow-xl">
                   <div className="flex items-center justify-between">

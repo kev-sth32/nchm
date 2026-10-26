@@ -53,11 +53,11 @@ export const TestimonialsSection: React.FC = () => {
   return (
     <section className="py-20 bg-[#FFFCF6] border-b border-[#EDE7DB]">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
-        
+
         {/* Testimonials Block */}
         <div className="rounded-3xl border border-[#D4AF37]/30 bg-[#1B2A4A] p-8 sm:p-14 text-white shadow-2xl relative overflow-hidden">
           <div className="absolute right-0 top-0 -mt-10 -mr-10 h-80 w-80 rounded-full bg-[#D4AF37]/15 blur-3xl" />
-          
+
           <div className="relative z-10 max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-xs font-bold uppercase tracking-wider text-[#D4AF37]">
               <MessageSquare className="h-3.5 w-3.5" />
@@ -109,9 +109,8 @@ export const TestimonialsSection: React.FC = () => {
                     key={i}
                     onClick={() => setCurrentIdx(i)}
                     aria-label={`Go to slide ${i + 1}`}
-                    className={`h-2 rounded-full transition-all cursor-pointer ${
-                      i === currentIdx ? "w-6 bg-[#D4AF37]" : "w-2 bg-white/30"
-                    }`}
+                    className={`h-2 rounded-full transition-all cursor-pointer ${i === currentIdx ? "w-6 bg-[#D4AF37]" : "w-2 bg-white/30"
+                      }`}
                   />
                 ))}
               </div>
