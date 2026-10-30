@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { X, CheckCircle2, MessageSquare } from "lucide-react";
 
-const WHATSAPP_NUMBER = "9779802819788";
+const WHATSAPP_NUMBER = "9779829232426";
 
 interface InquiryModalProps {
   isOpen: boolean;

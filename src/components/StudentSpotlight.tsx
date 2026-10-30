@@ -3,40 +3,44 @@ import { Award, Star, ShieldCheck } from "lucide-react";
 
 export const STUDENT_SPOTLIGHTS = [
   {
-    name: "Rohan Shrestha",
+    name: "Nishant Chaudhary",
     course: "Diploma in Hospitality Management (DHM)",
     placement: "Culinary Commis • 5★ Hotel, Dubai",
     flag: "🇦🇪",
     year: "Batch of 2023",
     quote: "The 70% practical kitchen training at NcHM Birgunj gave me real commercial kitchen confidence. Now working in Dubai!",
-    img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop"
+    img: "/nchm/students/nishant-chaudhary-dubai.jpg",
+    avatar: "/nchm/students/nishant-avatar.jpg"
   },
   {
-    name: "Pooja Chaudhary",
+    name: "Ajay Sah Kanu",
     course: "Advance Diploma in Hospitality (ADHM)",
-    placement: "Resort Ops • Grand Baie, Mauritius",
-    flag: "🇲🇺",
-    year: "Batch of 2024",
-    quote: "The 20% Girls Scholarship gave me the opportunity to pursue hospitality. I spent 6 months in Mauritius on paid placement!",
-    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600&auto=format&fit=crop"
-  },
-  {
-    name: "Anish Gupta",
-    course: "Kitchen Short-Term Course",
-    placement: "Kitchen Commis • Birgunj Hotel Network",
-    flag: "🇳🇵",
-    year: "Batch of 2024",
-    quote: "Fast-food processing and commercial kitchen training at NcHM prepared me to manage fast-paced food production labs.",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
-  },
-  {
-    name: "Suman Thapa",
-    course: "Diploma in Hospitality Management (DHM)",
-    placement: "Front Office • Guangzhou, China",
-    flag: "🇨🇳",
+    placement: "Hospitality Ops • Luxury Hotel, USA",
+    flag: "🇺🇸",
     year: "Batch of 2023",
-    quote: "NcHM's international placement pipeline made my China internship smooth. The practical guest relations lab was crucial.",
-    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop"
+    quote: "NcHM's international transfer and placement pipeline opened doors for my career in the United States. The practical training prepared me to excel globally.",
+    img: "/nchm/students/ajay-sah-kanu-usa.jpg",
+    avatar: "/nchm/students/ajay-avatar.jpg"
+  },
+  {
+    name: "Faruk Ansari",
+    course: "Diploma in Hospitality Management (DHM)",
+    placement: "Food & Beverage • 5★ Hotel, Muscat, Oman",
+    flag: "🇴🇲",
+    year: "Batch of 2024",
+    quote: "The hands-on hospitality labs and real industry simulation at NcHM Birgunj gave me the international edge. Proud to represent NcHM in Oman!",
+    img: "/nchm/students/faruk-ansari-oman.jpg",
+    avatar: "/nchm/students/faruk-avatar.jpg"
+  },
+  {
+    name: "Raju Chaudhary",
+    course: "Diploma in Hospitality Management (DHM)",
+    placement: "Front Office & Ops • Luxury Resort, Dubai",
+    flag: "🇦🇪",
+    year: "Batch of 2024",
+    quote: "NcHM's guest relations lab and grooming standards gave me the confidence to handle international luxury guests. Moving from Birgunj to Dubai was a dream come true.",
+    img: "/nchm/students/raju-chaudhary-dubai.jpg",
+    avatar: "/nchm/students/raju-avatar.jpg"
   }
 ];
 
@@ -72,11 +76,11 @@ export const StudentSpotlight: React.FC<StudentSpotlightProps> = ({ onOpenApplyM
             >
               <div>
                 {/* Photo & Badge */}
-                <div className="relative h-64 w-full overflow-hidden rounded-2xl">
+                <div className="relative h-72 w-full overflow-hidden rounded-2xl">
                   <img
                     src={s.img}
                     alt={s.name}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute top-3 right-3 rounded-full bg-[#1B2A4A]/85 backdrop-blur-md px-3 py-1 text-[10px] font-bold text-[#D4AF37] border border-[#D4AF37]/30">
                     {s.year}
@@ -115,7 +119,7 @@ export const StudentSpotlight: React.FC<StudentSpotlightProps> = ({ onOpenApplyM
           <div className="flex items-center gap-4">
             <div className="flex -space-x-3 overflow-hidden">
               {STUDENT_SPOTLIGHTS.map((s, i) => (
-                <img key={i} className="inline-block h-12 w-12 rounded-full ring-2 ring-[#D4AF37] object-cover" src={s.img} alt={s.name} />
+                <img key={i} className="inline-block h-12 w-12 rounded-full ring-2 ring-[#D4AF37] object-cover" src={s.avatar || s.img} alt={s.name} />
               ))}
             </div>
             <div>

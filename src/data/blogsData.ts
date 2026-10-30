@@ -57,7 +57,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: "October 2026",
     author: "NcHM Academic & Career Advisory Board",
     authorRole: "Hospitality Industry Mentors • Birgunj, Nepal",
-    heroImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop",
+    heroImage: "/nchm/48_IMG20260809141153.jpg",
     summary: "A realistic breakdown of hotel management salaries in Nepal, the Middle East, and Western countries. Learn why fast-track Scottish SQA diplomas are outpacing traditional 4-year theoretical degrees.",
     targetKeywords: [
       "hotel management scope in nepal",
@@ -179,7 +179,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: "October 2026",
     author: "NcHM International Placement Cell",
     authorRole: "Overseas Relations & Placement Team • Birgunj, Nepal",
-    heroImage: "https://images.unsplash.com/photo-1551882547-b79c5d7dca89?q=80&w=1200&auto=format&fit=crop",
+    heroImage: "/nchm/44_IMG-20260717-WA0027.jpg",
     summary: "Everything Nepali students need to know about 6-month overseas industrial training. Explore verified monthly stipends, luxury resort housing, free meals, and visa pathways.",
     targetKeywords: [
       "paid hotel management internship abroad from nepal",
@@ -254,7 +254,7 @@ export const BLOG_POSTS: BlogPost[] = [
         callout: {
           type: "info",
           title: "Real Student Outcome",
-          text: "Rohan Shrestha (Batch of 2023) interned at a 5-star Dubai property. Within 3 months of internship completion, the property sponsored his full 2-year Commis Chef work contract with a promotion and higher salary."
+          text: "Nishant Chaudhary (Batch of 2023) interned at a 5-star Dubai property. Within 3 months of internship completion, the property sponsored his full 2-year Commis Chef work contract with a promotion and higher salary."
         }
       }
     ],
@@ -287,7 +287,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: "October 2026",
     author: "NcHM International Academic Pathways",
     authorRole: "Higher Education Transfer Coordinators • Birgunj, Nepal",
-    heroImage: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop",
+    heroImage: "/nchm/49_IMG_1945.jpg",
     summary: "Discover how Advance Diploma in Hospitality Management (ADHM 15+6) graduates transfer credits into foreign Bachelor degrees, saving families over NPR 30 to 45 Lakhs in international tuition.",
     targetKeywords: [
       "credit transfer hotel management nepal to abroad",
@@ -390,8 +390,8 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "6 min read",
     publishDate: "October 2026",
     author: "NcHM Admissions Directorate",
-    authorRole: "Campus Directorate • Near Hotel Gateway, Birgunj",
-    heroImage: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=1200&auto=format&fit=crop",
+    authorRole: "Campus Directorate • Murli Bagaicha-12, Birgunj",
+    heroImage: "/nchm/50_IMG_20240926_090145006_HDR.jpg",
     summary: "Why students from Parsa, Bara, Chitwan, Janakpur, and across the border choose NcHM Birgunj. World-class kitchen labs, Scottish accreditation, affordable fees, and 850+ international placements.",
     targetKeywords: [
       "best hotel management college in birgunj",
@@ -416,7 +416,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "1. Strategic Location in the Commercial Hub of Birgunj",
         paragraphs: [
-          "Located near Hotel Gateway in central Birgunj, NcHM is easily accessible for both day-scholar students from Birgunj, Simara, and Raxaul, as well as students commuting from Hetauda, Chitwan, and Janakpur.",
+          "Located at Murli Bagaicha-12, Birgunj (Near Birgunj Public College BIM Building), NcHM is easily accessible for both day-scholar students from Birgunj, Simara, and Raxaul, as well as students commuting from Hetauda, Chitwan, and Janakpur.",
           "Being situated in Nepal’s prime industrial and trading gateway allows the college to maintain active tie-ups with leading regional business hotels, convention banquets, and fine dining establishments for hands-on weekend event training."
         ]
       },
@@ -454,8 +454,8 @@ export const BLOG_POSTS: BlogPost[] = [
           rows: [
             ["Diploma in Hospitality Management (DHM)", "9 Months Theory + 6 Mo Paid Internship", "Complete 4-department mastery + Dubai/Mauritius placement", "SEE & +2 graduates wanting quick international employment"],
             ["Advance Diploma in Hospitality (ADHM)", "15 Months Theory + 6 Mo Paid Internship", "Supervisory management + 2nd Year Bachelor Credit Transfer", "Students aiming for foreign university degrees in Canada/UK"],
-            ["Kitchen Short-Term Course", "Intensive Fast-Track Skill Module", "Fast-food processing, knife mastery, HACCP food hygiene", "Candidates seeking rapid overseas kitchen commis jobs"],
-            ["Barista & Beverage Masterclass", "1 Month Intensive Certification", "Espresso extraction, latte art, café operation management", "Future café entrepreneurs and specialty baristas"]
+            ["Barista Course", "1 Month Fast-Track / 2 Months Intensive", "Espresso calibration, milk steaming, latte art, manual brewing & café bar ops", "Aspiring baristas, café managers, and overseas applicants"],
+            ["Kitchen Short-Term Course", "Intensive Fast-Track Skill Module", "Fast-food processing, knife mastery, HACCP food hygiene", "Candidates seeking rapid overseas kitchen commis jobs"]
           ]
         }
       },
@@ -477,7 +477,7 @@ export const BLOG_POSTS: BlogPost[] = [
     faqs: [
       {
         question: "Where is NcHM located in Birgunj?",
-        answer: "Nepal College of Hotel Management (NcHM) is located near Hotel Gateway, Birgunj, Parsa, Nepal. You can visit the admissions office from Sunday to Friday, 9:00 AM to 5:00 PM."
+        answer: "Nepal College of Hotel Management (NcHM) is located at Murli Bagaicha-12, Birgunj (Near Birgunj Public College BIM Building), Parsa, Nepal. You can visit the admissions office from Sunday to Friday, 9:00 AM to 5:00 PM."
       },
       {
         question: "What documents are required for admission at NcHM Birgunj?",
@@ -490,6 +490,6 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     relatedProgram: "Diploma in Hospitality Management (DHM)",
     ctaText: "Apply Online or Book Campus Tour",
-    ctaSubtext: "Visit our commercial kitchen labs in Birgunj. Call / WhatsApp +977 9802819788."
+    ctaSubtext: "Visit our commercial kitchen & barista labs in Birgunj. Call / WhatsApp +977 9829232426 or email contact@nchmbirgunj.edu.np."
   }
 ];

@@ -1,7 +1,7 @@
 import React from "react";
 import { MessageSquare } from "lucide-react";
 
-export const WHATSAPP_NUMBER = "9779802819788";
+export const WHATSAPP_NUMBER = "9779829232426";
 
 const WhatsAppIcon = ({ className = "h-5 w-5" }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">

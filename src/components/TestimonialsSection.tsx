@@ -3,28 +3,36 @@ import { Star, ChevronLeft, ChevronRight, MessageSquare, Plus, Minus, ShieldChec
 
 export const REVIEWS = [
   {
-    name: "Rohan Shrestha",
-    role: "DGCA Graduate • Culinary Commis",
+    name: "Nishant Chaudhary",
+    role: "DHM Graduate • Culinary Commis",
     badge: "NcHM Alumnus 2023",
     place: "Internship: 5★ Luxury Hotel, Dubai",
     review: "NcHM changed my life completely. The 70% practical kitchen labs in Birgunj gave me real hands-on confidence. Within 12 months, I secured a paid culinary placement in Dubai!",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop"
+    avatar: "/nchm/students/nishant-avatar.jpg"
   },
   {
-    name: "Pooja Chaudhary",
-    role: "ADHM Student • 20% Girls Scholarship Recipient",
-    badge: "NcHM Alumna 2024",
-    place: "Internship: Partner Resort, Mauritius",
-    review: "The 1-on-1 faculty mentoring and 20% Girls Scholarship made hotel management accessible for me. The ADHM credit transfer options to foreign universities are incredible.",
-    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=300&auto=format&fit=crop"
+    name: "Ajay Sah Kanu",
+    role: "ADHM Graduate • Hospitality Ops",
+    badge: "NcHM Alumnus 2023",
+    place: "Placement: Luxury Hotel Network, USA",
+    review: "NcHM's international transfer and placement pipeline opened doors for my career in the United States. The practical training prepared me to excel globally!",
+    avatar: "/nchm/students/ajay-avatar.jpg"
   },
   {
-    name: "Anish Gupta",
-    role: "Professional Barista Alumnus",
+    name: "Faruk Ansari",
+    role: "DHM Graduate • Food & Beverage",
     badge: "NcHM Alumnus 2024",
-    place: "Head Barista • Birgunj Cafe Network",
-    review: "NcHM's barista lab with espresso science and latte art calibration prepared me to manage commercial cafe bars independently. 100% recommended!",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop"
+    place: "Internship: 5★ Hotel, Muscat, Oman",
+    review: "The hands-on hospitality labs and real industry simulation at NcHM Birgunj gave me the international edge. Proud to represent NcHM across luxury hotels in Oman!",
+    avatar: "/nchm/students/faruk-avatar.jpg"
+  },
+  {
+    name: "Raju Chaudhary",
+    role: "DHM Graduate • Front Office & Ops",
+    badge: "NcHM Alumnus 2024",
+    place: "Placement: Luxury Resort, Dubai",
+    review: "NcHM's guest relations lab and grooming standards gave me the confidence to handle international luxury guests. Moving from Birgunj to Dubai was a dream come true!",
+    avatar: "/nchm/students/raju-avatar.jpg"
   }
 ];
 
@@ -36,7 +44,7 @@ export const FAQS = [
   { q: "Which countries offer Bachelor pathway opportunities?", a: "Canada, USA, Switzerland, Dubai/UAE, Scotland, Australia, United Kingdom — via partner universities and credit transfer assessment." },
   { q: "Does NcHM provide job placement?", a: "Yes. 100% job placement support — Prepare, Connect, Interview, Place, Grow. Placements in Nepal and global markets." },
   { q: "Is there a scholarship for girls?", a: "Yes. 20% tuition discount for eligible female students. Terms and eligibility apply. Contact admissions for details." },
-  { q: "What short-term courses are available?", a: "Professional Barista (3-month with latte art & 1-month fast-track) and Short-Term Kitchen Training (fast food, basic kitchen, hygiene, food safety)." },
+  { q: "What short-term courses are available?", a: "Professional Barista Course (1 month fast-track / 2 months intensive with latte art, espresso science & café ops) and Short-Term Kitchen Training (fast food, basic kitchen, hygiene, food safety)." },
 ];
 
 export const TestimonialsSection: React.FC = () => {

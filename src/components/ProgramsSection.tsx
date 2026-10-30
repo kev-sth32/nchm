@@ -13,7 +13,7 @@ export const PROGRAMS = [
     duration: "9 Months Theory + Practical + 6 Months Internship",
     places: "China • Mauritius • Dubai • Kuwait • Nepal • India",
     points: ["Hotel operations & guest relations", "F&B service & banquet management", "Front office & housekeeping mastery", "Paid 6-month international internship"],
-    img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop",
+    img: "/nchm/06_1726158849679.jpg",
     color: "from-[#FBF6EC] to-white",
     accent: "bg-[#D4AF37]",
   },
@@ -24,10 +24,27 @@ export const PROGRAMS = [
     duration: "15 Months Theory + Practical + 6 Months Internship",
     places: "China • Mauritius • Dubai • Kuwait • Nepal • India",
     points: ["Leadership & hospitality supervision", "Strategic revenue & resort management", "2nd Year Bachelor credit transfer pathway", "100% career placement guarantee"],
-    img: "https://images.unsplash.com/photo-1551882547-b79c5d7dca89?q=80&w=1200&auto=format&fit=crop",
+    img: "/nchm/48_IMG20260809141153.jpg",
     color: "from-[#1B2A4A] to-[#111827]",
     accent: "bg-[#D4AF37]",
     dark: true,
+  },
+  {
+    id: "barista",
+    tabLabel: "Barista Course (1 & 2 Mo)",
+    title: "Professional Barista Course (1 Month Fast-Track / 2 Months Intensive)",
+    duration: "1 Month / 2 Months Hands-On Practical Training",
+    places: "NcHM Specialty Coffee Lab & Café Simulation Bar",
+    points: [
+      "Espresso science, grind calibration & dose extraction",
+      "Milk steaming, micro-foam texturing & latte art",
+      "Manual brewing methods (V60, French Press, Aeropress)",
+      "Commercial café bar setup, customer service & billing",
+      "Placement support in top cafés in Nepal, Dubai & Gulf"
+    ],
+    img: "/nchm/05_1726158849260.jpg",
+    color: "from-[#FBF6EC] to-white",
+    accent: "bg-[#D4AF37]",
   },
   {
     id: "kitchen-short",
@@ -36,7 +53,7 @@ export const PROGRAMS = [
     duration: "Short-Term Intensive Skill Module",
     places: "NcHM Commercial Kitchen Labs",
     points: ["Fast-food processing & prep techniques", "Basic kitchen safety & knife handling", "Short-order cooking & food hygiene", "Commercial kitchen operations"],
-    img: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200&auto=format&fit=crop",
+    img: "/nchm/07_1726158849714.jpg",
     color: "from-[#FBF6EC] to-[#EDE7DB]",
     accent: "bg-[#1B2A4A]",
   },
@@ -60,7 +77,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenApplyMod
             World-Class <span className="italic text-gradient-gold inline-block">Programs &amp; Certifications</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#6B6560] leading-relaxed">
-            From 9-month &amp; 15-month diplomas with guaranteed paid international placements to 1-month Barista and Kitchen short-term training.
+            From 9-month &amp; 15-month diplomas with guaranteed paid international placements to 1-month / 2-month Barista Course and Kitchen short-term training.
           </p>
 
           {/* Minimum Qualification Badge */}

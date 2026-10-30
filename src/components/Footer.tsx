@@ -47,15 +47,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenApplyModal }) => {
             <ul className="mt-4 space-y-3 text-xs text-white/80">
               <li className="flex items-start gap-2.5">
                 <MapPin className="h-4 w-4 text-[#D4AF37] shrink-0 mt-0.5" />
-                <span>Birgunj, Parsa, Nepal (Near Hotel Gateway)</span>
+                <span>Murli Bagaicha-12, Birgunj (Near Birgunj Public College BIM Building)</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="h-4 w-4 text-[#D4AF37] shrink-0" />
-                <span>+977 9802819788 / Admissions Cell</span>
+                <a href="tel:+9779829232426" className="hover:text-[#D4AF37] transition">+977 9829232426 / Admissions Cell</a>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 text-[#D4AF37] shrink-0" />
-                <span>info@nchm.edu.np / admissions@nchm.edu.np</span>
+                <a href="mailto:contact@nchmbirgunj.edu.np" className="hover:text-[#D4AF37] transition">contact@nchmbirgunj.edu.np</a>
               </li>
             </ul>
           </div>
@@ -64,7 +64,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenApplyModal }) => {
           <div>
             <h4 className="text-sm font-bold uppercase tracking-wider text-[#D4AF37]">Admissions 2026</h4>
             <p className="mt-4 text-xs text-white/70">
-              Applications open for DHM (9+6), ADHM (15+6), and Kitchen Short-Term courses.
+              Applications open for DHM (9+6), ADHM (15+6), Barista Course (1 & 2 Mo), and Kitchen Short-Term courses.
             </p>
             <button
               onClick={() => onOpenApplyModal()}

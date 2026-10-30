@@ -579,7 +579,7 @@ export const CareerGuidesSection: React.FC<CareerGuidesSectionProps> = ({ onOpen
                     )}
 
                     <a
-                      href="https://wa.me/9779802819788?text=Hello%20NcHM%2C%20I%20read%20your%20article%20and%20want%20to%20know%20more%20about%20admissions."
+                      href="https://wa.me/9779829232426?text=Hello%20NcHM%2C%20I%20read%20your%20article%20and%20want%20to%20know%20more%20about%20admissions."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-3 text-xs font-bold uppercase tracking-wider text-white hover:bg-white/20 transition"

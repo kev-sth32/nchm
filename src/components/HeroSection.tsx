@@ -7,10 +7,10 @@ interface HeroSectionProps {
 }
 
 const HERO_AVATARS = [
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop",
+  "/nchm/students/nishant-avatar.jpg",
+  "/nchm/students/ajay-avatar.jpg",
+  "/nchm/students/faruk-avatar.jpg",
+  "/nchm/students/raju-avatar.jpg",
 ];
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenApplyModal }) => {
@@ -123,13 +123,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenApplyModal }) =>
               {/* Floating Top-Left Student Photo Badge */}
               <div className="absolute -top-6 -left-6 z-20 hidden sm:flex items-center gap-3 rounded-2xl bg-white/95 backdrop-blur-md p-2.5 pr-4 border border-[#D4AF37]/40 shadow-xl gold-glow animate-bounce-slow">
                 <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop"
-                  alt="Rohan Shrestha"
-                  className="h-11 w-11 rounded-xl object-cover ring-2 ring-[#D4AF37]"
+                  src="/nchm/students/nishant-chaudhary-dubai.jpg"
+                  alt="Nishant Chaudhary"
+                  className="h-11 w-11 rounded-xl object-cover object-top ring-2 ring-[#D4AF37]"
                 />
                 <div>
                   <div className="flex items-center gap-1">
-                    <span className="text-xs font-bold text-[#1B2A4A]">Rohan Shrestha</span>
+                    <span className="text-xs font-bold text-[#1B2A4A]">Nishant Chaudhary</span>
                     <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
                   </div>
                   <div className="text-[10px] font-semibold text-[#D4AF37]">Culinary Commis • 🇦🇪 Dubai</div>
@@ -139,16 +139,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenApplyModal }) =>
               {/* Floating Bottom-Right Student Photo Badge */}
               <div className="absolute -bottom-6 -right-6 z-20 hidden sm:flex items-center gap-3 rounded-2xl bg-[#0B132B]/95 backdrop-blur-md p-2.5 pr-4 border border-[#D4AF37]/40 text-white shadow-xl gold-glow">
                 <img
-                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150&auto=format&fit=crop"
-                  alt="Pooja Chaudhary"
-                  className="h-11 w-11 rounded-xl object-cover ring-2 ring-[#D4AF37]"
+                  src="/nchm/students/ajay-sah-kanu-usa.jpg"
+                  alt="Ajay Sah Kanu"
+                  className="h-11 w-11 rounded-xl object-cover object-top ring-2 ring-[#D4AF37]"
                 />
                 <div>
                   <div className="flex items-center gap-1">
-                    <span className="text-xs font-bold text-white">Pooja Chaudhary</span>
+                    <span className="text-xs font-bold text-white">Ajay Sah Kanu</span>
                     <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
                   </div>
-                  <div className="text-[10px] font-semibold text-[#D4AF37]">20% Girls Scholarship Recipient</div>
+                  <div className="text-[10px] font-semibold text-[#D4AF37]">Hospitality Ops • 🇺🇸 USA</div>
                 </div>
               </div>
 

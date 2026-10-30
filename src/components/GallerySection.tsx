@@ -322,11 +322,11 @@ export const GallerySection: React.FC = () => {
             </div>
             <div>
               <h4 className="text-sm font-bold font-display text-white">Experience NcHM Birgunj In Person</h4>
-              <p className="text-xs text-white/70">Visit our campus on Bypass Road, Birgunj to tour the commercial kitchens, mixology bar, and student labs.</p>
+              <p className="text-xs text-white/70">Visit our campus at Murli Bagaicha-12, Birgunj (Near Birgunj Public College BIM Building) to tour the commercial kitchens, barista &amp; mixology bar, and student labs.</p>
             </div>
           </div>
           <a
-            href="https://wa.me/9779802819788?text=Hello%20NcHM%2C%20I%20would%20like%20to%20schedule%20a%20campus%20tour%20and%20see%20the%20practical%20labs."
+            href="https://wa.me/9779829232426?text=Hello%20NcHM%2C%20I%20would%20like%20to%20schedule%20a%20campus%20tour%20and%20see%20the%20practical%20labs."
             target="_blank"
             rel="noopener noreferrer"
             className="shrink-0 rounded-full bg-[#D4AF37] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] transition gold-glow-hover"

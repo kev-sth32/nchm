@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BookOpen, GraduationCap, Compass, Globe, Sparkles, Briefcase, Building2, Award } from "lucide-react";
 
 export const JOURNEY_STEPS = [
-  { n: "01", t: "Choose Your Program", d: "Select from Diploma (9+6), ADHM (15+6), or Kitchen Short-Term Training based on your career goals.", sub: "Personalized Counseling • Enrollment", icon: BookOpen },
+  { n: "01", t: "Choose Your Program", d: "Select from Diploma (9+6), ADHM (15+6), Barista Course (1 & 2 Mo), or Kitchen Short-Term Training based on your career goals.", sub: "Personalized Counseling • Enrollment", icon: BookOpen },
   { n: "02", t: "Learn", d: "Master hospitality principles under expert faculty and industry-veteran GMs in our Birgunj campus.", sub: "70% Practical • Theory Foundations", icon: GraduationCap },
   { n: "03", t: "Practice", d: "Hands-on daily training in mock hotel rooms, front desk lobbies & commercial kitchens.", sub: "Real Equipment • Skill Calibration", icon: Compass },
   { n: "04", t: "Intern", d: "6-month paid/stipend international internship in luxury 4★ and 5★ partner hotels across China, Mauritius, Dubai, Kuwait & Nepal.", sub: "Global Hospitality Exposure", icon: Globe },
