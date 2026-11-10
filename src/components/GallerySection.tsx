@@ -183,6 +183,7 @@ const CATEGORIES = [
 export const GallerySection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const filteredGallery = activeCategory === "All"
     ? GALLERY
@@ -203,6 +204,36 @@ export const GallerySection: React.FC = () => {
       return (prev + 1) % filteredGallery.length;
     });
   }, [lightboxIndex, filteredGallery.length]);
+
+  // Touch swipe detection for mobile lightbox
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        handleNext(); // Swiped left -> next photo
+      } else {
+        handlePrev(); // Swiped right -> prev photo
+      }
+    }
+    setTouchStartX(null);
+  };
+
+  // Lock body scroll when lightbox is open
+  useEffect(() => {
+    if (lightboxIndex !== null) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [lightboxIndex]);
 
   // Handle keyboard events (Escape, Left, Right)
   useEffect(() => {
@@ -237,8 +268,8 @@ export const GallerySection: React.FC = () => {
           </p>
         </div>
 
-        {/* Filter Tabs */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+        {/* Filter Tabs (Horizontal scroll on mobile) */}
+        <div className="mt-10 flex items-center justify-start sm:justify-center gap-2 sm:gap-2.5 overflow-x-auto pb-3 sm:pb-0 no-scrollbar">
           {CATEGORIES.map((cat) => {
             const isActive = cat === activeCategory;
             const count = cat === "All" ? GALLERY.length : GALLERY.filter(g => g.cat === cat).length;
@@ -249,7 +280,7 @@ export const GallerySection: React.FC = () => {
                   setActiveCategory(cat);
                   setLightboxIndex(null);
                 }}
-                className={`rounded-full px-4 py-2 text-xs font-semibold transition-all cursor-pointer flex items-center gap-2 ${isActive
+                className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition-all cursor-pointer flex items-center gap-2 whitespace-nowrap ${isActive
                     ? "bg-[#1B2A4A] text-white shadow-md gold-glow"
                     : "bg-white text-[#1B2A4A] border border-[#EDE7DB] hover:border-[#D4AF37] hover:bg-[#FBF6EC]"
                   }`}
@@ -329,7 +360,7 @@ export const GallerySection: React.FC = () => {
             href="https://wa.me/9779829232426?text=Hello%20NcHM%2C%20I%20would%20like%20to%20schedule%20a%20campus%20tour%20and%20see%20the%20practical%20labs."
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 rounded-full bg-[#D4AF37] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] transition gold-glow-hover"
+            className="w-full sm:w-auto text-center shrink-0 rounded-full bg-[#D4AF37] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] transition gold-glow-hover"
           >
             Schedule Campus Visit
           </a>
@@ -369,12 +400,16 @@ export const GallerySection: React.FC = () => {
               </button>
             </div>
 
-            {/* Image Preview with Next/Prev Controls */}
-            <div className="relative max-h-[65vh] sm:max-h-[70vh] bg-black flex items-center justify-center overflow-hidden">
+            {/* Image Preview with Next/Prev Controls & Mobile Touch Swipe */}
+            <div 
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+              className="relative max-h-[60vh] sm:max-h-[70vh] bg-black flex items-center justify-center overflow-hidden touch-pan-y"
+            >
               <img
                 src={currentItem.img}
                 alt={currentItem.title}
-                className="w-full h-auto max-h-[65vh] sm:max-h-[70vh] object-contain transition-all duration-300"
+                className="w-full h-auto max-h-[60vh] sm:max-h-[70vh] object-contain transition-all duration-300 select-none"
               />
 
               {/* Prev Button */}
@@ -385,7 +420,7 @@ export const GallerySection: React.FC = () => {
                     handlePrev();
                   }}
                   aria-label="Previous photo"
-                  className="absolute left-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-black/70 border border-white/20 text-white hover:bg-[#D4AF37] hover:text-[#0B132B] transition cursor-pointer shadow-lg"
+                  className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-black/70 border border-white/20 text-white hover:bg-[#D4AF37] hover:text-[#0B132B] transition cursor-pointer shadow-lg"
                 >
                   <ChevronLeft className="h-6 w-6" />
                 </button>
@@ -399,7 +434,7 @@ export const GallerySection: React.FC = () => {
                     handleNext();
                   }}
                   aria-label="Next photo"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-black/70 border border-white/20 text-white hover:bg-[#D4AF37] hover:text-[#0B132B] transition cursor-pointer shadow-lg"
+                  className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-black/70 border border-white/20 text-white hover:bg-[#D4AF37] hover:text-[#0B132B] transition cursor-pointer shadow-lg"
                 >
                   <ChevronRight className="h-6 w-6" />
                 </button>
@@ -415,8 +450,8 @@ export const GallerySection: React.FC = () => {
                 {currentItem.desc}
               </p>
               <div className="mt-3 flex items-center justify-between text-[11px] text-white/50">
-                <span>Use ← and → arrow keys to navigate</span>
-                <span className="text-[#D4AF37] font-semibold">Nepal College of Hotel Management • Birgunj</span>
+                <span>Swipe left/right or use arrow keys to navigate</span>
+                <span className="text-[#D4AF37] font-semibold">NcHM Birgunj</span>
               </div>
             </div>
           </div>

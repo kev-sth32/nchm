@@ -11,7 +11,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenApplyModal }) => {
     <footer id="contact" className="bg-[#0B132B] text-white border-t border-[#D4AF37]/30 pt-16 pb-12">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 pb-12 border-b border-white/10">
-          
+
           {/* Column 1: Logo & About */}
           <div>
             <div className="bg-white/10 p-3.5 rounded-2xl inline-block backdrop-blur-sm border border-[#D4AF37]/30">
@@ -20,9 +20,20 @@ export const Footer: React.FC<FooterProps> = ({ onOpenApplyModal }) => {
             <p className="mt-4 text-xs text-white/70 leading-relaxed">
               Nepal College of Hotel Management (NcHM Birgunj) is quality assured under Scottish (SQA) & LCCI GQ frameworks, delivering 70% practical culinary & hospitality training with paid international placements.
             </p>
-            <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-[#D4AF37]">
-              <Award className="h-4 w-4" />
-              <span>Est. 2018 AD • Birgunj, Nepal</span>
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <div className="flex items-center gap-2 text-xs font-semibold text-[#D4AF37]">
+                <Award className="h-4 w-4" />
+                <span>Est. 2018 AD • Birgunj, Nepal</span>
+              </div>
+              <a
+                href="https://maps.app.goo.gl/smSzjGYD5JwTKDfm8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[11px] font-bold text-white border border-[#D4AF37]/30 hover:bg-white/20 transition"
+              >
+                <span className="text-[#D4AF37]">★★★★★</span>
+                <span>5.0 on Google Maps</span>
+              </a>
             </div>
           </div>
 
@@ -47,11 +58,33 @@ export const Footer: React.FC<FooterProps> = ({ onOpenApplyModal }) => {
             <ul className="mt-4 space-y-3 text-xs text-white/80">
               <li className="flex items-start gap-2.5">
                 <MapPin className="h-4 w-4 text-[#D4AF37] shrink-0 mt-0.5" />
-                <span>Murli Bagaicha-12, Birgunj (Near Birgunj Public College BIM Building)</span>
+                <div>
+                  <span>Murli Bagaicha-12, Birgunj (Near Birgunj Public College BIM Building)</span>
+                  <div className="mt-1">
+                    <a
+                      href="https://maps.app.goo.gl/smSzjGYD5JwTKDfm8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-[#D4AF37] hover:underline"
+                    >
+                      <span>📍 View Directions on Google Maps →</span>
+                    </a>
+                  </div>
+                </div>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="h-4 w-4 text-[#D4AF37] shrink-0" />
-                <a href="tel:+9779829232426" className="hover:text-[#D4AF37] transition">+977 9829232426 / Admissions Cell</a>
+                <div className="flex flex-col">
+                  <a href="tel:+9779829232426" className="hover:text-[#D4AF37] transition font-medium">+977 9829232426 / Admissions Cell</a>
+                  <a
+                    href="https://wa.me/9779829232426?text=Hello%20NcHM%2C%20I%20am%20contacting%20you%20from%20the%20website%20and%20would%20like%20to%20inquire%20about%20admissions."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-400 hover:underline mt-0.5"
+                  >
+                    <span>💬 Chat on WhatsApp (+977 9829232426)</span>
+                  </a>
+                </div>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 text-[#D4AF37] shrink-0" />
@@ -67,7 +100,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenApplyModal }) => {
               Applications open for DHM (9+6), ADHM (15+6), Barista Course (1 & 2 Mo), and Kitchen Short-Term courses.
             </p>
             <button
-              onClick={() => onOpenApplyModal()}
+              onClick={() => onOpenApplyModal("Direct Online Admission Application")}
               className="mt-5 w-full rounded-full bg-[#D4AF37] py-3 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] gold-glow-hover cursor-pointer"
             >
               Apply Online Now →

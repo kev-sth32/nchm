@@ -40,8 +40,8 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ onOpenApplyM
           </div>
         </div>
 
-        {/* Interactive Steps Grid */}
-        <div className="mt-14 grid gap-4 lg:grid-cols-7">
+        {/* Interactive Steps Grid (Swipeable on mobile, Grid on tablet/desktop) */}
+        <div className="mt-14 flex overflow-x-auto pb-3 gap-3.5 no-scrollbar snap-x snap-mandatory sm:grid sm:grid-cols-3 lg:grid-cols-7 sm:overflow-visible">
           {JOURNEY_STEPS.map((step, idx) => {
             const Icon = step.icon;
             const isActive = idx === activeStep;
@@ -49,7 +49,7 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ onOpenApplyM
               <button
                 key={step.n}
                 onClick={() => setActiveStep(idx)}
-                className={`rounded-2xl p-5 text-left transition-all cursor-pointer border ${
+                className={`snap-start shrink-0 w-[155px] sm:w-auto rounded-2xl p-4 sm:p-5 text-left transition-all cursor-pointer border ${
                   isActive
                     ? "border-[#D4AF37] bg-[#1B2A4A] text-white shadow-xl gold-glow"
                     : "border-[#EDE7DB] bg-white text-[#1B2A4A] hover:border-[#D4AF37]/50 hover:bg-[#FBF6EC]"
@@ -66,13 +66,13 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ onOpenApplyM
         </div>
 
         {/* Selected Step Active Details Card */}
-        <div className="mt-6 rounded-3xl border border-[#D4AF37]/30 bg-[#FBF6EC] p-8 sm:p-10 shadow-lg">
+        <div className="mt-6 rounded-3xl border border-[#D4AF37]/30 bg-[#FBF6EC] p-6 sm:p-8 lg:p-10 shadow-lg">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div>
               <div className="text-xs font-bold uppercase tracking-wider text-[#D4AF37]">
                 Phase {JOURNEY_STEPS[activeStep].n} • {JOURNEY_STEPS[activeStep].sub}
               </div>
-              <h3 className="mt-2 text-2xl font-display font-bold text-[#1B2A4A]">
+              <h3 className="mt-2 text-xl sm:text-2xl font-display font-bold text-[#1B2A4A]">
                 {JOURNEY_STEPS[activeStep].t}
               </h3>
               <p className="mt-2 text-sm text-[#6B6560] leading-relaxed max-w-2xl">
@@ -82,7 +82,7 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ onOpenApplyM
 
             <button
               onClick={() => onOpenApplyModal(JOURNEY_STEPS[activeStep].t)}
-              className="shrink-0 rounded-full bg-[#1B2A4A] px-6 py-3 text-xs font-bold text-white shadow-md hover:bg-[#0B132B] gold-glow-hover cursor-pointer"
+              className="w-full sm:w-auto shrink-0 rounded-full bg-[#1B2A4A] px-6 py-3.5 text-xs font-bold text-white shadow-md hover:bg-[#0B132B] gold-glow-hover cursor-pointer text-center"
             >
               Start Admission Step {JOURNEY_STEPS[activeStep].n} →
             </button>
@@ -90,19 +90,19 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ onOpenApplyM
         </div>
 
         {/* 20% Girls Scholarship Notice Banner */}
-        <div className="mt-12 overflow-hidden rounded-3xl border border-[#D4AF37]/40 bg-gradient-to-r from-[#1B2A4A] to-[#0B132B] p-8 text-white shadow-2xl relative">
+        <div className="mt-12 overflow-hidden rounded-3xl border border-[#D4AF37]/40 bg-gradient-to-r from-[#1B2A4A] to-[#0B132B] p-6 sm:p-8 text-white shadow-2xl relative">
           <div className="absolute top-0 right-0 -mt-12 -mr-12 h-64 w-64 rounded-full bg-[#D4AF37]/15 blur-3xl" />
           
-          <div className="relative z-10 sm:flex sm:items-center sm:justify-between gap-8">
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 sm:gap-8">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/40 px-3.5 py-1 text-xs font-bold text-[#D4AF37]">
                 <Award className="h-4 w-4" />
                 <span>20% Tuition Support</span>
               </div>
-              <h3 className="mt-3 text-2xl sm:text-3xl font-display font-bold text-white">
+              <h3 className="mt-3 text-xl sm:text-2xl lg:text-3xl font-display font-bold text-white">
                 Girls Scholarship Scheme (20% Discount)
               </h3>
-              <p className="mt-2 text-sm text-white/80 max-w-xl">
+              <p className="mt-2 text-xs sm:text-sm text-white/80 max-w-xl">
                 NcHM is committed to empowering women in hospitality leadership. Female applicants qualify for a 20% tuition fee scholarship upon eligibility verification.
               </p>
               <div className="mt-3 text-xs font-semibold text-[#D4AF37]">
@@ -112,7 +112,7 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ onOpenApplyM
 
             <button
               onClick={() => onOpenApplyModal("20% Girls Scholarship Inquiry")}
-              className="mt-6 sm:mt-0 shrink-0 rounded-full bg-[#D4AF37] px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] gold-glow-hover cursor-pointer"
+              className="w-full sm:w-auto shrink-0 rounded-full bg-[#D4AF37] px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] gold-glow-hover cursor-pointer text-center"
             >
               Claim Scholarship →
             </button>

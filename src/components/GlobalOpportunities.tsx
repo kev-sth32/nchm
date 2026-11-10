@@ -119,13 +119,13 @@ export const GlobalOpportunities: React.FC<GlobalOpportunitiesProps> = ({ onOpen
                   <MapPin className="h-3 w-3 text-[#D4AF37]" />
                   <span>Base Hub: <strong>Birgunj, Nepal</strong></span>
                 </span>
-                <div className="flex flex-wrap gap-2 text-[#E8C99A]">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 text-[#E8C99A]">
                   {DESTINATIONS.map((d) => (
                     <button
                       key={d.name}
                       onClick={() => setActiveDestName(d.name)}
-                      className={`hover:text-[#D4AF37] transition cursor-pointer ${
-                        d.name === activeDestName ? "text-[#D4AF37] font-bold underline" : ""
+                      className={`hover:text-[#D4AF37] transition cursor-pointer px-1 py-0.5 rounded ${
+                        d.name === activeDestName ? "text-[#D4AF37] font-bold underline bg-white/10" : ""
                       }`}
                     >
                       {d.flag} {d.name}
@@ -137,7 +137,7 @@ export const GlobalOpportunities: React.FC<GlobalOpportunitiesProps> = ({ onOpen
             </div>
 
             {/* Right Column: Country Selection & Active Details Panel (50% desktop width) */}
-            <div className="lg:col-span-6 p-6 sm:p-10 flex flex-col justify-between">
+            <div className="lg:col-span-6 p-5 sm:p-10 flex flex-col justify-between">
               
               <div>
                 {/* Section Subtitle */}
@@ -154,7 +154,7 @@ export const GlobalOpportunities: React.FC<GlobalOpportunitiesProps> = ({ onOpen
                       <button
                         key={d.name}
                         onClick={() => setActiveDestName(d.name)}
-                        className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold transition-all cursor-pointer ${
+                        className={`flex items-center gap-2 rounded-full px-3.5 sm:px-4 py-2 text-xs font-bold transition-all cursor-pointer ${
                           isActive
                             ? "bg-[#D4AF37] text-[#0B132B] shadow-lg gold-glow scale-105"
                             : "bg-white/10 text-white border border-white/10 hover:border-[#D4AF37]/50 hover:bg-white/20"
@@ -168,18 +168,18 @@ export const GlobalOpportunities: React.FC<GlobalOpportunitiesProps> = ({ onOpen
                 </div>
 
                 {/* Active Country Detail Box */}
-                <div className="mt-6 rounded-2xl border border-[#D4AF37]/30 bg-white/5 p-6 backdrop-blur-md">
+                <div className="mt-6 rounded-2xl border border-[#D4AF37]/30 bg-white/5 p-4 sm:p-6 backdrop-blur-md">
                   
                   {/* Country Title */}
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <span className="text-4xl">{activeDest.flag}</span>
+                      <span className="text-3xl sm:text-4xl shrink-0">{activeDest.flag}</span>
                       <div>
-                        <h3 className="text-2xl font-display font-bold text-white">{activeDest.name}</h3>
+                        <h3 className="text-xl sm:text-2xl font-display font-bold text-white">{activeDest.name}</h3>
                         <div className="text-xs font-semibold uppercase tracking-wider text-[#D4AF37]">{activeDest.country}</div>
                       </div>
                     </div>
-                    <span className="rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/40 px-3 py-1 text-[10px] font-bold text-[#D4AF37]">
+                    <span className="self-start sm:self-auto rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/40 px-3 py-1 text-[10px] font-bold text-[#D4AF37] shrink-0">
                       Pinpointed on 3D Map ✓
                     </span>
                   </div>

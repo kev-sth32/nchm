@@ -68,18 +68,18 @@ export const StudentSpotlight: React.FC<StudentSpotlightProps> = ({ onOpenApplyM
         </div>
 
         {/* Student Cards Grid */}
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {STUDENT_SPOTLIGHTS.map((s, idx) => (
             <div
               key={idx}
-              className="group overflow-hidden rounded-3xl border border-[#EDE7DB] bg-white p-6 transition-all duration-300 hover:border-[#D4AF37] hover:shadow-2xl gold-glow-hover flex flex-col justify-between"
+              className="group overflow-hidden rounded-3xl border border-[#EDE7DB] bg-white p-5 sm:p-6 transition-all duration-300 hover:border-[#D4AF37] hover:shadow-2xl gold-glow-hover flex flex-col justify-between"
             >
               <div>
                 {/* Photo & Badge */}
                 <div className="relative h-72 w-full overflow-hidden rounded-2xl">
                   <img
                     src={s.img}
-                    alt={s.name}
+                    alt={`${s.name} - NcHM Birgunj Hotel Management Alumnus (${s.placement})`}
                     className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute top-3 right-3 rounded-full bg-[#1B2A4A]/85 backdrop-blur-md px-3 py-1 text-[10px] font-bold text-[#D4AF37] border border-[#D4AF37]/30">
@@ -115,16 +115,16 @@ export const StudentSpotlight: React.FC<StudentSpotlightProps> = ({ onOpenApplyM
         </div>
 
         {/* Community Trust Banner */}
-        <div className="mt-14 rounded-3xl border border-[#D4AF37]/30 bg-[#1B2A4A] p-8 text-white text-center sm:flex sm:items-center sm:justify-between sm:text-left">
-          <div className="flex items-center gap-4">
-            <div className="flex -space-x-3 overflow-hidden">
+        <div className="mt-14 rounded-3xl border border-[#D4AF37]/30 bg-[#1B2A4A] p-6 sm:p-8 text-white flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <div className="flex -space-x-3 overflow-hidden shrink-0">
               {STUDENT_SPOTLIGHTS.map((s, i) => (
                 <img key={i} className="inline-block h-12 w-12 rounded-full ring-2 ring-[#D4AF37] object-cover" src={s.avatar || s.img} alt={s.name} />
               ))}
             </div>
             <div>
               <div className="text-base font-bold text-white font-display">Join 500+ NcHM Students & Alumni</div>
-              <div className="text-xs text-[#D4AF37] flex items-center gap-1 mt-0.5">
+              <div className="text-xs text-[#D4AF37] flex items-center justify-center sm:justify-start gap-1 mt-0.5">
                 <Star className="h-3.5 w-3.5 fill-[#D4AF37]" />
                 <span>4.9/5 Rating from Student Placement Surveys</span>
               </div>
@@ -133,7 +133,7 @@ export const StudentSpotlight: React.FC<StudentSpotlightProps> = ({ onOpenApplyM
 
           <button
             onClick={() => onOpenApplyModal("General Student Admission")}
-            className="mt-6 sm:mt-0 rounded-full bg-[#D4AF37] px-7 py-3 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] gold-glow-hover cursor-pointer"
+            className="w-full sm:w-auto shrink-0 rounded-full bg-[#D4AF37] px-7 py-3 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] gold-glow-hover cursor-pointer text-center"
           >
             Start Your Journey →
           </button>

@@ -341,9 +341,9 @@ export function Interactive3DScene({
     );
     camera.position.z = 7;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
     renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, window.innerWidth < 768 ? 1.5 : 2));
     container.appendChild(renderer.domElement);
 
     // Lighting
@@ -664,11 +664,23 @@ export function Interactive3DScene({
     });
     resizeObserver.observe(container);
 
+    // Visibility observer to pause 3D loop when scrolled out of view (saves CPU/battery)
+    let isVisible = true;
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.05 }
+    );
+    visibilityObserver.observe(container);
+
     // Animation loop
     let animId = 0;
     const clock = new THREE.Clock();
 
     const animate = () => {
+      animId = requestAnimationFrame(animate);
+      if (!isVisible) return;
       const elapsedTime = clock.getElapsedTime();
       const currentActiveName = activeDestRef.current;
 
@@ -751,7 +763,6 @@ export function Interactive3DScene({
       });
 
       renderer.render(scene, camera);
-      animId = requestAnimationFrame(animate);
     };
     animate();
 
@@ -769,6 +780,7 @@ export function Interactive3DScene({
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("touchend", onTouchEnd);
 
+      visibilityObserver.disconnect();
       resizeObserver.disconnect();
       cancelAnimationFrame(animId);
 

@@ -87,14 +87,14 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenApplyMod
         </div>
 
         {/* Program Tabs Bar */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-2 sm:gap-3 max-w-5xl mx-auto">
+        <div className="mt-12 flex items-center justify-start sm:justify-center gap-2 sm:gap-3 max-w-5xl mx-auto overflow-x-auto pb-3 sm:pb-0 no-scrollbar">
           {PROGRAMS.map((p) => {
             const isActive = p.id === activeProgId;
             return (
               <button
                 key={p.id}
                 onClick={() => setActiveProgId(p.id)}
-                className={`rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${isActive
+                className={`shrink-0 rounded-full px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all cursor-pointer whitespace-nowrap ${isActive
                     ? "bg-[#1B2A4A] text-white shadow-lg gold-glow scale-105"
                     : "bg-white text-[#1B2A4A] border border-[#EDE7DB] hover:border-[#D4AF37] hover:bg-[#FBF6EC]"
                   }`}
@@ -110,7 +110,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenApplyMod
           <div className="grid lg:grid-cols-12 items-stretch">
 
             {/* Program Details Column */}
-            <div className="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-between">
+            <div className="lg:col-span-7 p-5 sm:p-8 lg:p-12 flex flex-col justify-between">
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full bg-[#FBF6EC] px-4 py-1.5 text-xs font-bold text-[#1B2A4A] border border-[#D4AF37]/20">
                   <Sparkles className="h-3.5 w-3.5 text-[#D4AF37]" />
@@ -137,16 +137,16 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenApplyMod
               </div>
 
               {/* CTA Action */}
-              <div className="mt-10 pt-6 border-t border-[#EDE7DB] flex flex-wrap items-center gap-4">
+              <div className="mt-10 pt-6 border-t border-[#EDE7DB] flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
                 <button
                   onClick={() => onOpenApplyModal(activeProg.title)}
-                  className="rounded-full bg-[#1B2A4A] px-7 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:bg-[#0B132B] gold-glow-hover cursor-pointer"
+                  className="w-full sm:w-auto text-center rounded-full bg-[#1B2A4A] px-7 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:bg-[#0B132B] gold-glow-hover cursor-pointer"
                 >
                   Apply for {activeProg.tabLabel} →
                 </button>
                 <button
-                  onClick={() => onOpenApplyModal(activeProg.title)}
-                  className="rounded-full border border-[#1B2A4A]/20 px-6 py-3.5 text-sm font-semibold text-[#1B2A4A] hover:bg-[#FBF6EC] cursor-pointer"
+                  onClick={() => onOpenApplyModal(`Syllabus Request - ${activeProg.title}`)}
+                  className="w-full sm:w-auto text-center rounded-full border border-[#1B2A4A]/20 px-6 py-3.5 text-sm font-semibold text-[#1B2A4A] hover:bg-[#FBF6EC] cursor-pointer"
                 >
                   Download Syllabus
                 </button>
@@ -157,7 +157,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenApplyMod
             <div className="lg:col-span-5 relative min-h-[300px] lg:min-h-full">
               <img
                 src={activeProg.img}
-                alt={activeProg.title}
+                alt={`${activeProg.title} at Nepal College of Hotel Management (NcHM Birgunj)`}
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A4A]/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-[#1B2A4A]/40 lg:to-transparent" />

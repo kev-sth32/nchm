@@ -124,7 +124,7 @@ export const WhyNcHMSection: React.FC<WhyNcHMSectionProps> = ({ onOpenApplyModal
             return (
               <div
                 key={item.n}
-                className="group relative flex flex-col justify-between rounded-3xl border border-[#EDE7DB] bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#D4AF37] hover:shadow-[0_15px_35px_rgba(212,175,55,0.14)]"
+                className="group relative flex flex-col justify-between rounded-3xl border border-[#EDE7DB] bg-white p-5 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#D4AF37] hover:shadow-[0_15px_35px_rgba(212,175,55,0.14)]"
               >
                 <div>
                   {/* Card Header: Number + Icon + Tag */}
@@ -164,7 +164,7 @@ export const WhyNcHMSection: React.FC<WhyNcHMSectionProps> = ({ onOpenApplyModal
         </div>
 
         {/* Featured 7th Pillar Banner Card: Bachelor Credit Transfer Pathways */}
-        <div className="mt-8 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0B132B] via-[#1B2A4A] to-[#0B132B] text-white p-8 sm:p-10 lg:p-12 border border-[#D4AF37]/40 shadow-2xl">
+        <div className="mt-8 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0B132B] via-[#1B2A4A] to-[#0B132B] text-white p-6 sm:p-10 lg:p-12 border border-[#D4AF37]/40 shadow-2xl">
           {/* Subtle Background Glow */}
           <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-[#D4AF37]/10 blur-3xl pointer-events-none" />
           <div className="absolute left-0 bottom-0 h-64 w-64 rounded-full bg-[#D4AF37]/5 blur-2xl pointer-events-none" />
@@ -224,17 +224,17 @@ export const WhyNcHMSection: React.FC<WhyNcHMSectionProps> = ({ onOpenApplyModal
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center gap-3">
+              <div className="mt-6 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <button
                   onClick={() => onOpenApplyModal?.("Bachelor Credit Transfer Pathways")}
-                  className="inline-flex items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-xs font-bold uppercase tracking-wider text-[#0B132B] transition-all hover:bg-[#E8C99A] gold-glow-hover cursor-pointer shadow-lg"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-xs font-bold uppercase tracking-wider text-[#0B132B] transition-all hover:bg-[#E8C99A] gold-glow-hover cursor-pointer shadow-lg"
                 >
                   <span>Explore Pathway Details</span>
                   <ArrowRight className="h-4 w-4" />
                 </button>
                 <button
                   onClick={() => onOpenApplyModal?.("Bachelor Credit Transfer Pathways")}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-transparent px-5 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-white/10 cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-transparent px-5 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-white/10 cursor-pointer"
                 >
                   <Building2 className="h-4 w-4 text-[#D4AF37]" />
                   <span>View Universities</span>

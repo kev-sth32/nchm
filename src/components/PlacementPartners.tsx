@@ -38,7 +38,7 @@ export const PlacementPartners: React.FC = () => {
               <div className="relative h-48 w-full overflow-hidden">
                 <img
                   src={h.img}
-                  alt={h.name}
+                  alt={`${h.name} Hotel ${h.loc} - Official Practical Training & Placement Partner of NcHM`}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-4 right-4 rounded-full bg-[#0B132B]/80 px-3 py-1 text-xs font-bold text-[#D4AF37] backdrop-blur-md">

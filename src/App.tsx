@@ -45,13 +45,13 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#FFFCF6]">
+      <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#FFFCF6] px-4 text-center">
         <div className="relative flex flex-col items-center">
           <div className="absolute -inset-16 rounded-full bg-[#D4AF37]/15 blur-2xl animate-pulse" />
           <div className="animate-[float_2s_ease-in-out_infinite]">
             <NcHMLogo size="hero" />
           </div>
-          <p className="mt-6 text-[12px] uppercase tracking-[0.25em] text-[#1B2A4A] font-semibold">Initializing 3D Hospitality World...</p>
+          <p className="mt-6 text-[11px] sm:text-[12px] uppercase tracking-[0.16em] sm:tracking-[0.25em] text-[#1B2A4A] font-semibold">Initializing 3D Hospitality World...</p>
         </div>
         <div className="mt-6 h-[2px] w-32 overflow-hidden rounded-full bg-[#EDE7DB]">
           <div className="h-full w-full origin-left animate-[shimmer_1s_ease-in-out_infinite] bg-[#D4AF37]" />

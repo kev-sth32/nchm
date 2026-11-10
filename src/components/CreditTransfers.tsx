@@ -40,6 +40,16 @@ export const CreditTransfers: React.FC<CreditTransfersProps> = ({ onOpenApplyMod
     setActiveIndex(index);
   };
 
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    const container = scrollRef.current;
+    const cardWidth = container.firstElementChild ? (container.firstElementChild as HTMLElement).offsetWidth + 24 : 320;
+    const calculatedIndex = Math.round(container.scrollLeft / cardWidth);
+    if (calculatedIndex >= 0 && calculatedIndex < BACHELOR.length && calculatedIndex !== activeIndex) {
+      setActiveIndex(calculatedIndex);
+    }
+  };
+
   const handlePrev = () => {
     const nextIdx = activeIndex === 0 ? BACHELOR.length - 1 : activeIndex - 1;
     scrollToCard(nextIdx);
@@ -73,16 +83,19 @@ export const CreditTransfers: React.FC<CreditTransfersProps> = ({ onOpenApplyMod
           className="mt-12 overflow-hidden"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
         >
           <div 
             ref={scrollRef}
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 no-scrollbar scroll-smooth"
+            onScroll={handleScroll}
+            className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 no-scrollbar scroll-smooth"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {BACHELOR.map((b) => (
               <div
                 key={b.country}
-                className="snap-start shrink-0 w-[280px] sm:w-[320px] lg:w-[360px] group rounded-3xl border border-[#EDE7DB] bg-white p-6 transition-all duration-300 hover:border-[#D4AF37] hover:shadow-2xl gold-glow-hover flex flex-col justify-between"
+                className="snap-start shrink-0 w-[270px] sm:w-[320px] lg:w-[360px] group rounded-3xl border border-[#EDE7DB] bg-white p-5 sm:p-6 transition-all duration-300 hover:border-[#D4AF37] hover:shadow-2xl gold-glow-hover flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between">
@@ -114,33 +127,37 @@ export const CreditTransfers: React.FC<CreditTransfersProps> = ({ onOpenApplyMod
 
         {/* Centered Controls: Arrows + Indicator Dots */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={handlePrev}
               aria-label="Previous slide"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#EDE7DB] bg-white text-[#1B2A4A] transition hover:border-[#D4AF37] hover:bg-[#1B2A4A] hover:text-[#D4AF37] gold-glow-hover cursor-pointer shadow-sm"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#EDE7DB] bg-white text-[#1B2A4A] transition hover:border-[#D4AF37] hover:bg-[#1B2A4A] hover:text-[#D4AF37] gold-glow-hover cursor-pointer shadow-sm shrink-0"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
 
             {/* Carousel Indicator Dots */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-0.5 sm:gap-1">
               {BACHELOR.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => scrollToCard(idx)}
                   aria-label={`Go to slide ${idx + 1}`}
-                  className={`h-2.5 rounded-full transition-all cursor-pointer ${
-                    idx === activeIndex ? "w-8 bg-[#D4AF37]" : "w-2.5 bg-[#EDE7DB] hover:bg-[#D4AF37]/50"
-                  }`}
-                />
+                  className="p-1.5 flex items-center justify-center cursor-pointer"
+                >
+                  <span
+                    className={`h-2.5 rounded-full transition-all block ${
+                      idx === activeIndex ? "w-6 sm:w-8 bg-[#D4AF37]" : "w-2.5 bg-[#EDE7DB] hover:bg-[#D4AF37]/50"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
 
             <button
               onClick={handleNext}
               aria-label="Next slide"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#EDE7DB] bg-white text-[#1B2A4A] transition hover:border-[#D4AF37] hover:bg-[#1B2A4A] hover:text-[#D4AF37] gold-glow-hover cursor-pointer shadow-sm"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#EDE7DB] bg-white text-[#1B2A4A] transition hover:border-[#D4AF37] hover:bg-[#1B2A4A] hover:text-[#D4AF37] gold-glow-hover cursor-pointer shadow-sm shrink-0"
             >
               <ChevronRight className="h-4 w-4" />
             </button>

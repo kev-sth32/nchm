@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NcHMLogo } from "./NcHMLogo";
 import { Menu, X, PhoneCall, Sparkles, ArrowRight } from "lucide-react";
 
@@ -21,18 +21,28 @@ const NAV = [
 export const Header: React.FC<HeaderProps> = ({ scrolled, onOpenApplyModal }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  useEffect(() => {
+    if (mobileOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [mobileOpen]);
+
   return (
     <>
       {/* Top Gold/Navy Announcement Bar */}
       <div className="relative z-50 w-full bg-[#0B132B] text-white border-b border-[#D4AF37]/20">
-        <div className="mx-auto flex max-w-[1280px] items-center justify-between px-4 py-2 text-[11px] uppercase tracking-[0.16em] sm:px-6">
-          <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap sm:flex-nowrap">
+        <div className="mx-auto flex max-w-[1280px] items-center justify-between px-3 sm:px-6 py-2 text-[10.5px] sm:text-[11px] uppercase tracking-[0.12em] sm:tracking-[0.16em]">
+          <div className="flex items-center gap-2 sm:gap-3 flex-nowrap overflow-hidden">
             <span className="flex h-2 w-2 shrink-0 rounded-full bg-[#D4AF37] animate-ping" />
-            <span className="text-[#D4AF37] font-bold whitespace-nowrap">Est. 2018 AD</span>
+            <span className="text-[#D4AF37] font-bold whitespace-nowrap shrink-0">Est. 2018 AD</span>
             <span className="hidden sm:inline text-white/30">•</span>
             <span className="hidden sm:inline text-white/90 whitespace-nowrap">Birgunj, Nepal</span>
-            <span className="text-white/30">•</span>
-            <span className="font-medium text-white/90 truncate max-w-[260px] sm:max-w-none">Learn. Work. Intern. Earn. Go Global.</span>
+            <span className="text-white/30 shrink-0">•</span>
+            <span className="font-medium text-white/90 truncate">Learn. Work. Intern. Earn. Go Global.</span>
           </div>
           <div className="hidden items-center gap-3 md:flex shrink-0">
             <span className="text-white/70 text-[11px] tracking-widest">Admissions Open 2026</span>
@@ -50,9 +60,9 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, onOpenApplyModal }) =>
       {/* Main Sticky Header */}
       <header className={`sticky top-0 z-40 transition-all duration-300 ${scrolled
           ? "border-b border-[#D4AF37]/25 bg-[#FFFCF6]/95 backdrop-blur-xl py-2.5 shadow-[0_10px_30px_rgba(27,42,74,0.08)]"
-          : "border-b border-[#EDE7DB]/80 bg-[#FFFCF6] py-4"
+          : "border-b border-[#EDE7DB]/80 bg-[#FFFCF6] py-3.5 sm:py-4"
         }`}>
-        <div className="mx-auto flex max-w-[1280px] items-center justify-between px-4 sm:px-6">
+        <div className="mx-auto flex max-w-[1280px] items-center justify-between px-3.5 sm:px-6">
           <NcHMLogo />
 
           {/* Desktop Navigation */}
@@ -72,14 +82,14 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, onOpenApplyModal }) =>
           {/* Action Buttons */}
           <div className="hidden items-center gap-2.5 xl:gap-3 lg:flex shrink-0">
             <button
-              onClick={() => onOpenApplyModal()}
+              onClick={() => onOpenApplyModal("Admissions Counselor Consultation")}
               className="inline-flex items-center gap-2 rounded-full border border-[#1B2A4A]/25 bg-white/80 px-4 py-2 text-[12px] xl:text-[13px] font-semibold text-[#1B2A4A] transition-all hover:border-[#D4AF37] hover:bg-[#FBF6EC] hover:shadow-sm cursor-pointer whitespace-nowrap shrink-0"
             >
               <PhoneCall className="h-3.5 w-3.5 text-[#D4AF37]" />
               <span>Talk to Counselor</span>
             </button>
             <button
-              onClick={() => onOpenApplyModal()}
+              onClick={() => onOpenApplyModal("General Admission 2026")}
               className="inline-flex items-center gap-1.5 rounded-full bg-[#1B2A4A] px-5 py-2 text-[12px] xl:text-[13px] font-semibold text-white shadow-[0_4px_15px_rgba(27,42,74,0.2)] transition-all hover:bg-[#0B132B] hover:shadow-[0_8px_25px_rgba(212,175,55,0.3)] gold-glow-hover cursor-pointer whitespace-nowrap shrink-0"
             >
               <Sparkles className="h-3.5 w-3.5 text-[#D4AF37]" />
@@ -91,7 +101,7 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, onOpenApplyModal }) =>
           <button
             onClick={() => setMobileOpen(v => !v)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#1B2A4A]/20 lg:hidden cursor-pointer hover:bg-[#FBF6EC] transition-colors"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#1B2A4A]/20 lg:hidden cursor-pointer hover:bg-[#FBF6EC] transition-colors shrink-0"
           >
             {mobileOpen ? <X className="h-5 w-5 text-[#1B2A4A]" /> : <Menu className="h-5 w-5 text-[#1B2A4A]" />}
           </button>
@@ -99,7 +109,7 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, onOpenApplyModal }) =>
 
         {/* Mobile Navigation Drawer */}
         {mobileOpen && (
-          <div className="border-t border-[#EDE7DB] bg-[#FFFCF6] px-4 py-6 lg:hidden shadow-2xl animate-in slide-in-from-top-4 duration-200">
+          <div className="border-t border-[#EDE7DB] bg-[#FFFCF6] px-4 py-5 lg:hidden shadow-2xl max-h-[calc(100dvh-75px)] overflow-y-auto overscroll-contain animate-in slide-in-from-top-4 duration-200">
             <div className="grid gap-2">
               {NAV.map(n => (
                 <a
@@ -112,16 +122,16 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, onOpenApplyModal }) =>
                   <ArrowRight className="h-4 w-4 text-[#D4AF37]" />
                 </a>
               ))}
-              <div className="mt-3 grid gap-2 sm:grid-cols-2">
+              <div className="mt-3 grid gap-2 sm:grid-cols-2 pb-6">
                 <button
-                  onClick={() => { setMobileOpen(false); onOpenApplyModal(); }}
+                  onClick={() => { setMobileOpen(false); onOpenApplyModal("Admissions Counselor Consultation"); }}
                   className="flex items-center justify-center gap-2 rounded-full border border-[#1B2A4A]/20 bg-white py-3 text-center text-xs font-bold uppercase tracking-wider text-[#1B2A4A] hover:border-[#D4AF37] cursor-pointer"
                 >
                   <PhoneCall className="h-4 w-4 text-[#D4AF37]" />
                   Talk to Counselor
                 </button>
                 <button
-                  onClick={() => { setMobileOpen(false); onOpenApplyModal(); }}
+                  onClick={() => { setMobileOpen(false); onOpenApplyModal("General Admission 2026"); }}
                   className="flex items-center justify-center gap-2 rounded-full bg-[#1B2A4A] py-3 text-center text-xs font-bold uppercase tracking-wider text-white shadow-md hover:bg-[#0B132B] cursor-pointer"
                 >
                   <Sparkles className="h-4 w-4 text-[#D4AF37]" />

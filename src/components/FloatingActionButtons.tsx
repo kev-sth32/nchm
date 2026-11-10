@@ -21,17 +21,17 @@ export const FloatingActionButtons: React.FC<FloatingActionButtonsProps> = ({ on
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3 pointer-events-auto">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2.5 sm:gap-3 pointer-events-auto">
       {/* Direct WhatsApp FAB */}
       <button
         onClick={openDirectWhatsApp}
         aria-label="Direct Chat on WhatsApp"
         title="Chat live with NcHM Admissions on WhatsApp"
-        className="group relative flex h-13 w-13 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_25px_rgba(37,211,102,0.4)] transition-all duration-300 hover:scale-110 cursor-pointer"
+        className="group relative flex h-11 w-11 sm:h-13 sm:w-13 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_25px_rgba(37,211,102,0.4)] transition-all duration-300 hover:scale-110 cursor-pointer"
       >
         <span className="absolute -inset-1 rounded-full bg-[#25D366]/40 animate-ping pointer-events-none" />
-        <WhatsAppIcon className="h-7 w-7 relative z-10" />
-        <span className="absolute right-15 whitespace-nowrap rounded-lg bg-[#0B132B] px-3 py-1.5 text-[11px] font-bold text-white shadow-xl opacity-0 transition-opacity duration-200 group-hover:opacity-100 border border-[#D4AF37]/30 pointer-events-none hidden sm:block">
+        <WhatsAppIcon className="h-6 w-6 sm:h-7 sm:w-7 relative z-10" />
+        <span className="absolute right-14 whitespace-nowrap rounded-lg bg-[#0B132B] px-3 py-1.5 text-[11px] font-bold text-white shadow-xl opacity-0 transition-opacity duration-200 group-hover:opacity-100 border border-[#D4AF37]/30 pointer-events-none hidden sm:block">
           Chat on WhatsApp 💬
         </span>
       </button>
@@ -40,10 +40,11 @@ export const FloatingActionButtons: React.FC<FloatingActionButtonsProps> = ({ on
       <button
         onClick={() => onOpenApplyModal("General Admission Inquiry")}
         aria-label="Open admission inquiry form"
-        className="group flex h-12 items-center gap-2.5 rounded-full bg-[#1B2A4A] px-5 text-xs font-bold uppercase tracking-wider text-white shadow-[0_8px_25px_rgba(27,42,74,0.3)] border border-[#D4AF37]/40 transition-all duration-300 hover:bg-[#0B132B] hover:scale-105 gold-glow-hover cursor-pointer"
+        title="Apply or Inquire for 2026 Admissions"
+        className="group flex h-11 w-11 sm:h-12 sm:w-auto items-center justify-center sm:justify-start gap-2 sm:gap-2.5 rounded-full bg-[#1B2A4A] p-0 sm:px-5 text-xs font-bold uppercase tracking-wider text-white shadow-[0_8px_25px_rgba(27,42,74,0.35)] border border-[#D4AF37]/50 transition-all duration-300 hover:bg-[#0B132B] hover:scale-105 gold-glow-hover cursor-pointer"
       >
-        <MessageSquare className="h-4 w-4 text-[#D4AF37]" />
-        <span>Apply / Inquire</span>
+        <MessageSquare className="h-5 w-5 sm:h-4 sm:w-4 text-[#D4AF37]" />
+        <span className="hidden sm:inline">Apply / Inquire</span>
       </button>
     </div>
   );

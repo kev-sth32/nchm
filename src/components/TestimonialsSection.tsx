@@ -3,36 +3,44 @@ import { Star, ChevronLeft, ChevronRight, MessageSquare, Plus, Minus, ShieldChec
 
 export const REVIEWS = [
   {
-    name: "Nishant Chaudhary",
-    role: "DHM Graduate • Culinary Commis",
-    badge: "NcHM Alumnus 2023",
-    place: "Internship: 5★ Luxury Hotel, Dubai",
-    review: "NcHM changed my life completely. The 70% practical kitchen labs in Birgunj gave me real hands-on confidence. Within 12 months, I secured a paid culinary placement in Dubai!",
-    avatar: "/nchm/students/nishant-avatar.jpg"
+    name: "Rahul Tamang",
+    role: "NcHM Student • Birgunj",
+    badge: "Verified Google Review • 5.0★",
+    place: "Google Maps Reviewer • 10 Photos",
+    review: "I'm glad that I'm studying at NCHM good educations and practical & support's new experience new journey help full teacher's and good environment's ❤️",
+    avatar: "/nchm/reviews/rahul_tamang.jpg"
   },
   {
-    name: "Ajay Sah Kanu",
-    role: "ADHM Graduate • Hospitality Ops",
-    badge: "NcHM Alumnus 2023",
-    place: "Placement: Luxury Hotel Network, USA",
-    review: "NcHM's international transfer and placement pipeline opened doors for my career in the United States. The practical training prepared me to excel globally!",
-    avatar: "/nchm/students/ajay-avatar.jpg"
+    name: "Aarya Shrestha",
+    role: "NcHM Student • Birgunj",
+    badge: "Verified Google Review • 5.0★",
+    place: "Google Maps Reviewer • 3 Photos",
+    review: "NCHM nepal college of hotel management it is a most reliable and best college .Here,you can get all type of facilities and supportive teachers with friendly environment which is why it make more interesting and fun to learn something new .",
+    avatar: "/nchm/reviews/aarya_shrestha.jpg"
   },
   {
-    name: "Faruk Ansari",
-    role: "DHM Graduate • Food & Beverage",
-    badge: "NcHM Alumnus 2024",
-    place: "Internship: 5★ Hotel, Muscat, Oman",
-    review: "The hands-on hospitality labs and real industry simulation at NcHM Birgunj gave me the international edge. Proud to represent NcHM across luxury hotels in Oman!",
-    avatar: "/nchm/students/faruk-avatar.jpg"
+    name: "Suceela Magar",
+    role: "NcHM Student • Birgunj",
+    badge: "Verified Google Review • 5.0★",
+    place: "Google Maps Reviewer",
+    review: "Our (NCHM) isn’t a college…. It’s A #BRAND and our NCHM provides good education and support to get achievements our goals",
+    avatar: "/nchm/reviews/suceela_magar.jpg"
   },
   {
-    name: "Raju Chaudhary",
-    role: "DHM Graduate • Front Office & Ops",
-    badge: "NcHM Alumnus 2024",
-    place: "Placement: Luxury Resort, Dubai",
-    review: "NcHM's guest relations lab and grooming standards gave me the confidence to handle international luxury guests. Moving from Birgunj to Dubai was a dream come true!",
-    avatar: "/nchm/students/raju-avatar.jpg"
+    name: "Aamir Ansari",
+    role: "Hospitality Industry Reviewer",
+    badge: "Verified Google Review • 5.0★",
+    place: "Birgunj, Murli Bagaicha",
+    review: "The Nepal College of Hotel Management (NCHM) in Birgunj is a compact, career-focused institute that delivers highly practical hospitality training and globally recognized certifications right from its convenient Murli Bagaicha location.",
+    avatar: "/nchm/reviews/aamir_ansari.jpg"
+  },
+  {
+    name: "Chandan Yadav",
+    role: "NcHM Student • Birgunj",
+    badge: "Verified Google Review • 5.0★",
+    place: "Google Maps Reviewer • 2 Photos",
+    review: "The facilities at this college are so good that I cannot describe them in words.",
+    avatar: "/nchm/reviews/chandan_yadav.jpg"
   }
 ];
 
@@ -63,13 +71,13 @@ export const TestimonialsSection: React.FC = () => {
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
 
         {/* Testimonials Block */}
-        <div className="rounded-3xl border border-[#D4AF37]/30 bg-[#1B2A4A] p-8 sm:p-14 text-white shadow-2xl relative overflow-hidden">
+        <div className="rounded-3xl border border-[#D4AF37]/30 bg-[#1B2A4A] p-5 sm:p-10 lg:p-14 text-white shadow-2xl relative overflow-hidden">
           <div className="absolute right-0 top-0 -mt-10 -mr-10 h-80 w-80 rounded-full bg-[#D4AF37]/15 blur-3xl" />
 
           <div className="relative z-10 max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-xs font-bold uppercase tracking-wider text-[#D4AF37]">
               <MessageSquare className="h-3.5 w-3.5" />
-              <span>Alumni Spotlight & Student Reviews</span>
+              <span>Verified Google Reviews • Nepal College of Hotel Management</span>
             </div>
 
             <div className="mt-8 flex justify-center gap-1 text-[#D4AF37]">
@@ -86,7 +94,12 @@ export const TestimonialsSection: React.FC = () => {
               <img
                 src={REVIEWS[currentIdx].avatar}
                 alt={REVIEWS[currentIdx].name}
-                className="h-14 w-14 rounded-full border-2 border-[#D4AF37] object-cover"
+                className="h-14 w-14 rounded-full border-2 border-[#D4AF37] object-cover bg-[#0B132B] shadow-md"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  target.onerror = null;
+                  target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(REVIEWS[currentIdx].name)}&background=D4AF37&color=1B2A4A&bold=true`;
+                }}
               />
               <div className="text-center sm:text-left">
                 <div className="flex items-center justify-center sm:justify-start gap-2">
@@ -131,6 +144,18 @@ export const TestimonialsSection: React.FC = () => {
                 <ChevronRight className="h-4 w-4" />
               </button>
             </div>
+
+            {/* Google Reviews Trust Badge & External Link */}
+            <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="https://maps.app.goo.gl/smSzjGYD5JwTKDfm8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-center justify-center gap-2 rounded-full bg-white/10 px-4 sm:px-6 py-2.5 text-xs font-semibold text-white border border-[#D4AF37]/40 hover:bg-[#D4AF37] hover:text-[#0B132B] transition gold-glow-hover max-w-full"
+              >
+                <span>📍 Verified 5.0★ on Google Maps (9 Reviews) — Read Student Reviews →</span>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -155,14 +180,14 @@ export const TestimonialsSection: React.FC = () => {
                 >
                   <button
                     onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
-                    className="flex w-full items-center justify-between p-5 text-left font-semibold text-[#1B2A4A] hover:bg-[#FBF6EC] transition cursor-pointer"
+                    className="flex w-full items-center justify-between p-4 sm:p-5 text-left font-semibold text-[#1B2A4A] hover:bg-[#FBF6EC] transition cursor-pointer"
                   >
-                    <span className="text-base font-display">{faq.q}</span>
+                    <span className="text-sm sm:text-base font-display pr-2">{faq.q}</span>
                     {isOpen ? <Minus className="h-5 w-5 text-[#D4AF37] shrink-0" /> : <Plus className="h-5 w-5 text-[#1B2A4A] shrink-0" />}
                   </button>
 
                   {isOpen && (
-                    <div className="px-5 pb-5 text-sm text-[#6B6560] leading-relaxed border-t border-[#EDE7DB] pt-3 bg-[#FBF6EC]/30">
+                    <div className="px-4 sm:px-5 pb-5 text-xs sm:text-sm text-[#6B6560] leading-relaxed border-t border-[#EDE7DB] pt-3 bg-[#FBF6EC]/30">
                       {faq.a}
                     </div>
                   )}
