@@ -3,6 +3,7 @@ import { AnimatePresence, m } from "motion/react";
 import { NcHMLogo } from "./NcHMLogo";
 import { Menu, X, PhoneCall, Sparkles, ArrowRight, MapPin } from "lucide-react";
 import { LUXURY_EASE } from "./motion/MotionPrimitives";
+import { SITE_CONFIG } from "../constants/site";
 
 interface HeaderProps {
   scrolled: boolean;
@@ -90,11 +91,11 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, onOpenApplyModal }) =>
 
           <div className="hidden items-center gap-4 md:flex shrink-0">
             <a
-              href="tel:+9779829232426"
+              href={SITE_CONFIG.phoneHref}
               className="inline-flex items-center gap-1.5 text-[10.5px] font-semibold tracking-wider text-white/80 hover:text-[#D4AF37] transition-colors"
             >
               <PhoneCall className="h-3 w-3 text-[#D4AF37]" />
-              <span>+977 9829232426</span>
+              <span>{SITE_CONFIG.phoneDisplay}</span>
             </a>
             <span className="h-3 w-[1px] bg-white/15" />
             <span className="inline-flex items-center gap-1.5 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/15 px-3 py-0.5 text-[10px] font-bold tracking-wider text-[#E8C99A]">

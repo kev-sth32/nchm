@@ -4,7 +4,7 @@ import { Globe, Building2, ChevronRight, Sparkles, MapPin } from "lucide-react";
 import { Interactive3DScene } from "./Interactive3DScene";
 import { LUXURY_EASE, Reveal } from "./motion/MotionPrimitives";
 
-export const DESTINATIONS = [
+const DESTINATIONS = [
   { 
     name: "Dubai", 
     country: "United Arab Emirates (UAE)",

@@ -2,6 +2,7 @@ import React from "react";
 import { NcHMLogo } from "./NcHMLogo";
 import { Phone, Mail, MapPin, Award } from "lucide-react";
 import { Reveal } from "./motion/MotionPrimitives";
+import { SITE_CONFIG, buildWhatsAppUrl } from "../constants/site";
 
 interface FooterProps {
   onOpenApplyModal: (programTitle?: string) => void;
@@ -27,7 +28,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenApplyModal }) => {
                 <span>Est. 2018 AD • Birgunj, Nepal</span>
               </div>
               <a
-                href="https://maps.app.goo.gl/smSzjGYD5JwTKDfm8"
+                href={SITE_CONFIG.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[11px] font-bold text-white border border-[#D4AF37]/30 hover:bg-white/20 transition"
@@ -60,10 +61,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenApplyModal }) => {
               <li className="flex items-start gap-2.5">
                 <MapPin className="h-4 w-4 text-[#D4AF37] shrink-0 mt-0.5" />
                 <div>
-                  <span>Murli Bagaicha-12, Birgunj (Near Birgunj Public College BIM Building)</span>
+                  <span>{SITE_CONFIG.address}</span>
                   <div className="mt-1">
                     <a
-                      href="https://maps.app.goo.gl/smSzjGYD5JwTKDfm8"
+                      href={SITE_CONFIG.googleMapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-[11px] font-bold text-[#D4AF37] hover:underline"
@@ -76,20 +77,20 @@ export const Footer: React.FC<FooterProps> = ({ onOpenApplyModal }) => {
               <li className="flex items-center gap-2.5">
                 <Phone className="h-4 w-4 text-[#D4AF37] shrink-0" />
                 <div className="flex flex-col">
-                  <a href="tel:+9779829232426" className="hover:text-[#D4AF37] transition font-medium">+977 9829232426 / Admissions Cell</a>
+                  <a href={SITE_CONFIG.phoneHref} className="hover:text-[#D4AF37] transition font-medium">{SITE_CONFIG.phoneDisplay} / Admissions Cell</a>
                   <a
-                    href="https://wa.me/9779829232426?text=Hello%20NcHM%2C%20I%20am%20contacting%20you%20from%20the%20website%20and%20would%20like%20to%20inquire%20about%20admissions."
+                    href={buildWhatsAppUrl("Hello NcHM, I am contacting you from the website and would like to inquire about admissions.")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-400 hover:underline mt-0.5"
                   >
-                    <span>💬 Chat on WhatsApp (+977 9829232426)</span>
+                    <span>💬 Chat on WhatsApp ({SITE_CONFIG.phoneDisplay})</span>
                   </a>
                 </div>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 text-[#D4AF37] shrink-0" />
-                <a href="mailto:contact@nchmbirgunj.edu.np" className="hover:text-[#D4AF37] transition">contact@nchmbirgunj.edu.np</a>
+                <a href={SITE_CONFIG.emailHref} className="hover:text-[#D4AF37] transition">{SITE_CONFIG.email}</a>
               </li>
             </ul>
           </div>

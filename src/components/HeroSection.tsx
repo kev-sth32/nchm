@@ -2,6 +2,7 @@ import React from "react";
 import { Award, ChevronRight, GraduationCap, Globe, Briefcase, Star, ShieldCheck } from "lucide-react";
 import { Interactive3DScene } from "./Interactive3DScene";
 import { Reveal } from "./motion/MotionPrimitives";
+import { SITE_CONFIG } from "../constants/site";
 
 interface HeroSectionProps {
   onOpenApplyModal: (programTitle?: string) => void;
@@ -83,7 +84,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenApplyModal }) =>
               </div>
               <div>
                 <a
-                  href="https://maps.app.goo.gl/smSzjGYD5JwTKDfm8"
+                  href={SITE_CONFIG.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-1 text-[#D4AF37]"

@@ -5,9 +5,9 @@ import { m, useInView, useReducedMotion, useScroll, useSpring } from "motion/rea
 export const LUXURY_EASE = [0.22, 1, 0.36, 1] as const;
 
 /** Bidirectional viewport trigger so elements animate on both scroll-down and scroll-up. */
-export const VIEWPORT_BIDIRECTIONAL = { once: false, amount: 0.06 } as const;
+const VIEWPORT_BIDIRECTIONAL = { once: false, amount: 0.06 } as const;
 
-export type ScrollDirection = "down" | "up";
+type ScrollDirection = "down" | "up";
 
 // Shared passive scroll-direction tracker (single window listener across all primitives)
 let _currentDirection: ScrollDirection = "down";
@@ -30,7 +30,7 @@ function handleGlobalScroll() {
 /**
  * Subscribes to the shared page scroll direction ("down" | "up") using a single passive listener.
  */
-export function useScrollDirection(): ScrollDirection {
+function useScrollDirection(): ScrollDirection {
   const [dir, setDir] = useState<ScrollDirection>(_currentDirection);
 
   useEffect(() => {

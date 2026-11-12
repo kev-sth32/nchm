@@ -66,27 +66,15 @@ body {
 ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 999px; }
 ::-webkit-scrollbar-track { background: #FBF6EC; }
 
-/* Liquid Glass Utilities */
-.glass-card {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  box-shadow: 0 10px 30px rgba(27, 42, 74, 0.05);
+/* Hide scrollbars cleanly for horizontal swipe decks & tab strips */
+.no-scrollbar,
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-
-.glass-card-dark {
-  background: rgba(11, 19, 43, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-}
-
-.glass-header {
-  background: rgba(255, 252, 246, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 .gold-glow {
@@ -109,14 +97,6 @@ body {
   -webkit-text-fill-color: transparent;
   display: inline-block;
   padding-right: 0.08em;
-}
-
-.text-gradient-navy {
-  background: linear-gradient(135deg, #1B2A4A 0%, #0B132B 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
 }
 
 /* Custom Grain Overlay */

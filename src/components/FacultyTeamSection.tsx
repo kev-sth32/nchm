@@ -2,64 +2,52 @@ import React from "react";
 import { User } from "lucide-react";
 import { Reveal, StaggerGrid, StaggerItem } from "./motion/MotionPrimitives";
 
-export const TEAM_MEMBERS = [
+const TEAM_MEMBERS = [
   {
     name: "Brij Sarraf",
     role: "Managing Director",
-    category: "Leadership",
     img: "/images/team/brij-sarraf.png",
     experience: "13+ Yrs Exp",
-    badge: "Director",
     desc: "An IHM Pusa alumni driving our institutional vision, backed by extensive experience in both the premium hotel industry and academic governance.",
     highlights: ["IHM Pusa Alumni", "Academic Leadership", "Industry Expert"]
   },
   {
     name: "Tej Prasad Pandey",
     role: "Food Production Instructor",
-    category: "Faculty",
     img: "/images/team/Tej prasad Pandey final.png",
     experience: "22+ Yrs Exp",
-    badge: "Executive Chef",
     desc: "Executive Chef at Hotel Siddhartha Diyalo with a global culinary footprint spanning Italy, Dubai, and Kuwait, bringing world-class kitchen expertise.",
     highlights: ["Global Experience", "Executive Chef", "Culinary Arts"]
   },
   {
     name: "Hariom Chaurasia",
     role: "Front Office Instructor",
-    category: "Faculty",
     img: "/images/team/hariom-chaurasia.jpg",
     experience: "5+ Yrs Exp",
-    badge: "Front Office Manager",
     desc: "Front Office Manager at Hotel Siddhartha Diyalo with a BHM from Bangalore, specializing in guest relations and modern hotel operations.",
     highlights: ["BHM Graduate", "Guest Relations", "Hotel Operations"]
   },
   {
     name: "Urusha Shrestha",
     role: "F&B Service Instructor",
-    category: "Faculty",
     img: "/images/team/Urusha shrestha.png",
     experience: "5+ Yrs Exp",
-    badge: "F&B Supervisor",
     desc: "F&B Supervisor at Sarovar Portico with international hospitality training, dedicated to instilling premium service standards and dining etiquette.",
     highlights: ["F&B Operations", "Service Etiquette", "Industry Active"]
   },
   {
     name: "Asmita Shrestha",
     role: "Academic Instructor",
-    category: "Faculty",
     img: "/images/team/Asmita Shrestha FINAL.png",
     experience: "4+ Yrs Exp",
-    badge: "Academic Lead",
     desc: "A dedicated academic professional with a strong educational foundation in Nepal, focusing on comprehensive student development and curriculum delivery.",
     highlights: ["Student Development", "Curriculum Expert", "Academic Focus"]
   },
   {
     name: "Umesh Kumar Kushwaha",
     role: "English & Communication Faculty",
-    category: "Faculty",
     img: "/images/team/Umesh Kumar kushwaha final.png",
     experience: "6+ Yrs Exp",
-    badge: "Language Expert",
     desc: "An experienced Government English Teacher bringing years of expertise in enhancing students' professional communication and language proficiency.",
     highlights: ["Business English", "Communication", "Language Training"]
   }

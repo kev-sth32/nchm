@@ -2,8 +2,7 @@ import React from "react";
 import { m } from "motion/react";
 import { MessageSquare } from "lucide-react";
 import { LUXURY_EASE } from "./motion/MotionPrimitives";
-
-export const WHATSAPP_NUMBER = "9779829232426";
+import { buildWhatsAppUrl } from "../constants/site";
 
 const WhatsAppIcon = ({ className = "h-5 w-5" }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -18,7 +17,7 @@ interface FloatingActionButtonsProps {
 
 export const FloatingActionButtons: React.FC<FloatingActionButtonsProps> = ({ onOpenApplyModal }) => {
   const openDirectWhatsApp = () => {
-    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello NcHM Admissions Team! I am interested in learning more about Hotel Management programs, admissions, and paid international placements.")}`;
+    const waUrl = buildWhatsAppUrl("Hello NcHM Admissions Team! I am interested in learning more about Hotel Management programs, admissions, and paid international placements.");
     window.open(waUrl, "_blank");
   };
 

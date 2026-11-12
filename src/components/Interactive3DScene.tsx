@@ -20,14 +20,14 @@ function latLngToVector3(lat: number, lng: number, radius: number): THREE.Vector
   return new THREE.Vector3(x, y, z);
 }
 
-export interface CityPin {
+interface CityPin {
   name: string;
   lat: number;
   lng: number;
   isCapital?: boolean;
 }
 
-export interface DestinationHub {
+interface DestinationHub {
   name: string;
   country: string;
   flag: string;
@@ -36,7 +36,7 @@ export interface DestinationHub {
   cities: CityPin[];
 }
 
-export const DESTINATION_HUBS: DestinationHub[] = [
+const DESTINATION_HUBS: DestinationHub[] = [
   {
     name: "Nepal",
     country: "Federal Democratic Republic of Nepal",
@@ -310,10 +310,8 @@ function createWorldMapCanvas(isMobile = false): HTMLCanvasElement {
 }
 
 export function Interactive3DScene({
-  mode = "absolute",
   activeDestName = "Dubai",
 }: {
-  mode?: "absolute" | "fill" | "hero";
   activeDestName?: string;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -375,9 +373,6 @@ export function Interactive3DScene({
 
     // Main Globe Group
     const group = new THREE.Group();
-    if (mode === "hero" && container.clientWidth > 768) {
-      group.position.x = 1.2;
-    }
     scene.add(group);
 
     // 1. High-Resolution Earth Globe with Map Texture
@@ -668,10 +663,6 @@ export function Interactive3DScene({
       if (w === 0 || h === 0) return;
 
       updateCameraDistance(w, h);
-
-      if (mode === "hero") {
-        group.position.x = w > 768 ? 1.2 : 0;
-      }
     });
     resizeObserver.observe(container);
 
@@ -822,13 +813,8 @@ export function Interactive3DScene({
 
       renderer.dispose();
     };
-  }, [mode]);
+  }, []);
 
-  const cls =
-    mode === "absolute" || mode === "hero"
-      ? "absolute inset-0 h-full w-full pointer-events-[auto]"
-      : "relative h-full w-full pointer-events-[auto]";
-
-  return <div ref={containerRef} className={cls} />;
+  return <div ref={containerRef} className="absolute inset-0 h-full w-full pointer-events-[auto]" />;
 }
 

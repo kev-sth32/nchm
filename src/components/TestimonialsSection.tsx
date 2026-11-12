@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { AnimatePresence, m } from "motion/react";
 import { Star, ChevronLeft, ChevronRight, MessageSquare, Plus, Minus, ShieldCheck } from "lucide-react";
 import { LUXURY_EASE, Reveal } from "./motion/MotionPrimitives";
+import { SITE_CONFIG } from "../constants/site";
 
-export const REVIEWS = [
+const REVIEWS = [
   {
     name: "Rahul Tamang",
     role: "NcHM Student • Birgunj",
@@ -46,7 +47,7 @@ export const REVIEWS = [
   }
 ];
 
-export const FAQS = [
+const FAQS = [
   { q: "What is the minimum qualification?", a: "SLC / SEE or equivalent with minimum 1.6 GPA. We welcome career-switchers passionate about hospitality." },
   { q: "Does NcHM provide hostel facilities?", a: "No hostel facility available. NcHM currently does not provide on-campus hostel. Students can independently arrange accommodation near the college in Birgunj." },
   { q: "Are international internships available?", a: "Yes. 6-month internships in China, Mauritius, Dubai, Kuwait, Nepal, India for Diploma & ADHM programs, subject to eligibility and visa." },
@@ -160,7 +161,7 @@ export const TestimonialsSection: React.FC = () => {
             {/* Google Reviews Trust Badge & External Link */}
             <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-center gap-4">
               <a
-                href="https://maps.app.goo.gl/smSzjGYD5JwTKDfm8"
+                href={SITE_CONFIG.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-center justify-center gap-2 rounded-full bg-white/10 px-4 sm:px-6 py-2.5 text-xs font-semibold text-white border border-[#D4AF37]/40 hover:bg-[#D4AF37] hover:text-[#0B132B] transition gold-glow-hover max-w-full"

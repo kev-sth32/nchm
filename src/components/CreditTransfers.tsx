@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { ArrowRight, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal } from "./motion/MotionPrimitives";
 
-export const BACHELOR = [
+const BACHELOR = [
   { country: "Canada", flag: "🇨🇦", city: "Toronto, Vancouver", transferLabel: "2nd Year Bachelor Credit Transfer", desc: "Lateral entry into 2nd year Hospitality & Tourism Bachelor degree programs." },
   { country: "USA", flag: "🇺🇸", city: "Multiple States", transferLabel: "2nd Year Bachelor Credit Transfer", desc: "Full credit recognition for ADHM modules for 2nd year Bachelor entry." },
   { country: "Switzerland", flag: "🇨🇭", city: "Hospitality Capital", transferLabel: "2nd Year Bachelor Credit Transfer", desc: "Top European hospitality academy 2nd year Bachelor credit transfer." },
@@ -90,8 +90,7 @@ export const CreditTransfers: React.FC<CreditTransfersProps> = ({ onOpenApplyMod
             <div
               ref={scrollRef}
               onScroll={handleScroll}
-              className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 no-scrollbar scroll-smooth"
-              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+              className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-4 no-scrollbar scroll-smooth"
             >
               {BACHELOR.map((b) => (
                 <div

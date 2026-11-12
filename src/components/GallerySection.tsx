@@ -2,8 +2,9 @@ import React, { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, m } from "motion/react";
 import { Maximize2, X, ChevronLeft, ChevronRight, Award, Sparkles, Eye } from "lucide-react";
 import { LUXURY_EASE, Reveal } from "./motion/MotionPrimitives";
+import { buildWhatsAppUrl } from "../constants/site";
 
-export interface GalleryItem {
+interface GalleryItem {
   id: number;
   cat: string;
   img: string;
@@ -11,7 +12,7 @@ export interface GalleryItem {
   desc: string;
 }
 
-export const GALLERY: GalleryItem[] = [
+const GALLERY: GalleryItem[] = [
   // 1. Culinary Arts (All Ultra-HD 2400x1600 Raw/HDR)
   {
     id: 1,
@@ -382,7 +383,7 @@ export const GallerySection: React.FC = () => {
             </div>
           </div>
           <a
-            href="https://wa.me/9779829232426?text=Hello%20NcHM%2C%20I%20would%20like%20to%20schedule%20a%20campus%20tour%20and%20see%20the%20practical%20labs."
+            href={buildWhatsAppUrl("Hello NcHM, I would like to schedule a campus tour and see the practical labs.")}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-gold-sheen w-full sm:w-auto text-center shrink-0 rounded-full bg-[#D4AF37] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] transition gold-glow-hover active:scale-[0.98]"

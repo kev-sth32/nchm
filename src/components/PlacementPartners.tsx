@@ -2,13 +2,13 @@ import React from "react";
 import { Briefcase } from "lucide-react";
 import { Reveal, StaggerGrid, StaggerItem } from "./motion/MotionPrimitives";
 
-export const HOTELS = [
+const HOTELS = [
   { name: "Siddhartha Diyalo", loc: "Birgunj", stars: "★★★★", img: "https://hoteldiyalo.com.np/wp-content/uploads/2025/06/Hotel-Diyalo-Banner-Birgunj-image-1-scaled.webp" },
   { name: "Clark Resort", loc: "Birgunj", stars: "★★★★", img: "https://clarksresortnepal.com/wp-content/uploads/2023/07/IMG_7805-1-scaled.jpg" },
   { name: "Sarovar Portico", loc: "Birgunj", stars: "★★★★", img: "/sarovar-birgunj.png" },
 ];
 
-export const PLACEMENTS = ["Dubai", "Romania", "USA", "Canada", "Bangkok / Thailand", "Birgunj", "Pokhara", "Kathmandu"];
+const PLACEMENTS = ["Dubai", "Romania", "USA", "Canada", "Bangkok / Thailand", "Birgunj", "Pokhara", "Kathmandu"];
 
 export const PlacementPartners: React.FC = () => {
   return (

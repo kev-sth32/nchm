@@ -2,7 +2,7 @@ import React from "react";
 import { Award, Star, ShieldCheck } from "lucide-react";
 import { Reveal, StaggerGrid, StaggerItem } from "./motion/MotionPrimitives";
 
-export const STUDENT_SPOTLIGHTS = [
+const STUDENT_SPOTLIGHTS = [
   {
     name: "Nishant Chaudhary",
     course: "Diploma in Hospitality Management (DHM)",

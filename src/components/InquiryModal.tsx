@@ -3,8 +3,8 @@ import { AnimatePresence, m } from "motion/react";
 import { X, CheckCircle2, MessageSquare } from "lucide-react";
 import { LUXURY_EASE } from "./motion/MotionPrimitives";
 import { PROGRAMS } from "./ProgramsSection";
+import { SITE_CONFIG, buildWhatsAppUrl } from "../constants/site";
 
-const WHATSAPP_NUMBER = "9779829232426";
 const GENERAL_GUIDANCE_OPTION = "Not Sure Yet — Need Counselor Guidance";
 
 function resolveCourseFromProgram(program: string): string {
@@ -82,7 +82,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, selectedProg
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const messageText = getWhatsAppMessage();
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(messageText)}`;
+    const url = buildWhatsAppUrl(messageText);
     setWaUrl(url);
     setFormSubmitted(true);
     window.open(url, "_blank");
@@ -141,7 +141,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, selectedProg
               <div>
                 <h4 className="text-2xl font-display font-bold text-[#1B2A4A]">Inquiry Dispatched to WhatsApp!</h4>
                 <p className="mt-2 text-sm text-[#6B6560] max-w-sm mx-auto">
-                  Your admission inquiry for <strong className="text-[#1B2A4A]">{selectedCourse || selectedProgram}</strong> has been routed directly to our admissions officer at <strong className="text-[#1B2A4A]">+977 9829232426</strong>.
+                  Your admission inquiry for <strong className="text-[#1B2A4A]">{selectedCourse || selectedProgram}</strong> has been routed directly to our admissions officer at <strong className="text-[#1B2A4A]">{SITE_CONFIG.phoneDisplay}</strong>.
                 </p>
               </div>
 
@@ -158,10 +158,10 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, selectedProg
 
               <div className="pt-1">
                 <a
-                  href="tel:+9779829232426"
+                  href={SITE_CONFIG.phoneHref}
                   className="text-xs font-semibold text-[#1B2A4A] hover:text-[#D4AF37] transition inline-flex items-center gap-1"
                 >
-                  <span>Prefer a direct phone call? Dial +977 9829232426</span>
+                  <span>Prefer a direct phone call? Dial {SITE_CONFIG.phoneDisplay}</span>
                 </a>
               </div>
 

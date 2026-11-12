@@ -16,8 +16,6 @@ export const PROGRAMS = [
     places: "China • Mauritius • Dubai • Kuwait • Nepal • India",
     points: ["Hotel operations & guest relations", "F&B service & banquet management", "Front office & housekeeping mastery", "Paid 6-month international internship"],
     img: "/nchm/06_1726158849679.jpg",
-    color: "from-[#FBF6EC] to-white",
-    accent: "bg-[#D4AF37]",
   },
   {
     id: "adhm",
@@ -27,9 +25,6 @@ export const PROGRAMS = [
     places: "China • Mauritius • Dubai • Kuwait • Nepal • India",
     points: ["Leadership & hospitality supervision", "Strategic revenue & resort management", "2nd Year Bachelor credit transfer pathway", "100% career placement guarantee"],
     img: "/nchm/48_IMG20260809141153.jpg",
-    color: "from-[#1B2A4A] to-[#111827]",
-    accent: "bg-[#D4AF37]",
-    dark: true,
   },
   {
     id: "barista",
@@ -45,8 +40,6 @@ export const PROGRAMS = [
       "Placement support in top cafés in Nepal, Dubai & Gulf"
     ],
     img: "/nchm/05_1726158849260.jpg",
-    color: "from-[#FBF6EC] to-white",
-    accent: "bg-[#D4AF37]",
   },
   {
     id: "kitchen-short",
@@ -56,8 +49,6 @@ export const PROGRAMS = [
     places: "NcHM Commercial Kitchen Labs",
     points: ["Fast-food processing & prep techniques", "Basic kitchen safety & knife handling", "Short-order cooking & food hygiene", "Commercial kitchen operations"],
     img: "/nchm/07_1726158849714.jpg",
-    color: "from-[#FBF6EC] to-[#EDE7DB]",
-    accent: "bg-[#1B2A4A]",
   },
 ];
 
