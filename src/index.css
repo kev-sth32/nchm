@@ -40,12 +40,13 @@ h1, h2, .font-display {
 
 html { 
   scroll-behavior: smooth; 
+  overflow-x: clip;
 }
 
 body {
   background: var(--color-bg-paper);
   color: #121212;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -122,4 +123,15 @@ body {
 .grain {
   background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes shimmer {
+  0% { transform: scaleX(0); opacity: 0.4; }
+  50% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(0); transform-origin: right; opacity: 0.4; }
 }

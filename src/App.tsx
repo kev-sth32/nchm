@@ -47,7 +47,7 @@ export default function App() {
     return (
       <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#FFFCF6] px-4 text-center">
         <div className="relative flex flex-col items-center">
-          <div className="absolute -inset-16 rounded-full bg-[#D4AF37]/15 blur-2xl animate-pulse" />
+          <div className="pointer-events-none absolute -inset-16 rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.22)_0%,transparent_70%)] animate-pulse" />
           <div className="animate-[float_2s_ease-in-out_infinite]">
             <NcHMLogo size="hero" />
           </div>
@@ -61,7 +61,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FFFCF6] text-[#1B2A4A] relative">
+    <div className="min-h-screen bg-[#FFFCF6] text-[#1B2A4A] relative overflow-x-clip">
       {/* Header & Sticky Navbar */}
       <Header scrolled={scrolled} onOpenApplyModal={handleOpenApplyModal} />
 

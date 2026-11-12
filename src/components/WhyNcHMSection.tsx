@@ -79,7 +79,7 @@ const DESTINATIONS = [
 
 export const WhyNcHMSection: React.FC<WhyNcHMSectionProps> = ({ onOpenApplyModal }) => {
   return (
-    <section id="about" className="relative py-20 lg:py-28 bg-[#FFFCF6] border-b border-[#EDE7DB] overflow-hidden">
+    <section id="about" className="relative py-20 lg:py-28 bg-[#FFFCF6] border-b border-[#EDE7DB] overflow-x-clip">
       {/* Decorative Subtle Background Gradients */}
       <div className="absolute left-1/2 top-0 -z-10 h-[500px] w-full -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,rgba(212,175,55,0.06),transparent_70%)] pointer-events-none" />
 
@@ -166,8 +166,8 @@ export const WhyNcHMSection: React.FC<WhyNcHMSectionProps> = ({ onOpenApplyModal
         {/* Featured 7th Pillar Banner Card: Bachelor Credit Transfer Pathways */}
         <div className="mt-8 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0B132B] via-[#1B2A4A] to-[#0B132B] text-white p-6 sm:p-10 lg:p-12 border border-[#D4AF37]/40 shadow-2xl">
           {/* Subtle Background Glow */}
-          <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-[#D4AF37]/10 blur-3xl pointer-events-none" />
-          <div className="absolute left-0 bottom-0 h-64 w-64 rounded-full bg-[#D4AF37]/5 blur-2xl pointer-events-none" />
+          <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.14)_0%,transparent_70%)] pointer-events-none" />
+          <div className="absolute left-0 bottom-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.08)_0%,transparent_70%)] pointer-events-none" />
 
           <div className="relative z-10 grid gap-8 lg:grid-cols-12 lg:items-center">
             {/* Left Content Column */}

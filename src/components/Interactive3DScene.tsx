@@ -108,11 +108,11 @@ export const DESTINATION_HUBS: DestinationHub[] = [
   },
 ];
 
-// Helper: Programmatically generate ultra-crisp 2048x1024 Equirectangular World Map Canvas
-function createWorldMapCanvas(): HTMLCanvasElement {
+// Helper: Programmatically generate Equirectangular World Map Canvas (1024x512 on mobile to preserve GPU memory)
+function createWorldMapCanvas(isMobile = false): HTMLCanvasElement {
   const canvas = document.createElement("canvas");
-  canvas.width = 2048;
-  canvas.height = 1024;
+  canvas.width = isMobile ? 1024 : 2048;
+  canvas.height = isMobile ? 512 : 1024;
   const ctx = canvas.getContext("2d");
   if (!ctx) return canvas;
 
@@ -292,15 +292,17 @@ function createWorldMapCanvas(): HTMLCanvasElement {
     [-23.5505, -46.6333, 8],// Sao Paulo
   ];
 
+  const scaleFactor = w / 2048;
   cityLights.forEach(([lat, lng, rad]) => {
     const [cx, cy] = toXY(lat, lng);
-    const radGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad * 2);
+    const scaledRad = rad * 2 * scaleFactor;
+    const radGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, scaledRad);
     radGrad.addColorStop(0, "rgba(255, 235, 150, 1)");
     radGrad.addColorStop(0.4, "rgba(212, 175, 55, 0.7)");
     radGrad.addColorStop(1, "rgba(212, 175, 55, 0)");
     ctx.fillStyle = radGrad;
     ctx.beginPath();
-    ctx.arc(cx, cy, rad * 2, 0, Math.PI * 2);
+    ctx.arc(cx, cy, scaledRad, 0, Math.PI * 2);
     ctx.fill();
   });
 
@@ -341,10 +343,19 @@ export function Interactive3DScene({
     );
     camera.position.z = 7;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+    const isMobile = window.innerWidth < 768;
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "default" });
+    renderer.setClearColor(0x000000, 0);
     renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, window.innerWidth < 768 ? 1.5 : 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
+    renderer.domElement.style.display = "block";
+    renderer.domElement.style.background = "transparent";
     container.appendChild(renderer.domElement);
+
+    const handleContextLost = (e: Event) => {
+      e.preventDefault();
+    };
+    renderer.domElement.addEventListener("webglcontextlost", handleContextLost, false);
 
     // Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 1.8);
@@ -371,7 +382,7 @@ export function Interactive3DScene({
 
     // 1. High-Resolution Earth Globe with Map Texture
     const globeRadius = 1.95;
-    const mapCanvas = createWorldMapCanvas();
+    const mapCanvas = createWorldMapCanvas(isMobile);
     const mapTexture = new THREE.CanvasTexture(mapCanvas);
     mapTexture.wrapS = THREE.RepeatWrapping;
     mapTexture.wrapT = THREE.ClampToEdgeWrapping;
@@ -676,12 +687,12 @@ export function Interactive3DScene({
 
     // Animation loop
     let animId = 0;
-    const clock = new THREE.Clock();
+    const startTime = performance.now();
 
     const animate = () => {
       animId = requestAnimationFrame(animate);
       if (!isVisible) return;
-      const elapsedTime = clock.getElapsedTime();
+      const elapsedTime = (performance.now() - startTime) / 1000;
       const currentActiveName = activeDestRef.current;
 
       const destTarget = DESTINATION_HUBS.find(
@@ -777,6 +788,7 @@ export function Interactive3DScene({
       window.removeEventListener("mouseup", onMouseUp);
 
       domElem.removeEventListener("touchstart", onTouchStart);
+      domElem.removeEventListener("webglcontextlost", handleContextLost);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("touchend", onTouchEnd);
 

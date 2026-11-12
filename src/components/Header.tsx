@@ -36,8 +36,11 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, onOpenApplyModal }) =>
       {/* Top Gold/Navy Announcement Bar */}
       <div className="relative z-50 w-full bg-[#0B132B] text-white border-b border-[#D4AF37]/20">
         <div className="mx-auto flex max-w-[1280px] items-center justify-between px-3 sm:px-6 py-2 text-[10.5px] sm:text-[11px] uppercase tracking-[0.12em] sm:tracking-[0.16em]">
-          <div className="flex items-center gap-2 sm:gap-3 flex-nowrap overflow-hidden">
-            <span className="flex h-2 w-2 shrink-0 rounded-full bg-[#D4AF37] animate-ping" />
+          <div className="flex min-w-0 items-center gap-2 sm:gap-3 flex-nowrap">
+            <span className="relative flex h-3 w-3 shrink-0 items-center justify-center">
+              <span className="absolute inline-flex h-2.5 w-2.5 rounded-full bg-[#D4AF37] opacity-75 animate-ping" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#D4AF37]" />
+            </span>
             <span className="text-[#D4AF37] font-bold whitespace-nowrap shrink-0">Est. 2018 AD</span>
             <span className="hidden sm:inline text-white/30">•</span>
             <span className="hidden sm:inline text-white/90 whitespace-nowrap">Birgunj, Nepal</span>
@@ -58,8 +61,8 @@ export const Header: React.FC<HeaderProps> = ({ scrolled, onOpenApplyModal }) =>
       </div>
 
       {/* Main Sticky Header */}
-      <header className={`sticky top-0 z-40 transition-all duration-300 ${scrolled
-          ? "border-b border-[#D4AF37]/25 bg-[#FFFCF6]/95 backdrop-blur-xl py-2.5 shadow-[0_10px_30px_rgba(27,42,74,0.08)]"
+      <header className={`sticky top-0 z-40 transform-gpu transition-all duration-300 ${scrolled
+          ? "border-b border-[#D4AF37]/25 bg-[#FFFCF6]/98 sm:bg-[#FFFCF6]/95 sm:backdrop-blur-xl py-2.5 shadow-[0_10px_30px_rgba(27,42,74,0.08)]"
           : "border-b border-[#EDE7DB]/80 bg-[#FFFCF6] py-3.5 sm:py-4"
         }`}>
         <div className="mx-auto flex max-w-[1280px] items-center justify-between px-3.5 sm:px-6">

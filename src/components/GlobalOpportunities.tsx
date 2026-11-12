@@ -89,8 +89,8 @@ export const GlobalOpportunities: React.FC<GlobalOpportunitiesProps> = ({ onOpen
         <div className="mt-12 overflow-hidden rounded-3xl border border-[#D4AF37]/40 bg-[#0B132B] text-white shadow-2xl relative">
           
           {/* Ambient Glows */}
-          <div className="absolute top-0 left-1/4 -mt-20 h-96 w-96 rounded-full bg-[#D4AF37]/10 blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 right-0 -mb-20 h-96 w-96 rounded-full bg-[#1B2A4A]/40 blur-3xl pointer-events-none" />
+          <div className="absolute top-0 left-1/4 -mt-20 h-96 w-96 rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.12)_0%,transparent_70%)] pointer-events-none" />
+          <div className="absolute bottom-0 right-0 -mb-20 h-96 w-96 rounded-full bg-[radial-gradient(circle,rgba(27,42,74,0.45)_0%,transparent_70%)] pointer-events-none" />
 
           <div className="relative z-10 grid lg:grid-cols-12 items-stretch min-h-[580px]">
             
@@ -99,8 +99,11 @@ export const GlobalOpportunities: React.FC<GlobalOpportunitiesProps> = ({ onOpen
               
               {/* Globe Header Badge */}
               <div className="flex items-center justify-between gap-2 z-10">
-                <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md px-3.5 py-1.5 text-xs font-semibold text-[#D4AF37] border border-[#D4AF37]/30">
-                  <span className="flex h-2 w-2 rounded-full bg-[#D4AF37] animate-ping" />
+                <div className="inline-flex items-center gap-2 rounded-full bg-[#1B2A4A]/90 sm:bg-white/10 sm:backdrop-blur-md px-3.5 py-1.5 text-xs font-semibold text-[#D4AF37] border border-[#D4AF37]/30">
+                  <span className="relative flex h-2.5 w-2.5 items-center justify-center shrink-0">
+                    <span className="absolute inline-flex h-2 w-2 rounded-full bg-[#D4AF37] opacity-75 animate-ping" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#D4AF37]" />
+                  </span>
                   <span>3D Map Pinpoint: <strong className="text-white ml-1">{activeDest.flag} {activeDest.name}</strong></span>
                 </div>
                 <div className="text-[11px] text-white/50 hidden sm:block">
@@ -109,7 +112,7 @@ export const GlobalOpportunities: React.FC<GlobalOpportunitiesProps> = ({ onOpen
               </div>
 
               {/* 3D Canvas Container passing activeDestName */}
-              <div className="relative my-4 h-[360px] sm:h-[420px] lg:h-[460px] w-full rounded-2xl overflow-hidden">
+              <div className="relative isolate transform-gpu my-4 h-[360px] sm:h-[420px] lg:h-[460px] w-full rounded-2xl overflow-hidden">
                 <Interactive3DScene activeDestName={activeDestName} />
               </div>
 

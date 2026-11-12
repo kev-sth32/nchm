@@ -15,17 +15,19 @@ const HERO_AVATARS = [
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenApplyModal }) => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#FFFCF6] via-[#FBF6EC]/50 to-[#FFFCF6] py-12 lg:py-20 grain border-b border-[#EDE7DB]">
-      <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
+    <section className="relative overflow-x-clip bg-gradient-to-b from-[#FFFCF6] via-[#FBF6EC]/50 to-[#FFFCF6] py-12 lg:py-20 border-b border-[#EDE7DB]">
+      {/* Subtle Gold Dot Pattern Layer */}
+      <div className="pointer-events-none absolute inset-0 grain" aria-hidden="true" />
+      <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
 
           {/* Left Column: Headline & Value Proposition */}
           <div className="lg:col-span-7">
             {/* Accreditation Badge */}
-            <div className="inline-flex flex-wrap items-center gap-2 rounded-full border border-[#D4AF37]/30 bg-[#FBF6EC] px-4 py-1.5 text-[12px] font-semibold text-[#1B2A4A] shadow-sm mb-6">
-              <Award className="h-4 w-4 text-[#D4AF37]" />
+            <div className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-2xl sm:rounded-full border border-[#D4AF37]/30 bg-[#FBF6EC] px-3.5 sm:px-4 py-2 sm:py-1.5 text-[12px] font-semibold text-[#1B2A4A] shadow-sm mb-6">
+              <Award className="h-4 w-4 text-[#D4AF37] shrink-0" />
               <span>SQA Scotland & LCCI GQ Quality Assured</span>
-              <span className="h-1.5 w-1.5 rounded-full bg-[#D4AF37]" />
+              <span className="hidden sm:inline-block h-1.5 w-1.5 rounded-full bg-[#D4AF37]" />
               <span className="text-[#6B6560]">Est. 2018 AD • Birgunj, Nepal</span>
             </div>
 
@@ -54,7 +56,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenApplyModal }) =>
               </button>
               <a
                 href="#programs"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#1B2A4A]/20 bg-white/80 backdrop-blur-sm px-6 py-4 text-sm font-semibold text-[#1B2A4A] transition hover:border-[#D4AF37] hover:bg-[#FBF6EC] cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#1B2A4A]/20 bg-white/95 px-6 py-4 text-sm font-semibold text-[#1B2A4A] transition hover:border-[#D4AF37] hover:bg-[#FBF6EC] cursor-pointer"
               >
                 <span>Explore Programs</span>
               </a>
@@ -163,17 +165,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenApplyModal }) =>
                 </div>
               </div>
 
-              {/* Glass Backdrop Ambient Glow */}
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#D4AF37]/20 to-[#1B2A4A]/10 blur-2xl opacity-70" />
+              {/* Ambient Glow (lightweight radial gradient avoids iOS WebKit blur layer issues) */}
+              <div className="pointer-events-none absolute -inset-4 rounded-3xl bg-[radial-gradient(circle,rgba(212,175,55,0.22)_0%,transparent_72%)]" />
 
               {/* Interactive 3D Canvas Box */}
-              <div className="relative rounded-3xl border border-[#D4AF37]/30 bg-white/80 backdrop-blur-md p-3 shadow-2xl overflow-hidden">
-                <div className="relative h-[380px] sm:h-[420px] w-full rounded-2xl overflow-hidden bg-gradient-to-b from-[#1B2A4A] to-[#0B132B]">
+              <div className="relative rounded-3xl border border-[#D4AF37]/30 bg-white/95 p-3 shadow-2xl">
+                <div className="relative isolate transform-gpu h-[380px] sm:h-[420px] w-full rounded-2xl overflow-hidden bg-gradient-to-b from-[#1B2A4A] to-[#0B132B]">
                   <Interactive3DScene />
                 </div>
 
                 {/* Overlay Badge */}
-                <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 rounded-2xl bg-[#0B132B]/90 backdrop-blur-md border border-[#D4AF37]/40 p-3 sm:p-4 text-white shadow-xl">
+                <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 rounded-2xl bg-[#0B132B]/95 sm:bg-[#0B132B]/90 sm:backdrop-blur-md border border-[#D4AF37]/40 p-3 sm:p-4 text-white shadow-xl">
                   <div className="flex items-center justify-between gap-2">
                     <div>
                       <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#D4AF37]">Nepal College of Hotel Management</div>
