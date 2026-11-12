@@ -1,5 +1,6 @@
 import React from "react";
 import { Award, Star, ShieldCheck } from "lucide-react";
+import { Reveal, StaggerGrid, StaggerItem } from "./motion/MotionPrimitives";
 
 export const STUDENT_SPOTLIGHTS = [
   {
@@ -50,11 +51,11 @@ interface StudentSpotlightProps {
 
 export const StudentSpotlight: React.FC<StudentSpotlightProps> = ({ onOpenApplyModal }) => {
   return (
-    <section className="py-20 bg-[#FBF6EC]/60 border-b border-[#EDE7DB]">
+    <section className="py-12 sm:py-16 lg:py-20 bg-[#FBF6EC]/60 border-b border-[#EDE7DB]">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
 
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto">
+        <Reveal className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/30 bg-white px-4 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B2A4A]">
             <Award className="h-3.5 w-3.5 text-[#D4AF37]" />
             <span>Real Student Stories & Success</span>
@@ -65,18 +66,24 @@ export const StudentSpotlight: React.FC<StudentSpotlightProps> = ({ onOpenApplyM
           <p className="mt-4 text-base sm:text-lg text-[#6B6560]">
             Meet our students and alumni currently interning and working across international 4★ & 5★ luxury hotel networks.
           </p>
+        </Reveal>
+
+        {/* Mobile Swipe Hint */}
+        <div className="mt-8 flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-[#9C7D4A] sm:hidden">
+          <span>Alumni Placements</span>
+          <span>Swipe →</span>
         </div>
 
-        {/* Student Cards Grid */}
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Student Cards Grid (Horizontal snap-deck on mobile, grid on tablet/desktop) */}
+        <StaggerGrid className="mt-3 sm:mt-14 flex overflow-x-auto snap-x snap-mandatory gap-4 pb-3 no-scrollbar sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 sm:overflow-visible sm:pb-0">
           {STUDENT_SPOTLIGHTS.map((s, idx) => (
-            <div
+            <StaggerItem
               key={idx}
-              className="group overflow-hidden rounded-3xl border border-[#EDE7DB] bg-white p-5 sm:p-6 transition-all duration-300 hover:border-[#D4AF37] hover:shadow-2xl gold-glow-hover flex flex-col justify-between"
+              className="snap-start shrink-0 w-[82vw] max-w-[320px] sm:w-auto sm:max-w-none group overflow-hidden rounded-3xl border border-[#EDE7DB] bg-white p-4 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#D4AF37] hover:shadow-2xl gold-glow-hover flex flex-col justify-between"
             >
               <div>
                 {/* Photo & Badge */}
-                <div className="relative h-72 w-full overflow-hidden rounded-2xl">
+                <div className="relative h-56 sm:h-72 w-full overflow-hidden rounded-2xl">
                   <img
                     src={s.img}
                     alt={`${s.name} - NcHM Birgunj Hotel Management Alumnus (${s.placement})`}
@@ -110,12 +117,12 @@ export const StudentSpotlight: React.FC<StudentSpotlightProps> = ({ onOpenApplyM
                 <span className="font-semibold text-[#1B2A4A]">{s.placement.split("•")[0]}</span>
                 <span className="text-[#D4AF37] font-bold">Verified ✓</span>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGrid>
 
         {/* Community Trust Banner */}
-        <div className="mt-14 rounded-3xl border border-[#D4AF37]/30 bg-[#1B2A4A] p-6 sm:p-8 text-white flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+        <Reveal delay={0.1} className="mt-14 rounded-3xl border border-[#D4AF37]/30 bg-[#1B2A4A] p-6 sm:p-8 text-white flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <div className="flex -space-x-3 overflow-hidden shrink-0">
               {STUDENT_SPOTLIGHTS.map((s, i) => (
@@ -133,11 +140,11 @@ export const StudentSpotlight: React.FC<StudentSpotlightProps> = ({ onOpenApplyM
 
           <button
             onClick={() => onOpenApplyModal("General Student Admission")}
-            className="w-full sm:w-auto shrink-0 rounded-full bg-[#D4AF37] px-7 py-3 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] gold-glow-hover cursor-pointer text-center"
+            className="btn-gold-sheen w-full sm:w-auto shrink-0 rounded-full bg-[#D4AF37] px-7 py-3 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] gold-glow-hover cursor-pointer text-center active:scale-[0.98]"
           >
             Start Your Journey →
           </button>
-        </div>
+        </Reveal>
 
       </div>
     </section>

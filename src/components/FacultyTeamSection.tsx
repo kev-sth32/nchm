@@ -1,5 +1,6 @@
 import React from "react";
 import { User } from "lucide-react";
+import { Reveal, StaggerGrid, StaggerItem } from "./motion/MotionPrimitives";
 
 export const TEAM_MEMBERS = [
   {
@@ -66,11 +67,11 @@ export const TEAM_MEMBERS = [
 
 export const FacultyTeamSection: React.FC = () => {
   return (
-    <section id="team" className="py-20 bg-[#FBF6EC]/50 border-b border-[#EDE7DB]">
+    <section id="team" className="py-12 sm:py-16 lg:py-20 bg-[#FBF6EC]/50 border-b border-[#EDE7DB]">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
 
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto">
+        <Reveal className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/30 bg-white px-4 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B2A4A]">
             <User className="h-3.5 w-3.5 text-[#D4AF37]" />
             <span>Faculty & Leadership</span>
@@ -81,17 +82,23 @@ export const FacultyTeamSection: React.FC = () => {
           <p className="mt-4 text-base sm:text-lg text-[#6B6560]">
             Every student receives 1-on-1 monthly mentoring from experienced GMs, Executive Chefs, and international placement heads.
           </p>
+        </Reveal>
+
+        {/* Mobile Swipe Hint */}
+        <div className="mt-8 flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-[#9C7D4A] sm:hidden">
+          <span>Meet Our Mentors</span>
+          <span>Swipe →</span>
         </div>
 
-        {/* Team Grid */}
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Team Grid (Horizontal snap-deck on mobile, grid on tablet/desktop) */}
+        <StaggerGrid className="mt-3 sm:mt-14 flex overflow-x-auto snap-x snap-mandatory gap-4 pb-3 no-scrollbar sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-8 sm:overflow-visible sm:pb-0">
           {TEAM_MEMBERS.map((m) => (
-            <div
+            <StaggerItem
               key={m.name}
-              className="group overflow-hidden rounded-3xl border border-[#EDE7DB] bg-white p-6 transition-all duration-300 hover:border-[#D4AF37] hover:shadow-xl gold-glow-hover flex flex-col justify-between"
+              className="snap-start shrink-0 w-[80vw] max-w-[310px] sm:w-auto sm:max-w-none group overflow-hidden rounded-3xl border border-[#EDE7DB] bg-white p-4 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#D4AF37] hover:shadow-xl gold-glow-hover flex flex-col justify-between"
             >
               <div>
-                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
+                <div className="relative aspect-[4/4.2] sm:aspect-[4/5] w-full overflow-hidden rounded-2xl">
                   <img
                     src={m.img}
                     alt={m.name}
@@ -120,9 +127,9 @@ export const FacultyTeamSection: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGrid>
 
       </div>
     </section>

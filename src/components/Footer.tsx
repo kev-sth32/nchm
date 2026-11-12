@@ -1,6 +1,7 @@
 import React from "react";
 import { NcHMLogo } from "./NcHMLogo";
 import { Phone, Mail, MapPin, Award } from "lucide-react";
+import { Reveal } from "./motion/MotionPrimitives";
 
 interface FooterProps {
   onOpenApplyModal: (programTitle?: string) => void;
@@ -8,9 +9,9 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenApplyModal }) => {
   return (
-    <footer id="contact" className="bg-[#0B132B] text-white border-t border-[#D4AF37]/30 pt-16 pb-12">
+    <footer id="contact" className="bg-[#0B132B] text-white border-t border-[#D4AF37]/30 pt-12 sm:pt-16 pb-24 sm:pb-12">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 pb-12 border-b border-white/10">
+        <Reveal className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 pb-12 border-b border-white/10">
 
           {/* Column 1: Logo & About */}
           <div>
@@ -101,13 +102,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenApplyModal }) => {
             </p>
             <button
               onClick={() => onOpenApplyModal("Direct Online Admission Application")}
-              className="mt-5 w-full rounded-full bg-[#D4AF37] py-3 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] gold-glow-hover cursor-pointer"
+              className="btn-gold-sheen mt-5 w-full rounded-full bg-[#D4AF37] py-3 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] gold-glow-hover cursor-pointer active:scale-[0.98]"
             >
               Apply Online Now →
             </button>
           </div>
 
-        </div>
+        </Reveal>
 
         {/* Bottom Copyright Bar */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-white/50">

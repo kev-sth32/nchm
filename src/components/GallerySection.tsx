@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { AnimatePresence, m } from "motion/react";
 import { Maximize2, X, ChevronLeft, ChevronRight, Award, Sparkles, Eye } from "lucide-react";
+import { LUXURY_EASE, Reveal } from "./motion/MotionPrimitives";
 
 export interface GalleryItem {
   id: number;
@@ -184,6 +186,7 @@ export const GallerySection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [showAllMobile, setShowAllMobile] = useState(false);
 
   const filteredGallery = activeCategory === "All"
     ? GALLERY
@@ -251,11 +254,11 @@ export const GallerySection: React.FC = () => {
   const currentItem = lightboxIndex !== null ? filteredGallery[lightboxIndex] : null;
 
   return (
-    <section id="gallery" className="py-20 bg-[#FBF6EC]/50 border-b border-[#EDE7DB]">
+    <section id="gallery" className="py-12 sm:py-16 lg:py-20 bg-[#FBF6EC]/50 border-b border-[#EDE7DB]">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
 
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto">
+        <Reveal className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/30 bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B2A4A] shadow-sm">
             <Sparkles className="h-3.5 w-3.5 text-[#D4AF37]" />
             <span>High-Definition Campus Gallery</span>
@@ -266,27 +269,36 @@ export const GallerySection: React.FC = () => {
           <p className="mt-4 text-base sm:text-lg text-[#6B6560] leading-relaxed">
             Explore authentic, high-resolution moments from our commercial culinary kitchens, mixology cocktail counters, executive guest suites, galas, and award ceremonies.
           </p>
-        </div>
+        </Reveal>
 
         {/* Filter Tabs (Horizontal scroll on mobile) */}
-        <div className="mt-10 flex items-center justify-start sm:justify-center gap-2 sm:gap-2.5 overflow-x-auto pb-3 sm:pb-0 no-scrollbar">
+        <div className="mt-8 sm:mt-10 flex items-center justify-start sm:justify-center gap-2 sm:gap-2.5 overflow-x-auto py-2 px-1 no-scrollbar">
           {CATEGORIES.map((cat) => {
             const isActive = cat === activeCategory;
             const count = cat === "All" ? GALLERY.length : GALLERY.filter(g => g.cat === cat).length;
             return (
               <button
                 key={cat}
-                onClick={() => {
+                onClick={(e) => {
                   setActiveCategory(cat);
                   setLightboxIndex(null);
+                  setShowAllMobile(false);
+                  e.currentTarget.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
                 }}
-                className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition-all cursor-pointer flex items-center gap-2 whitespace-nowrap ${isActive
-                    ? "bg-[#1B2A4A] text-white shadow-md gold-glow"
+                className={`relative shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition-colors cursor-pointer flex items-center gap-2 whitespace-nowrap ${isActive
+                    ? "text-white"
                     : "bg-white text-[#1B2A4A] border border-[#EDE7DB] hover:border-[#D4AF37] hover:bg-[#FBF6EC]"
                   }`}
               >
-                <span>{cat}</span>
-                <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${isActive ? "bg-[#D4AF37] text-[#0B132B]" : "bg-[#1B2A4A]/10 text-[#1B2A4A]"}`}>
+                {isActive && (
+                  <m.span
+                    layoutId="gallery-filter-pill"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    className="absolute inset-0 rounded-full bg-[#1B2A4A] shadow-md gold-glow"
+                  />
+                )}
+                <span className="relative z-10">{cat}</span>
+                <span className={`relative z-10 text-[10px] px-2 py-0.5 rounded-full font-bold ${isActive ? "bg-[#D4AF37] text-[#0B132B]" : "bg-[#1B2A4A]/10 text-[#1B2A4A]"}`}>
                   {count}
                 </span>
               </button>
@@ -295,12 +307,13 @@ export const GallerySection: React.FC = () => {
         </div>
 
         {/* Gallery Grid - Clean, spacious 3-column layout where photos are 100% bright and clear */}
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal delay={0.05} className="mt-8 sm:mt-12 grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredGallery.map((item, idx) => (
             <div
               key={item.id}
               onClick={() => setLightboxIndex(idx)}
-              className="group bg-white rounded-2xl border border-[#EDE7DB] overflow-hidden shadow-sm hover:shadow-xl hover:border-[#D4AF37] transition-all duration-300 flex flex-col cursor-pointer"
+              className={`${!showAllMobile && idx >= 6 ? "hidden sm:flex" : "flex"
+                } group bg-white rounded-2xl border border-[#EDE7DB] overflow-hidden shadow-sm hover:shadow-xl hover:border-[#D4AF37] transition-all duration-300 flex-col cursor-pointer`}
             >
               {/* Photo Container: Pristine, natural brightness, zero dark gradient overlay */}
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#0B132B]/5">
@@ -323,7 +336,7 @@ export const GallerySection: React.FC = () => {
               </div>
 
               {/* Card Body: Clean typography underneath image */}
-              <div className="p-5 flex flex-col flex-1 justify-between bg-white">
+              <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between bg-white">
                 <div>
                   <h3 className="text-base font-bold font-display text-[#1B2A4A] group-hover:text-[#D4AF37] transition-colors leading-snug">
                     {item.title}
@@ -343,10 +356,22 @@ export const GallerySection: React.FC = () => {
               </div>
             </div>
           ))}
-        </div>
+        </Reveal>
+
+        {/* Mobile Show All / Collapse Photos Toggle */}
+        {filteredGallery.length > 6 && (
+          <div className="mt-6 text-center sm:hidden">
+            <button
+              onClick={() => setShowAllMobile((v) => !v)}
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-[#D4AF37]/50 bg-white px-6 py-3 text-xs font-bold uppercase tracking-wider text-[#1B2A4A] shadow-sm hover:bg-[#FBF6EC] active:scale-95 transition cursor-pointer"
+            >
+              <span>{showAllMobile ? "Show Fewer Photos" : `Show All ${filteredGallery.length} Photos`}</span>
+            </button>
+          </div>
+        )}
 
         {/* Bottom Banner Note */}
-        <div className="mt-14 rounded-2xl border border-[#D4AF37]/30 bg-gradient-to-r from-[#1B2A4A] to-[#0B132B] p-6 text-white shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
+        <Reveal delay={0.08} className="mt-14 rounded-2xl border border-[#D4AF37]/30 bg-gradient-to-r from-[#1B2A4A] to-[#0B132B] p-6 text-white shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D4AF37]/20 border border-[#D4AF37]/40 text-[#D4AF37]">
               <Award className="h-5 w-5" />
@@ -360,103 +385,122 @@ export const GallerySection: React.FC = () => {
             href="https://wa.me/9779829232426?text=Hello%20NcHM%2C%20I%20would%20like%20to%20schedule%20a%20campus%20tour%20and%20see%20the%20practical%20labs."
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto text-center shrink-0 rounded-full bg-[#D4AF37] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] transition gold-glow-hover"
+            className="btn-gold-sheen w-full sm:w-auto text-center shrink-0 rounded-full bg-[#D4AF37] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] transition gold-glow-hover active:scale-[0.98]"
           >
             Schedule Campus Visit
           </a>
-        </div>
+        </Reveal>
 
       </div>
 
       {/* Lightbox Modal */}
-      {currentItem && lightboxIndex !== null && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={currentItem.title}
-          className="fixed inset-0 z-[70] flex items-center justify-center bg-black/95 backdrop-blur-md p-3 sm:p-6 animate-in fade-in duration-200"
-          onClick={() => setLightboxIndex(null)}
-        >
-          <div
-            className="relative max-w-4xl w-full rounded-2xl sm:rounded-3xl bg-[#0B132B] border border-[#D4AF37]/40 overflow-hidden shadow-2xl flex flex-col"
-            onClick={(e) => e.stopPropagation()}
+      <AnimatePresence>
+        {currentItem && lightboxIndex !== null && (
+          <m.div
+            key="gallery-lightbox-backdrop"
+            role="dialog"
+            aria-modal="true"
+            aria-label={currentItem.title}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22, ease: LUXURY_EASE }}
+            className="fixed inset-0 z-[70] flex items-center justify-center bg-black/95 backdrop-blur-md p-3 sm:p-6"
+            onClick={() => setLightboxIndex(null)}
           >
-            {/* Top Bar with counter & close */}
-            <div className="flex items-center justify-between px-4 sm:px-6 py-3 bg-[#070D1E] border-b border-[#D4AF37]/20 text-white">
-              <div className="flex items-center gap-2">
-                <span className="rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/40 px-2.5 py-0.5 text-[10px] font-bold text-[#D4AF37]">
-                  {currentItem.cat}
-                </span>
-                <span className="text-xs text-white/50">
-                  {lightboxIndex + 1} of {filteredGallery.length}
-                </span>
-              </div>
-              <button
-                onClick={() => setLightboxIndex(null)}
-                aria-label="Close modal"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white hover:bg-[#D4AF37] hover:text-black transition cursor-pointer"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-
-            {/* Image Preview with Next/Prev Controls & Mobile Touch Swipe */}
-            <div 
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-              className="relative max-h-[60vh] sm:max-h-[70vh] bg-black flex items-center justify-center overflow-hidden touch-pan-y"
+            <m.div
+              key="gallery-lightbox-card"
+              initial={{ opacity: 0, scale: 0.95, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 8 }}
+              transition={{ duration: 0.26, ease: LUXURY_EASE }}
+              className="relative max-w-4xl w-full rounded-2xl sm:rounded-3xl bg-[#0B132B] border border-[#D4AF37]/40 overflow-hidden shadow-2xl flex flex-col"
+              onClick={(e) => e.stopPropagation()}
             >
-              <img
-                src={currentItem.img}
-                alt={currentItem.title}
-                className="w-full h-auto max-h-[60vh] sm:max-h-[70vh] object-contain transition-all duration-300 select-none"
-              />
-
-              {/* Prev Button */}
-              {filteredGallery.length > 1 && (
+              {/* Top Bar with counter & close */}
+              <div className="flex items-center justify-between px-4 sm:px-6 py-3 bg-[#070D1E] border-b border-[#D4AF37]/20 text-white">
+                <div className="flex items-center gap-2">
+                  <span className="rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/40 px-2.5 py-0.5 text-[10px] font-bold text-[#D4AF37]">
+                    {currentItem.cat}
+                  </span>
+                  <span className="text-xs text-white/50">
+                    {lightboxIndex + 1} of {filteredGallery.length}
+                  </span>
+                </div>
                 <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handlePrev();
-                  }}
-                  aria-label="Previous photo"
-                  className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-black/70 border border-white/20 text-white hover:bg-[#D4AF37] hover:text-[#0B132B] transition cursor-pointer shadow-lg"
+                  onClick={() => setLightboxIndex(null)}
+                  aria-label="Close modal"
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white hover:bg-[#D4AF37] hover:text-black transition cursor-pointer active:scale-95"
                 >
-                  <ChevronLeft className="h-6 w-6" />
+                  <X className="h-4 w-4" />
                 </button>
-              )}
-
-              {/* Next Button */}
-              {filteredGallery.length > 1 && (
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleNext();
-                  }}
-                  aria-label="Next photo"
-                  className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-black/70 border border-white/20 text-white hover:bg-[#D4AF37] hover:text-[#0B132B] transition cursor-pointer shadow-lg"
-                >
-                  <ChevronRight className="h-6 w-6" />
-                </button>
-              )}
-            </div>
-
-            {/* Bottom Caption */}
-            <div className="p-4 sm:p-6 text-white bg-[#0B132B] border-t border-[#D4AF37]/20">
-              <h3 className="text-base sm:text-xl font-display font-bold text-white leading-snug">
-                {currentItem.title}
-              </h3>
-              <p className="mt-1.5 text-xs sm:text-sm text-white/80 leading-relaxed">
-                {currentItem.desc}
-              </p>
-              <div className="mt-3 flex items-center justify-between text-[11px] text-white/50">
-                <span>Swipe left/right or use arrow keys to navigate</span>
-                <span className="text-[#D4AF37] font-semibold">NcHM Birgunj</span>
               </div>
-            </div>
-          </div>
-        </div>
-      )}
+
+              {/* Image Preview with Next/Prev Controls & Mobile Touch Swipe */}
+              <div
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+                className="relative max-h-[60vh] sm:max-h-[70vh] bg-black flex items-center justify-center overflow-hidden touch-pan-y"
+              >
+                <AnimatePresence mode="wait">
+                  <m.img
+                    key={currentItem.id}
+                    src={currentItem.img}
+                    alt={currentItem.title}
+                    initial={{ opacity: 0.35, scale: 0.985 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0.35 }}
+                    transition={{ duration: 0.2, ease: LUXURY_EASE }}
+                    className="w-full h-auto max-h-[60vh] sm:max-h-[70vh] object-contain select-none"
+                  />
+                </AnimatePresence>
+
+                {/* Prev Button */}
+                {filteredGallery.length > 1 && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePrev();
+                    }}
+                    aria-label="Previous photo"
+                    className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-black/70 border border-white/20 text-white hover:bg-[#D4AF37] hover:text-[#0B132B] transition cursor-pointer shadow-lg active:scale-95"
+                  >
+                    <ChevronLeft className="h-6 w-6" />
+                  </button>
+                )}
+
+                {/* Next Button */}
+                {filteredGallery.length > 1 && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNext();
+                    }}
+                    aria-label="Next photo"
+                    className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-black/70 border border-white/20 text-white hover:bg-[#D4AF37] hover:text-[#0B132B] transition cursor-pointer shadow-lg active:scale-95"
+                  >
+                    <ChevronRight className="h-6 w-6" />
+                  </button>
+                )}
+              </div>
+
+              {/* Bottom Caption */}
+              <div className="p-4 sm:p-6 text-white bg-[#0B132B] border-t border-[#D4AF37]/20">
+                <h3 className="text-base sm:text-xl font-display font-bold text-white leading-snug">
+                  {currentItem.title}
+                </h3>
+                <p className="mt-1.5 text-xs sm:text-sm text-white/80 leading-relaxed">
+                  {currentItem.desc}
+                </p>
+                <div className="mt-3 flex items-center justify-between text-[11px] text-white/50">
+                  <span>Swipe left/right or use arrow keys to navigate</span>
+                  <span className="text-[#D4AF37] font-semibold">NcHM Birgunj</span>
+                </div>
+              </div>
+            </m.div>
+          </m.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

@@ -1,18 +1,19 @@
 import React from "react";
-import { 
-  Award, 
-  UserCheck, 
-  Users, 
-  ChefHat, 
-  Globe2, 
-  Briefcase, 
-  GraduationCap, 
-  Sparkles, 
-  CheckCircle2, 
+import {
+  Award,
+  UserCheck,
+  Users,
+  ChefHat,
+  Globe2,
+  Briefcase,
+  GraduationCap,
+  Sparkles,
+  CheckCircle2,
   ArrowRight,
   ShieldCheck,
   Building2
 } from "lucide-react";
+import { Reveal, StaggerGrid, StaggerItem } from "./motion/MotionPrimitives";
 
 interface WhyNcHMSectionProps {
   onOpenApplyModal?: (programTitle?: string) => void;
@@ -79,14 +80,14 @@ const DESTINATIONS = [
 
 export const WhyNcHMSection: React.FC<WhyNcHMSectionProps> = ({ onOpenApplyModal }) => {
   return (
-    <section id="about" className="relative py-20 lg:py-28 bg-[#FFFCF6] border-b border-[#EDE7DB] overflow-x-clip">
+    <section id="about" className="relative py-12 sm:py-20 lg:py-28 bg-[#FFFCF6] border-b border-[#EDE7DB] overflow-x-clip">
       {/* Decorative Subtle Background Gradients */}
       <div className="absolute left-1/2 top-0 -z-10 h-[500px] w-full -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,rgba(212,175,55,0.06),transparent_70%)] pointer-events-none" />
 
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto">
+        <Reveal className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/40 bg-[#FBF6EC] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B2A4A] shadow-sm">
             <Sparkles className="h-3.5 w-3.5 text-[#D4AF37]" />
             <span>Why Choose NcHM</span>
@@ -115,16 +116,22 @@ export const WhyNcHMSection: React.FC<WhyNcHMSectionProps> = ({ onOpenApplyModal
               Paid Global Internships
             </span>
           </div>
+        </Reveal>
+
+        {/* Mobile Swipe Hint */}
+        <div className="mt-8 flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-[#9C7D4A] sm:hidden">
+          <span>6 Core Academic Pillars</span>
+          <span>Swipe →</span>
         </div>
 
-        {/* 6 Grid Cards */}
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* 6 Grid Cards (Horizontal snap-deck on mobile, grid on tablet/desktop) */}
+        <StaggerGrid className="mt-3 sm:mt-14 flex overflow-x-auto snap-x snap-mandatory gap-4 pb-3 no-scrollbar sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 sm:overflow-visible sm:pb-0">
           {PILLARS_GRID.map((item) => {
             const Icon = item.icon;
             return (
-              <div
+              <StaggerItem
                 key={item.n}
-                className="group relative flex flex-col justify-between rounded-3xl border border-[#EDE7DB] bg-white p-5 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#D4AF37] hover:shadow-[0_15px_35px_rgba(212,175,55,0.14)]"
+                className="snap-start shrink-0 w-[82vw] max-w-[330px] sm:w-auto sm:max-w-none group relative flex flex-col justify-between rounded-3xl border border-[#EDE7DB] bg-white p-5 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#D4AF37] hover:shadow-[0_15px_35px_rgba(212,175,55,0.14)]"
               >
                 <div>
                   {/* Card Header: Number + Icon + Tag */}
@@ -135,7 +142,7 @@ export const WhyNcHMSection: React.FC<WhyNcHMSectionProps> = ({ onOpenApplyModal
                         {item.tag}
                       </span>
                     </div>
-                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#FBF6EC] text-[#1B2A4A] transition-colors duration-300 group-hover:bg-[#1B2A4A] group-hover:text-[#D4AF37] shadow-sm">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#FBF6EC] text-[#1B2A4A] transition-all duration-300 group-hover:bg-[#1B2A4A] group-hover:text-[#D4AF37] group-hover:scale-105 shadow-sm">
                       <Icon className="h-5 w-5" />
                     </div>
                   </div>
@@ -158,13 +165,13 @@ export const WhyNcHMSection: React.FC<WhyNcHMSectionProps> = ({ onOpenApplyModal
                     <span>{item.highlight}</span>
                   </div>
                 </div>
-              </div>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerGrid>
 
         {/* Featured 7th Pillar Banner Card: Bachelor Credit Transfer Pathways */}
-        <div className="mt-8 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0B132B] via-[#1B2A4A] to-[#0B132B] text-white p-6 sm:p-10 lg:p-12 border border-[#D4AF37]/40 shadow-2xl">
+        <Reveal delay={0.1} className="mt-8 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0B132B] via-[#1B2A4A] to-[#0B132B] text-white p-6 sm:p-10 lg:p-12 border border-[#D4AF37]/40 shadow-2xl">
           {/* Subtle Background Glow */}
           <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.14)_0%,transparent_70%)] pointer-events-none" />
           <div className="absolute left-0 bottom-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.08)_0%,transparent_70%)] pointer-events-none" />
@@ -227,14 +234,14 @@ export const WhyNcHMSection: React.FC<WhyNcHMSectionProps> = ({ onOpenApplyModal
               <div className="mt-6 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <button
                   onClick={() => onOpenApplyModal?.("Bachelor Credit Transfer Pathways")}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-xs font-bold uppercase tracking-wider text-[#0B132B] transition-all hover:bg-[#E8C99A] gold-glow-hover cursor-pointer shadow-lg"
+                  className="btn-gold-sheen w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-xs font-bold uppercase tracking-wider text-[#0B132B] transition-all hover:bg-[#E8C99A] gold-glow-hover cursor-pointer shadow-lg active:scale-[0.98]"
                 >
                   <span>Explore Pathway Details</span>
                   <ArrowRight className="h-4 w-4" />
                 </button>
                 <button
                   onClick={() => onOpenApplyModal?.("Bachelor Credit Transfer Pathways")}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-transparent px-5 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-white/10 cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-transparent px-5 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-white/10 cursor-pointer active:scale-[0.98]"
                 >
                   <Building2 className="h-4 w-4 text-[#D4AF37]" />
                   <span>View Universities</span>
@@ -242,7 +249,7 @@ export const WhyNcHMSection: React.FC<WhyNcHMSectionProps> = ({ onOpenApplyModal
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
 
       </div>
     </section>

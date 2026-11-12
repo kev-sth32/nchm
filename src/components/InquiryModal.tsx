@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { AnimatePresence, m } from "motion/react";
 import { X, CheckCircle2, MessageSquare } from "lucide-react";
+import { LUXURY_EASE } from "./motion/MotionPrimitives";
+import { PROGRAMS } from "./ProgramsSection";
 
 const WHATSAPP_NUMBER = "9779829232426";
+const GENERAL_GUIDANCE_OPTION = "Not Sure Yet — Need Counselor Guidance";
+
+function resolveCourseFromProgram(program: string): string {
+  const matched = PROGRAMS.find(
+    (p) => program === p.title || program.includes(p.title)
+  );
+  return matched ? matched.title : "";
+}
 
 interface InquiryModalProps {
   isOpen: boolean;
@@ -12,6 +23,7 @@ interface InquiryModalProps {
 export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, selectedProgram, onClose }) => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [waUrl, setWaUrl] = useState("");
+  const [selectedCourse, setSelectedCourse] = useState(() => resolveCourseFromProgram(selectedProgram));
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -19,6 +31,18 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, selectedProg
     qualification: "SEE / SLC (Minimum 1.6 GPA)",
     message: ""
   });
+
+  const autoMatchedCourse = resolveCourseFromProgram(selectedProgram);
+  const isAutoSelected = Boolean(autoMatchedCourse && selectedCourse === autoMatchedCourse);
+  const isSyllabusRequest = selectedProgram.startsWith("Syllabus Request - ");
+
+  useEffect(() => {
+    if (isOpen) {
+      setSelectedCourse(resolveCourseFromProgram(selectedProgram));
+      setFormSubmitted(false);
+      setWaUrl("");
+    }
+  }, [isOpen, selectedProgram]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -37,14 +61,19 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, selectedProg
     }
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
-
   const getWhatsAppMessage = () => {
+    const courseDisplay = selectedCourse || selectedProgram;
+    const inquiryContextLine =
+      selectedProgram && selectedProgram !== courseDisplay
+        ? `📌 *Inquiry Type:* ${selectedProgram}\n`
+        : "";
+
     return `🎓 *NEW ADMISSION ENQUIRY - NcHM Nepal* 🎓\n\n` +
       `👤 *Full Name:* ${formData.fullName}\n` +
       `📱 *Phone / WhatsApp:* ${formData.phone}\n` +
       `✉️ *Email:* ${formData.email || "Not provided"}\n` +
-      `📚 *Program Interested:* ${selectedProgram}\n` +
+      `📚 *Course / Program:* ${courseDisplay}\n` +
+      inquiryContextLine +
       `🎓 *Qualification:* ${formData.qualification}\n` +
       `💬 *Message / Questions:* ${formData.message || "None"}\n\n` +
       `_Sent via NcHM Official Website Admission Portal_`;
@@ -60,31 +89,50 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, selectedProg
   };
 
   return (
-    <div 
-      className="fixed inset-0 z-[70] flex items-center justify-center bg-black/80 backdrop-blur-md p-3 sm:p-4 animate-in fade-in duration-200"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modal-title"
-    >
-      <div className="relative w-full max-w-lg max-h-[calc(100dvh-1.5rem)] sm:max-h-[calc(100dvh-2rem)] flex flex-col overflow-hidden rounded-3xl border border-[#D4AF37]/40 bg-[#FFFCF6] shadow-2xl">
+    <AnimatePresence>
+      {isOpen && (
+        <m.div
+          key="inquiry-modal-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.22, ease: LUXURY_EASE }}
+          onClick={onClose}
+          className="fixed inset-0 z-[70] flex items-end sm:items-center justify-center bg-black/80 backdrop-blur-md p-0 sm:p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+        >
+          <m.div
+            key="inquiry-modal-card"
+            initial={{ opacity: 0, scale: 0.96, y: 24 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: 20 }}
+            transition={{ duration: 0.26, ease: LUXURY_EASE }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-lg max-h-[90dvh] sm:max-h-[calc(100dvh-2rem)] flex flex-col overflow-hidden rounded-t-3xl sm:rounded-3xl border border-[#D4AF37]/40 bg-[#FFFCF6] shadow-2xl"
+          >
         
         {/* Modal Header */}
-        <div className="bg-[#1B2A4A] p-5 sm:p-6 text-white flex items-center justify-between border-b border-[#D4AF37]/30 shrink-0">
-          <div>
-            <div className="text-[11px] font-bold uppercase tracking-wider text-[#D4AF37]">Nepal College of Hotel Management</div>
-            <h3 id="modal-title" className="text-lg sm:text-xl font-display font-bold text-white mt-0.5">Admissions &amp; Inquiry 2026</h3>
+        <div className="bg-[#1B2A4A] px-5 pt-3 pb-4 sm:p-6 text-white border-b border-[#D4AF37]/30 shrink-0">
+          <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-[#D4AF37]/50 sm:hidden" aria-hidden="true" />
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="text-[11px] font-bold uppercase tracking-wider text-[#D4AF37]">Nepal College of Hotel Management</div>
+              <h3 id="modal-title" className="text-lg sm:text-xl font-display font-bold text-white mt-0.5">Admissions &amp; Inquiry 2026</h3>
+            </div>
+            <button
+              onClick={onClose}
+              aria-label="Close dialog"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white hover:bg-[#D4AF37] hover:text-black transition cursor-pointer shrink-0 ml-2"
+            >
+              <X className="h-5 w-5" />
+            </button>
           </div>
-          <button
-            onClick={onClose}
-            aria-label="Close dialog"
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white hover:bg-[#D4AF37] hover:text-black transition cursor-pointer shrink-0 ml-2"
-          >
-            <X className="h-5 w-5" />
-          </button>
         </div>
 
         {/* Modal Body */}
-        <div className="p-5 sm:p-8 overflow-y-auto overscroll-contain flex-1">
+        <div className="p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:p-8 overflow-y-auto overscroll-contain flex-1">
           {formSubmitted ? (
             <div className="text-center py-4 space-y-4">
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 shadow-md">
@@ -93,7 +141,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, selectedProg
               <div>
                 <h4 className="text-2xl font-display font-bold text-[#1B2A4A]">Inquiry Dispatched to WhatsApp!</h4>
                 <p className="mt-2 text-sm text-[#6B6560] max-w-sm mx-auto">
-                  Your admission inquiry for <strong className="text-[#1B2A4A]">{selectedProgram}</strong> has been routed directly to our admissions officer at <strong className="text-[#1B2A4A]">+977 9829232426</strong>.
+                  Your admission inquiry for <strong className="text-[#1B2A4A]">{selectedCourse || selectedProgram}</strong> has been routed directly to our admissions officer at <strong className="text-[#1B2A4A]">+977 9829232426</strong>.
                 </p>
               </div>
 
@@ -126,13 +174,53 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, selectedProg
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="rounded-xl bg-[#FBF6EC] p-3 text-xs text-[#1B2A4A] border border-[#D4AF37]/30">
-                Inquiring Program: <strong className="text-[#D4AF37]">{selectedProgram}</strong>
+              {(!autoMatchedCourse || isSyllabusRequest) && (
+                <div className="rounded-xl bg-[#FBF6EC] p-3 text-xs text-[#1B2A4A] border border-[#D4AF37]/30">
+                  {isSyllabusRequest ? "Request Type:" : "Inquiring About:"}{" "}
+                  <strong className="text-[#D4AF37]">
+                    {isSyllabusRequest ? "Syllabus & Fee Structure" : selectedProgram}
+                  </strong>
+                </div>
+              )}
+
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-1">
+                  <label htmlFor="inquiry-course" className="block text-xs font-bold uppercase text-[#1B2A4A]">
+                    Course / Program *
+                  </label>
+                  {isAutoSelected && (
+                    <span className="inline-flex items-center rounded-full bg-[#FBF6EC] border border-[#D4AF37]/40 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#9C7D4A]">
+                      Auto-selected
+                    </span>
+                  )}
+                </div>
+                <select
+                  id="inquiry-course"
+                  name="course"
+                  required
+                  value={selectedCourse}
+                  onChange={(e) => setSelectedCourse(e.target.value)}
+                  className={`w-full rounded-xl border bg-white px-4 py-2.5 text-base sm:text-sm text-[#1B2A4A] focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] outline-none ${
+                    isAutoSelected ? "border-[#D4AF37]/60 bg-[#FBF6EC]/40 font-medium" : "border-[#EDE7DB]"
+                  }`}
+                >
+                  <option value="" disabled>
+                    -- Select a Course / Program --
+                  </option>
+                  {PROGRAMS.map((prog) => (
+                    <option key={prog.id} value={prog.title}>
+                      {prog.title}
+                    </option>
+                  ))}
+                  <option value={GENERAL_GUIDANCE_OPTION}>{GENERAL_GUIDANCE_OPTION}</option>
+                </select>
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase text-[#1B2A4A] mb-1">Full Name *</label>
+                <label htmlFor="inquiry-full-name" className="block text-xs font-bold uppercase text-[#1B2A4A] mb-1">Full Name *</label>
                 <input
+                  id="inquiry-full-name"
+                  name="fullName"
                   type="text"
                   required
                   placeholder="e.g. Rohan Sharma"
@@ -143,8 +231,10 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, selectedProg
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase text-[#1B2A4A] mb-1">Mobile / WhatsApp Number *</label>
+                <label htmlFor="inquiry-phone" className="block text-xs font-bold uppercase text-[#1B2A4A] mb-1">Mobile / WhatsApp Number *</label>
                 <input
+                  id="inquiry-phone"
+                  name="phone"
                   type="tel"
                   required
                   placeholder="e.g. +977 98XXXXXXXX"
@@ -155,8 +245,10 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, selectedProg
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase text-[#1B2A4A] mb-1">Highest Academic Qualification</label>
+                <label htmlFor="inquiry-qualification" className="block text-xs font-bold uppercase text-[#1B2A4A] mb-1">Highest Academic Qualification</label>
                 <select
+                  id="inquiry-qualification"
+                  name="qualification"
                   value={formData.qualification}
                   onChange={(e) => setFormData({ ...formData, qualification: e.target.value })}
                   className="w-full rounded-xl border border-[#EDE7DB] bg-white px-4 py-2.5 text-base sm:text-sm text-[#1B2A4A] focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] outline-none"
@@ -169,8 +261,10 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, selectedProg
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase text-[#1B2A4A] mb-1">Questions / Message (Optional)</label>
+                <label htmlFor="inquiry-message" className="block text-xs font-bold uppercase text-[#1B2A4A] mb-1">Questions / Message (Optional)</label>
                 <textarea
+                  id="inquiry-message"
+                  name="message"
                   rows={2}
                   placeholder="Any questions about fees, scholarships, or internship locations?"
                   value={formData.message}
@@ -188,9 +282,11 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, selectedProg
               </button>
             </form>
           )}
-        </div>
+          </div>
 
-      </div>
-    </div>
+          </m.div>
+        </m.div>
+      )}
+    </AnimatePresence>
   );
 };

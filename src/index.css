@@ -130,8 +130,70 @@ body {
   50% { transform: translateY(-6px); }
 }
 
+@keyframes floatSlow {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -8px, 0); }
+}
+
 @keyframes shimmer {
   0% { transform: scaleX(0); opacity: 0.4; }
   50% { transform: scaleX(1); opacity: 1; }
   100% { transform: scaleX(0); transform-origin: right; opacity: 0.4; }
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 4.5s ease-in-out infinite;
+}
+
+.animate-float-slow-delayed {
+  animation: floatSlow 5.2s ease-in-out 1.2s infinite;
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 28s linear infinite;
+}
+
+.marquee-container:hover .animate-marquee,
+.marquee-container:focus-within .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* Luxury Gold Sheen Sweep on Primary Buttons (GPU transform only) */
+.btn-gold-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.btn-gold-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 45%;
+  background: linear-gradient(105deg, transparent 20%, rgba(255, 245, 200, 0.28) 50%, transparent 80%);
+  transform: translateX(-160%);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+.btn-gold-sheen:hover::after {
+  transform: translateX(280%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-marquee,
+  .animate-float-slow,
+  .animate-float-slow-delayed,
+  .animate-ping,
+  .animate-pulse {
+    animation: none !important;
+  }
+  .btn-gold-sheen::after {
+    display: none;
+  }
 }

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { AnimatePresence, m } from "motion/react";
 import { CheckCircle2, Sparkles } from "lucide-react";
+import { LUXURY_EASE, Reveal } from "./motion/MotionPrimitives";
 
 interface ProgramsSectionProps {
   onOpenApplyModal: (programTitle?: string) => void;
@@ -64,11 +66,11 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenApplyMod
   const activeProg = PROGRAMS.find(p => p.id === activeProgId) || PROGRAMS[0];
 
   return (
-    <section id="programs" className="py-20 bg-[#FBF6EC]/50 border-b border-[#EDE7DB]">
+    <section id="programs" className="py-12 sm:py-16 lg:py-20 bg-[#FBF6EC]/50 border-b border-[#EDE7DB]">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
 
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto">
+        <Reveal className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/30 bg-white px-4 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B2A4A]">
             <Sparkles className="h-3.5 w-3.5 text-[#D4AF37]" />
             <span>Academic & Vocational Offerings</span>
@@ -84,87 +86,107 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenApplyMod
           <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/40 bg-[#1B2A4A] px-4 py-1.5 text-xs font-bold text-[#D4AF37] shadow-md">
             <span>🎓 Minimum Qualification: 1.6 GPA in SLC/SEE</span>
           </div>
-        </div>
+        </Reveal>
 
         {/* Program Tabs Bar */}
-        <div className="mt-12 flex items-center justify-start sm:justify-center gap-2 sm:gap-3 max-w-5xl mx-auto overflow-x-auto pb-3 sm:pb-0 no-scrollbar">
+        <div className="mt-8 sm:mt-12 flex items-center justify-start sm:justify-center gap-2 sm:gap-3 max-w-5xl mx-auto overflow-x-auto py-2 px-1 no-scrollbar">
           {PROGRAMS.map((p) => {
             const isActive = p.id === activeProgId;
             return (
               <button
                 key={p.id}
-                onClick={() => setActiveProgId(p.id)}
-                className={`shrink-0 rounded-full px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all cursor-pointer whitespace-nowrap ${isActive
-                    ? "bg-[#1B2A4A] text-white shadow-lg gold-glow scale-105"
+                onClick={(e) => {
+                  setActiveProgId(p.id);
+                  e.currentTarget.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+                }}
+                className={`relative shrink-0 rounded-full px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold transition-colors cursor-pointer whitespace-nowrap ${
+                  isActive
+                    ? "text-white"
                     : "bg-white text-[#1B2A4A] border border-[#EDE7DB] hover:border-[#D4AF37] hover:bg-[#FBF6EC]"
-                  }`}
+                }`}
               >
-                {p.tabLabel}
+                {isActive && (
+                  <m.span
+                    layoutId="programs-active-tab"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    className="absolute inset-0 rounded-full bg-[#1B2A4A] shadow-lg gold-glow"
+                  />
+                )}
+                <span className="relative z-10">{p.tabLabel}</span>
               </button>
             );
           })}
         </div>
 
         {/* Active Program Showcase Card */}
-        <div className="mt-10 overflow-hidden rounded-3xl border border-[#D4AF37]/30 bg-white shadow-2xl">
-          <div className="grid lg:grid-cols-12 items-stretch">
+        <Reveal delay={0.08} className="mt-8 overflow-hidden rounded-3xl border border-[#D4AF37]/30 bg-white shadow-2xl">
+          <AnimatePresence mode="wait">
+            <m.div
+              key={activeProg.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25, ease: LUXURY_EASE }}
+              className="grid lg:grid-cols-12 items-stretch"
+            >
 
-            {/* Program Details Column */}
-            <div className="lg:col-span-7 p-5 sm:p-8 lg:p-12 flex flex-col justify-between">
-              <div>
-                <div className="inline-flex items-center gap-2 rounded-full bg-[#FBF6EC] px-4 py-1.5 text-xs font-bold text-[#1B2A4A] border border-[#D4AF37]/20">
-                  <Sparkles className="h-3.5 w-3.5 text-[#D4AF37]" />
-                  <span>{activeProg.duration}</span>
+              {/* Program Details Column */}
+              <div className="lg:col-span-7 p-5 sm:p-8 lg:p-12 flex flex-col justify-between">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-full bg-[#FBF6EC] px-4 py-1.5 text-xs font-bold text-[#1B2A4A] border border-[#D4AF37]/20">
+                    <Sparkles className="h-3.5 w-3.5 text-[#D4AF37]" />
+                    <span>{activeProg.duration}</span>
+                  </div>
+
+                  <h3 className="mt-6 text-2xl sm:text-3xl font-display font-semibold text-[#1B2A4A] leading-snug">
+                    {activeProg.title}
+                  </h3>
+
+                  <p className="mt-3 text-sm font-medium text-[#D4AF37]">
+                    Paid Internship Locations: <span className="text-[#1B2A4A]">{activeProg.places}</span>
+                  </p>
+
+                  {/* Key Points */}
+                  <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                    {activeProg.points.map((pt, i) => (
+                      <div key={i} className="flex items-start gap-2.5">
+                        <CheckCircle2 className="h-5 w-5 shrink-0 text-[#D4AF37] mt-0.5" />
+                        <span className="text-sm text-[#6B6560] leading-snug">{pt}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
-                <h3 className="mt-6 text-2xl sm:text-3xl font-display font-semibold text-[#1B2A4A] leading-snug">
-                  {activeProg.title}
-                </h3>
-
-                <p className="mt-3 text-sm font-medium text-[#D4AF37]">
-                  Paid Internship Locations: <span className="text-[#1B2A4A]">{activeProg.places}</span>
-                </p>
-
-                {/* Key Points */}
-                <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                  {activeProg.points.map((pt, i) => (
-                    <div key={i} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="h-5 w-5 shrink-0 text-[#D4AF37] mt-0.5" />
-                      <span className="text-sm text-[#6B6560] leading-snug">{pt}</span>
-                    </div>
-                  ))}
+                {/* CTA Action */}
+                <div className="mt-10 pt-6 border-t border-[#EDE7DB] flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+                  <button
+                    onClick={() => onOpenApplyModal(activeProg.title)}
+                    className="btn-gold-sheen w-full sm:w-auto text-center rounded-full bg-[#1B2A4A] px-7 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:bg-[#0B132B] gold-glow-hover cursor-pointer active:scale-[0.98]"
+                  >
+                    Apply for {activeProg.tabLabel} →
+                  </button>
+                  <button
+                    onClick={() => onOpenApplyModal(`Syllabus Request - ${activeProg.title}`)}
+                    className="w-full sm:w-auto text-center rounded-full border border-[#1B2A4A]/20 px-6 py-3.5 text-sm font-semibold text-[#1B2A4A] hover:bg-[#FBF6EC] cursor-pointer active:scale-[0.98]"
+                  >
+                    Download Syllabus
+                  </button>
                 </div>
               </div>
 
-              {/* CTA Action */}
-              <div className="mt-10 pt-6 border-t border-[#EDE7DB] flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-                <button
-                  onClick={() => onOpenApplyModal(activeProg.title)}
-                  className="w-full sm:w-auto text-center rounded-full bg-[#1B2A4A] px-7 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:bg-[#0B132B] gold-glow-hover cursor-pointer"
-                >
-                  Apply for {activeProg.tabLabel} →
-                </button>
-                <button
-                  onClick={() => onOpenApplyModal(`Syllabus Request - ${activeProg.title}`)}
-                  className="w-full sm:w-auto text-center rounded-full border border-[#1B2A4A]/20 px-6 py-3.5 text-sm font-semibold text-[#1B2A4A] hover:bg-[#FBF6EC] cursor-pointer"
-                >
-                  Download Syllabus
-                </button>
+              {/* Program Image Column */}
+              <div className="lg:col-span-5 relative min-h-[240px] sm:min-h-[300px] lg:min-h-full overflow-hidden">
+                <img
+                  src={activeProg.img}
+                  alt={`${activeProg.title} at Nepal College of Hotel Management (NcHM Birgunj)`}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A4A]/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-[#1B2A4A]/40 lg:to-transparent" />
               </div>
-            </div>
 
-            {/* Program Image Column */}
-            <div className="lg:col-span-5 relative min-h-[300px] lg:min-h-full">
-              <img
-                src={activeProg.img}
-                alt={`${activeProg.title} at Nepal College of Hotel Management (NcHM Birgunj)`}
-                className="h-full w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A4A]/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-[#1B2A4A]/40 lg:to-transparent" />
-            </div>
-
-          </div>
-        </div>
+            </m.div>
+          </AnimatePresence>
+        </Reveal>
 
       </div>
     </section>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { AnimatePresence, m } from "motion/react";
 import { Globe, Building2, ChevronRight, Sparkles, MapPin } from "lucide-react";
 import { Interactive3DScene } from "./Interactive3DScene";
+import { LUXURY_EASE, Reveal } from "./motion/MotionPrimitives";
 
 export const DESTINATIONS = [
   { 
@@ -68,11 +70,11 @@ export const GlobalOpportunities: React.FC<GlobalOpportunitiesProps> = ({ onOpen
   const activeDest = DESTINATIONS.find(d => d.name === activeDestName) || DESTINATIONS[0];
 
   return (
-    <section id="global-opportunities" className="py-20 bg-[#FFFCF6] border-b border-[#EDE7DB]">
+    <section id="global-opportunities" className="py-12 sm:py-16 lg:py-20 bg-[#FFFCF6] border-b border-[#EDE7DB]">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto">
+        <Reveal className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/30 bg-[#FBF6EC] px-4 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B2A4A]">
             <Globe className="h-3.5 w-3.5 text-[#D4AF37]" />
             <span>Paid International Internships</span>
@@ -81,22 +83,56 @@ export const GlobalOpportunities: React.FC<GlobalOpportunitiesProps> = ({ onOpen
             Your Gateway to <span className="italic text-gradient-gold">6 International Markets</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#6B6560]">
-            Click any country button below or hub tag to automatically pinpoint and rotate the 3D map globe directly to that destination!
+            Tap any country below to automatically pinpoint and rotate the 3D map globe directly to that destination!
           </p>
-        </div>
+        </Reveal>
 
         {/* Master Unified 2-Column Glass Showcase Card */}
-        <div className="mt-12 overflow-hidden rounded-3xl border border-[#D4AF37]/40 bg-[#0B132B] text-white shadow-2xl relative">
+        <Reveal delay={0.08} className="mt-8 sm:mt-12 overflow-hidden rounded-3xl border border-[#D4AF37]/40 bg-[#0B132B] text-white shadow-2xl relative">
           
           {/* Ambient Glows */}
           <div className="absolute top-0 left-1/4 -mt-20 h-96 w-96 rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.12)_0%,transparent_70%)] pointer-events-none" />
           <div className="absolute bottom-0 right-0 -mb-20 h-96 w-96 rounded-full bg-[radial-gradient(circle,rgba(27,42,74,0.45)_0%,transparent_70%)] pointer-events-none" />
 
-          <div className="relative z-10 grid lg:grid-cols-12 items-stretch min-h-[580px]">
+          <div className="relative z-10 grid lg:grid-cols-12 items-stretch lg:min-h-[580px]">
             
             {/* Left Column: Interactive 3D Globe Canvas (50% desktop width) */}
             <div className="lg:col-span-6 relative flex flex-col justify-between p-4 sm:p-6 lg:border-r lg:border-white/10 bg-gradient-to-b from-black/40 to-transparent">
               
+              {/* Mobile-First Country Selector Above Globe (visible < lg) */}
+              <div className="mb-3 lg:hidden">
+                <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#D4AF37] flex items-center gap-1.5">
+                  <Sparkles className="h-3 w-3 text-[#D4AF37]" />
+                  <span>Tap Destination to Pinpoint 3D Globe</span>
+                </div>
+                <div className="grid grid-cols-3 gap-1.5 sm:grid-cols-6">
+                  {DESTINATIONS.map((d) => {
+                    const isActive = d.name === activeDestName;
+                    return (
+                      <button
+                        key={d.name}
+                        onClick={() => setActiveDestName(d.name)}
+                        className={`relative flex items-center justify-center gap-1.5 rounded-xl px-2 py-2 text-[11px] font-bold transition-colors cursor-pointer ${
+                          isActive
+                            ? "text-[#0B132B]"
+                            : "bg-white/10 text-white border border-white/10"
+                        }`}
+                      >
+                        {isActive && (
+                          <m.span
+                            layoutId="global-dest-pill-mobile"
+                            transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                            className="absolute inset-0 rounded-xl bg-[#D4AF37] shadow-md"
+                          />
+                        )}
+                        <span className="relative z-10 text-sm">{d.flag}</span>
+                        <span className="relative z-10 truncate">{d.name}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
               {/* Globe Header Badge */}
               <div className="flex items-center justify-between gap-2 z-10">
                 <div className="inline-flex items-center gap-2 rounded-full bg-[#1B2A4A]/90 sm:bg-white/10 sm:backdrop-blur-md px-3.5 py-1.5 text-xs font-semibold text-[#D4AF37] border border-[#D4AF37]/30">
@@ -112,12 +148,12 @@ export const GlobalOpportunities: React.FC<GlobalOpportunitiesProps> = ({ onOpen
               </div>
 
               {/* 3D Canvas Container passing activeDestName */}
-              <div className="relative isolate transform-gpu my-4 h-[360px] sm:h-[420px] lg:h-[460px] w-full rounded-2xl overflow-hidden">
+              <div className="relative isolate transform-gpu my-3 sm:my-4 h-[290px] sm:h-[400px] lg:h-[460px] w-full rounded-2xl overflow-hidden">
                 <Interactive3DScene activeDestName={activeDestName} />
               </div>
 
               {/* Globe Footer Interactive Hub Indicators */}
-              <div className="flex flex-wrap items-center justify-between gap-2 border-t border-white/10 pt-3 text-[11px] text-white/70">
+              <div className="hidden sm:flex flex-wrap items-center justify-between gap-2 border-t border-white/10 pt-3 text-[11px] text-white/70">
                 <span className="flex items-center gap-1">
                   <MapPin className="h-3 w-3 text-[#D4AF37]" />
                   <span>Base Hub: <strong>Birgunj, Nepal</strong></span>
@@ -140,76 +176,93 @@ export const GlobalOpportunities: React.FC<GlobalOpportunitiesProps> = ({ onOpen
             </div>
 
             {/* Right Column: Country Selection & Active Details Panel (50% desktop width) */}
-            <div className="lg:col-span-6 p-5 sm:p-10 flex flex-col justify-between">
+            <div className="lg:col-span-6 p-4 sm:p-8 lg:p-10 flex flex-col justify-between">
               
               <div>
-                {/* Section Subtitle */}
-                <div className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF37] flex items-center gap-2">
-                  <Sparkles className="h-3.5 w-3.5 text-[#D4AF37]" />
-                  <span>Select Destination Hub (Pinpoint on Map)</span>
-                </div>
+                {/* Desktop Section Subtitle & Pills */}
+                <div className="hidden lg:block">
+                  <div className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF37] flex items-center gap-2">
+                    <Sparkles className="h-3.5 w-3.5 text-[#D4AF37]" />
+                    <span>Select Destination Hub (Pinpoint on Map)</span>
+                  </div>
 
-                {/* Country Pill Selector */}
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {DESTINATIONS.map((d) => {
-                    const isActive = d.name === activeDestName;
-                    return (
-                      <button
-                        key={d.name}
-                        onClick={() => setActiveDestName(d.name)}
-                        className={`flex items-center gap-2 rounded-full px-3.5 sm:px-4 py-2 text-xs font-bold transition-all cursor-pointer ${
-                          isActive
-                            ? "bg-[#D4AF37] text-[#0B132B] shadow-lg gold-glow scale-105"
-                            : "bg-white/10 text-white border border-white/10 hover:border-[#D4AF37]/50 hover:bg-white/20"
-                        }`}
-                      >
-                        <span className="text-base">{d.flag}</span>
-                        <span>{d.name}</span>
-                      </button>
-                    );
-                  })}
+                  {/* Country Pill Selector */}
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {DESTINATIONS.map((d) => {
+                      const isActive = d.name === activeDestName;
+                      return (
+                        <button
+                          key={d.name}
+                          onClick={() => setActiveDestName(d.name)}
+                          className={`relative flex items-center gap-2 rounded-full px-3.5 sm:px-4 py-2 text-xs font-bold transition-colors cursor-pointer ${
+                            isActive
+                              ? "text-[#0B132B]"
+                              : "bg-white/10 text-white border border-white/10 hover:border-[#D4AF37]/50 hover:bg-white/20"
+                          }`}
+                        >
+                          {isActive && (
+                            <m.span
+                              layoutId="global-dest-pill"
+                              transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                              className="absolute inset-0 rounded-full bg-[#D4AF37] shadow-lg gold-glow"
+                            />
+                          )}
+                          <span className="relative z-10 text-base">{d.flag}</span>
+                          <span className="relative z-10">{d.name}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
 
                 {/* Active Country Detail Box */}
-                <div className="mt-6 rounded-2xl border border-[#D4AF37]/30 bg-white/5 p-4 sm:p-6 backdrop-blur-md">
-                  
-                  {/* Country Title */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <span className="text-3xl sm:text-4xl shrink-0">{activeDest.flag}</span>
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-display font-bold text-white">{activeDest.name}</h3>
-                        <div className="text-xs font-semibold uppercase tracking-wider text-[#D4AF37]">{activeDest.country}</div>
+                <div className="lg:mt-6 rounded-2xl border border-[#D4AF37]/30 bg-white/5 p-4 sm:p-6 backdrop-blur-md">
+                  <AnimatePresence mode="wait">
+                    <m.div
+                      key={activeDest.name}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.22, ease: LUXURY_EASE }}
+                    >
+                      {/* Country Title */}
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div className="flex items-center gap-3">
+                          <span className="text-3xl sm:text-4xl shrink-0">{activeDest.flag}</span>
+                          <div>
+                            <h3 className="text-xl sm:text-2xl font-display font-bold text-white">{activeDest.name}</h3>
+                            <div className="text-xs font-semibold uppercase tracking-wider text-[#D4AF37]">{activeDest.country}</div>
+                          </div>
+                        </div>
+                        <span className="self-start sm:self-auto rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/40 px-3 py-1 text-[10px] font-bold text-[#D4AF37] shrink-0">
+                          Pinpointed on 3D Map ✓
+                        </span>
                       </div>
-                    </div>
-                    <span className="self-start sm:self-auto rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/40 px-3 py-1 text-[10px] font-bold text-[#D4AF37] shrink-0">
-                      Pinpointed on 3D Map ✓
-                    </span>
-                  </div>
 
-                  {/* Description */}
-                  <p className="mt-4 text-xs sm:text-sm text-white/80 leading-relaxed">
-                    {activeDest.details}
-                  </p>
+                      {/* Description */}
+                      <p className="mt-4 text-xs sm:text-sm text-white/80 leading-relaxed">
+                        {activeDest.details}
+                      </p>
 
-                  {/* Metadata Specs Grid */}
-                  <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-xl border border-white/10 bg-black/30 p-3.5">
-                      <div className="text-[10px] font-bold uppercase tracking-wider text-[#D4AF37]">Key Cities & Hubs</div>
-                      <div className="mt-1 text-xs font-semibold text-white">{activeDest.cities}</div>
-                    </div>
-                    <div className="rounded-xl border border-white/10 bg-black/30 p-3.5">
-                      <div className="text-[10px] font-bold uppercase tracking-wider text-[#D4AF37]">Target Hotel Networks</div>
-                      <div className="mt-1 text-xs font-semibold text-white">{activeDest.hotels}</div>
-                    </div>
-                  </div>
+                      {/* Metadata Specs Grid */}
+                      <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                        <div className="rounded-xl border border-white/10 bg-black/30 p-3.5">
+                          <div className="text-[10px] font-bold uppercase tracking-wider text-[#D4AF37]">Key Cities & Hubs</div>
+                          <div className="mt-1 text-xs font-semibold text-white">{activeDest.cities}</div>
+                        </div>
+                        <div className="rounded-xl border border-white/10 bg-black/30 p-3.5">
+                          <div className="text-[10px] font-bold uppercase tracking-wider text-[#D4AF37]">Target Hotel Networks</div>
+                          <div className="mt-1 text-xs font-semibold text-white">{activeDest.hotels}</div>
+                        </div>
+                      </div>
 
-                  {/* Roles */}
-                  <div className="mt-4 flex items-center gap-2 text-xs text-[#E8C99A]">
-                    <Building2 className="h-3.5 w-3.5 text-[#D4AF37] shrink-0" />
-                    <span>Typical Roles: <strong>{activeDest.roles}</strong></span>
-                  </div>
-
+                      {/* Roles */}
+                      <div className="mt-4 flex items-center gap-2 text-xs text-[#E8C99A]">
+                        <Building2 className="h-3.5 w-3.5 text-[#D4AF37] shrink-0" />
+                        <span>Typical Roles: <strong>{activeDest.roles}</strong></span>
+                      </div>
+                    </m.div>
+                  </AnimatePresence>
                 </div>
               </div>
 
@@ -220,7 +273,7 @@ export const GlobalOpportunities: React.FC<GlobalOpportunitiesProps> = ({ onOpen
                 </div>
                 <button
                   onClick={() => onOpenApplyModal(`Internship in ${activeDest.name}`)}
-                  className="rounded-full bg-[#D4AF37] px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] gold-glow-hover cursor-pointer transition flex items-center justify-center gap-2 shrink-0"
+                  className="btn-gold-sheen rounded-full bg-[#D4AF37] px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-[#0B132B] hover:bg-[#E8C99A] gold-glow-hover cursor-pointer transition flex items-center justify-center gap-2 shrink-0 active:scale-[0.98]"
                 >
                   <span>Inquire for {activeDest.name}</span>
                   <ChevronRight className="h-4 w-4" />
@@ -231,7 +284,7 @@ export const GlobalOpportunities: React.FC<GlobalOpportunitiesProps> = ({ onOpen
 
           </div>
 
-        </div>
+        </Reveal>
 
       </div>
     </section>

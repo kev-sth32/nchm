@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { AnimatePresence, m } from "motion/react";
 import { Star, ChevronLeft, ChevronRight, MessageSquare, Plus, Minus, ShieldCheck } from "lucide-react";
+import { LUXURY_EASE, Reveal } from "./motion/MotionPrimitives";
 
 export const REVIEWS = [
   {
@@ -67,12 +69,12 @@ export const TestimonialsSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-20 bg-[#FFFCF6] border-b border-[#EDE7DB]">
+    <section className="py-12 sm:py-16 lg:py-20 bg-[#FFFCF6] border-b border-[#EDE7DB]">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
 
         {/* Testimonials Block */}
-        <div className="rounded-3xl border border-[#D4AF37]/30 bg-[#1B2A4A] p-5 sm:p-10 lg:p-14 text-white shadow-2xl relative overflow-hidden">
-          <div className="absolute right-0 top-0 -mt-10 -mr-10 h-80 w-80 rounded-full bg-[#D4AF37]/15 blur-3xl" />
+        <Reveal className="rounded-3xl border border-[#D4AF37]/30 bg-[#1B2A4A] p-5 sm:p-10 lg:p-14 text-white shadow-2xl relative overflow-hidden">
+          <div className="pointer-events-none absolute right-0 top-0 -mt-10 -mr-10 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.18)_0%,transparent_70%)]" />
 
           <div className="relative z-10 max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-xs font-bold uppercase tracking-wider text-[#D4AF37]">
@@ -86,40 +88,50 @@ export const TestimonialsSection: React.FC = () => {
               ))}
             </div>
 
-            <p className="mt-6 text-xl sm:text-2xl font-display font-medium leading-relaxed italic text-white/95">
-              "{REVIEWS[currentIdx].review}"
-            </p>
+            <AnimatePresence mode="wait">
+              <m.div
+                key={currentIdx}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.28, ease: LUXURY_EASE }}
+              >
+                <p className="mt-6 text-xl sm:text-2xl font-display font-medium leading-relaxed italic text-white/95">
+                  "{REVIEWS[currentIdx].review}"
+                </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <img
-                src={REVIEWS[currentIdx].avatar}
-                alt={REVIEWS[currentIdx].name}
-                className="h-14 w-14 rounded-full border-2 border-[#D4AF37] object-cover bg-[#0B132B] shadow-md"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  target.onerror = null;
-                  target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(REVIEWS[currentIdx].name)}&background=D4AF37&color=1B2A4A&bold=true`;
-                }}
-              />
-              <div className="text-center sm:text-left">
-                <div className="flex items-center justify-center sm:justify-start gap-2">
-                  <span className="text-base font-bold text-white">{REVIEWS[currentIdx].name}</span>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/40 px-2.5 py-0.5 text-[10px] font-bold text-[#D4AF37]">
-                    <ShieldCheck className="h-3 w-3 text-emerald-400" />
-                    <span>{REVIEWS[currentIdx].badge}</span>
-                  </span>
+                <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <img
+                    src={REVIEWS[currentIdx].avatar}
+                    alt={REVIEWS[currentIdx].name}
+                    className="h-14 w-14 rounded-full border-2 border-[#D4AF37] object-cover bg-[#0B132B] shadow-md"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      target.onerror = null;
+                      target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(REVIEWS[currentIdx].name)}&background=D4AF37&color=1B2A4A&bold=true`;
+                    }}
+                  />
+                  <div className="text-center sm:text-left">
+                    <div className="flex items-center justify-center sm:justify-start gap-2">
+                      <span className="text-base font-bold text-white">{REVIEWS[currentIdx].name}</span>
+                      <span className="inline-flex items-center gap-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/40 px-2.5 py-0.5 text-[10px] font-bold text-[#D4AF37]">
+                        <ShieldCheck className="h-3 w-3 text-emerald-400" />
+                        <span>{REVIEWS[currentIdx].badge}</span>
+                      </span>
+                    </div>
+                    <div className="text-xs text-[#D4AF37] mt-0.5">{REVIEWS[currentIdx].role}</div>
+                    <div className="text-[11px] text-white/60">{REVIEWS[currentIdx].place}</div>
+                  </div>
                 </div>
-                <div className="text-xs text-[#D4AF37] mt-0.5">{REVIEWS[currentIdx].role}</div>
-                <div className="text-[11px] text-white/60">{REVIEWS[currentIdx].place}</div>
-              </div>
-            </div>
+              </m.div>
+            </AnimatePresence>
 
             {/* Carousel Nav Controls */}
             <div className="mt-8 flex items-center justify-center gap-3">
               <button
                 onClick={() => setCurrentIdx((prev) => (prev === 0 ? REVIEWS.length - 1 : prev - 1))}
                 aria-label="Previous review"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 hover:bg-[#D4AF37] hover:text-black transition cursor-pointer"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 hover:bg-[#D4AF37] hover:text-black transition cursor-pointer active:scale-95"
               >
                 <ChevronLeft className="h-4 w-4" />
               </button>
@@ -130,7 +142,7 @@ export const TestimonialsSection: React.FC = () => {
                     key={i}
                     onClick={() => setCurrentIdx(i)}
                     aria-label={`Go to slide ${i + 1}`}
-                    className={`h-2 rounded-full transition-all cursor-pointer ${i === currentIdx ? "w-6 bg-[#D4AF37]" : "w-2 bg-white/30"
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${i === currentIdx ? "w-6 bg-[#D4AF37]" : "w-2 bg-white/30"
                       }`}
                   />
                 ))}
@@ -139,7 +151,7 @@ export const TestimonialsSection: React.FC = () => {
               <button
                 onClick={() => setCurrentIdx((prev) => (prev + 1) % REVIEWS.length)}
                 aria-label="Next review"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 hover:bg-[#D4AF37] hover:text-black transition cursor-pointer"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 hover:bg-[#D4AF37] hover:text-black transition cursor-pointer active:scale-95"
               >
                 <ChevronRight className="h-4 w-4" />
               </button>
@@ -157,10 +169,10 @@ export const TestimonialsSection: React.FC = () => {
               </a>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* FAQ Accordion Block */}
-        <div className="mt-20 max-w-4xl mx-auto">
+        <Reveal delay={0.08} className="mt-20 max-w-4xl mx-auto">
           <div className="text-center">
             <h2 className="text-3xl sm:text-4xl font-display font-medium text-[#1B2A4A]">
               Frequently Asked <span className="italic text-gradient-gold">Questions</span>
@@ -176,26 +188,35 @@ export const TestimonialsSection: React.FC = () => {
               return (
                 <div
                   key={idx}
-                  className="rounded-2xl border border-[#EDE7DB] bg-white overflow-hidden transition-all shadow-sm"
+                  className={`rounded-2xl border bg-white overflow-hidden transition-colors duration-300 shadow-sm ${
+                    isOpen ? "border-[#D4AF37]/60" : "border-[#EDE7DB]"
+                  }`}
                 >
                   <button
                     onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
+                    aria-expanded={isOpen}
                     className="flex w-full items-center justify-between p-4 sm:p-5 text-left font-semibold text-[#1B2A4A] hover:bg-[#FBF6EC] transition cursor-pointer"
                   >
                     <span className="text-sm sm:text-base font-display pr-2">{faq.q}</span>
-                    {isOpen ? <Minus className="h-5 w-5 text-[#D4AF37] shrink-0" /> : <Plus className="h-5 w-5 text-[#1B2A4A] shrink-0" />}
+                    {isOpen ? <Minus className="h-5 w-5 text-[#D4AF37] shrink-0 transition-transform duration-200" /> : <Plus className="h-5 w-5 text-[#1B2A4A] shrink-0 transition-transform duration-200" />}
                   </button>
 
-                  {isOpen && (
-                    <div className="px-4 sm:px-5 pb-5 text-xs sm:text-sm text-[#6B6560] leading-relaxed border-t border-[#EDE7DB] pt-3 bg-[#FBF6EC]/30">
-                      {faq.a}
+                  <div
+                    className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="px-4 sm:px-5 pb-5 text-xs sm:text-sm text-[#6B6560] leading-relaxed border-t border-[#EDE7DB] pt-3 bg-[#FBF6EC]/30">
+                        {faq.a}
+                      </div>
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}
           </div>
-        </div>
+        </Reveal>
 
       </div>
     </section>
